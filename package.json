@@ -1,0 +1,12 @@
+{
+  "name": "keel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent agent skills for product and engineering judgment.",
+  "license": "MIT",
+  "scripts": {
+    "validate": "node scripts/validate-catalog.mjs",
+    "test": "node --test scripts/*.test.mjs"
+  }
+}

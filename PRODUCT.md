@@ -31,7 +31,7 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 
 ## Scope
 
-A small set of independent skills, each with a clear, distinct responsibility. Today: `shape` (what to build, scope, preserved intent) and `peer` (an independent second opinion for directing and evaluating coding agents).
+A small set of independent skills, each with a clear, distinct responsibility. Today: `shape` (what to build, scope, preserved intent), `peer` (an independent second opinion for directing and evaluating coding agents) and `experience` (friction a person meets in a real journey through the running product).
 
 A skill belongs only if it:
 

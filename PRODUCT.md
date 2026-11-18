@@ -2,11 +2,11 @@
 
 ## Purpose
 
-A lean, opinionated collection of independent skills for building better software with capable AI coding agents. Agents increasingly work out how to implement things. What remains is deciding what deserves building, why, for whom, whether it worked, and what should change. keel supplies the judgment, context and evidence agents can't reliably infer from code. Like a keel, it gives direction without stopping movement or a change of course.
+A lean, opinionated collection of independent skills for building better software with capable AI coding agents. Agents increasingly work out how to implement things. What remains is deciding what deserves building, why, for whom, whether it worked, and what should change. keel supplies focused judgment, context and evidence that agents don't reliably produce on their own. Like a keel, it gives direction without stopping movement or a change of course.
 
 ## Audience
 
-Solo developers building products with Claude Code. Other agents may work.
+Solo developers building products with AI coding agents, starting with Claude Code.
 
 ## Problems
 
@@ -35,22 +35,21 @@ A small set of independent skills, each with a clear, distinct responsibility. T
 
 A skill belongs only if it:
 
-- addresses judgment, context or evidence agents can't infer from code,
-- doesn't duplicate native Claude Code,
+- adds distinct value over native Claude Code, including through focused, specialized investigation (for example performance or design),
 - has a responsibility no other keel skill covers,
-- shows it adds value over unmodified Claude Code, in dogfooding.
+- justifies its maintenance cost.
 
 Skills may be changed, merged or removed.
 
 ## Primary metric
 
-In dogfooding on real projects, the share of skill uses that change a decision or surface something plain Claude Code wouldn't, and are judged right on later review. Logged per use, spot-checked against unmodified Claude Code. No baseline yet. Weakness: the author is also the judge.
+In dogfooding on real projects, how often a skill changes a decision or surfaces something plain Claude Code wouldn't, judged right on later review. Evaluated selectively, by comparing against baseline Claude Code on real work, not by logging every use. No baseline yet. Weakness: the author is also the judge.
 
 ## Non-goals
 
 - No methodology, mandatory lifecycle, sequence or automatic chaining: that is the ceremony keel exists to avoid.
 - No replacing or wrapping native agent features.
-- No implementation work, which agents already do well.
+- No generic implementation workflows, which agents already do well. Specialized work (for example profiling or design critique) is not excluded.
 - No growth in skill count for its own sake: each skill costs upkeep.
 - No fixed roadmap: candidate skills are explored, not committed.
 

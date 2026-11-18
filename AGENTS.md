@@ -29,3 +29,11 @@ keel is an Agent Skills catalog. This file covers how its skills are laid out, a
 ## Git
 
 Use [Conventional Commits](https://www.conventionalcommits.org/), for example `feat(shape): ask for the metric's current level`.
+
+## Product context
+
+- `PRODUCT.md`: Users, goals, metrics, and scope.
+
+Read relevant documents before substantial changes.
+Surface conflicts with established product direction.
+Update them only when I agree the direction has changed.

@@ -78,6 +78,16 @@ for (const name of seenNames)
 for (const name of groupedNames)
   if (!seenNames.has(name)) errors.push(`skills.sh.json: grouped skill "${name}" has no SKILL.md`)
 
+const readOptional = (file) => readFile(join(root, file), 'utf8').catch(() => null)
+const readme = await readOptional('README.md')
+const product = await readOptional('PRODUCT.md')
+for (const name of seenNames) {
+  if (readme !== null && !readme.includes(`(skills/${name}/SKILL.md)`))
+    errors.push(`README.md: skill "${name}" is not linked in the skills table`)
+  if (product !== null && !product.includes(`\`${name}\``))
+    errors.push(`PRODUCT.md: skill "${name}" is not named in its scope`)
+}
+
 if (groupedNames.length !== seenNames.size)
   errors.push(
     `skills.sh.json lists ${groupedNames.length} skills but catalog has ${seenNames.size}`,
@@ -89,4 +99,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`Catalog OK: ${seenNames.size} skills, frontmatter valid, skills.sh.json in sync`)
+console.log(`Catalog OK: ${seenNames.size} skills, frontmatter valid, skills.sh.json, README.md and PRODUCT.md in sync`)

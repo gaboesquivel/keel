@@ -36,3 +36,25 @@ for (const [label, name, description, valid] of [
     }
   })
 }
+
+for (const [label, files, valid] of [
+  ['docs list the skill', { 'README.md': '[`example`](skills/example/SKILL.md)', 'PRODUCT.md': 'Today: `example`.' }, true],
+  ['README misses the skill', { 'README.md': 'No skills.', 'PRODUCT.md': 'Today: `example`.' }, false],
+  ['PRODUCT misses the skill', { 'README.md': '[`example`](skills/example/SKILL.md)', 'PRODUCT.md': 'Today: nothing.' }, false],
+]) {
+  test(label, async () => {
+    const root = await mkdtemp(join(tmpdir(), 'skill-catalog-'))
+    try {
+      await mkdir(join(root, 'scripts'))
+      await mkdir(join(root, 'skills', 'example'), { recursive: true })
+      await writeFile(join(root, 'scripts', 'validate.mjs'), validator)
+      await writeFile(join(root, 'skills.sh.json'), JSON.stringify({ groupings: [{ skills: ['example'] }] }))
+      await writeFile(join(root, 'skills', 'example', 'SKILL.md'), '---\nname: example\ndescription: Useful prose.\n---\n')
+      for (const [file, content] of Object.entries(files)) await writeFile(join(root, file), content)
+      const result = spawnSync(process.execPath, [join(root, 'scripts', 'validate.mjs')], { encoding: 'utf8' })
+      assert.equal(result.status, valid ? 0 : 1, result.stdout + result.stderr)
+    } finally {
+      await rm(root, { recursive: true, force: true })
+    }
+  })
+}

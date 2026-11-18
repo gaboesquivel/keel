@@ -1,4 +1,4 @@
-# AGENTS.md
+# CLAUDE.md
 
 keel is an Agent Skills catalog. This file covers how its skills are laid out, added, changed, and checked. The install commands are in [README.md](README.md).
 
@@ -34,6 +34,6 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), for example `f
 
 - `PRODUCT.md`: Users, goals, metrics, and scope.
 
-Read relevant documents before substantial changes.
-Surface conflicts with established product direction.
-Update them only when I agree the direction has changed.
+Before planning or building a change, read the documents above that it touches, and tell me when the request conflicts with them.
+When a change alters what one of them describes (users, scope, metrics, non-goals, technical or design direction), update that document in the same commit or pull request as the change.
+Change the direction itself only when I agree. A change I asked for or approved counts as agreement; your own suggestions do not.

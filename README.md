@@ -39,7 +39,7 @@ In Claude Code, both skills are slash commands only (`disable-model-invocation`)
 
 ## Contributing
 
-Maintainer notes covering layout, adding a skill, and checks are in [AGENTS.md](AGENTS.md).
+Maintainer notes covering layout, adding a skill, and checks are in [CLAUDE.md](CLAUDE.md).
 
 ## License
 

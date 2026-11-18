@@ -31,7 +31,7 @@ A pull request that changes what the catalog contains or what a skill is for upd
 
 ## Checks
 
-`npm run validate` checks each `SKILL.md`: `name` matches its folder, `description` is one line of at most 1024 characters, `skills.sh.json` lists exactly the skills under `skills/`, and `README.md` links and `PRODUCT.md` names every skill. It does not check the rest of the prose or links. `npm test` covers the validator itself.
+`npm run validate` checks each `SKILL.md`: `name` matches its folder, `description` is one line of at most 1024 characters, `skills.sh.json` lists exactly the skills under `skills/`, the skills table in `README.md` links every skill, and the Scope section of `PRODUCT.md` names every skill. Both files are required. It does not check the rest of the prose or links. `npm test` covers the validator itself.
 
 ## Git
 

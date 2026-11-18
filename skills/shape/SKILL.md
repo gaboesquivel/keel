@@ -15,7 +15,7 @@ Act as a product peer. Question assumptions and say when you disagree, because a
 
 ## Start
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and the project's instruction file (`CLAUDE.md` or `AGENTS.md`) if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
 
 - No `PRODUCT.md` and nothing built yet: this is a new idea, so start the conversation.
 - No `PRODUCT.md` in an existing project: read enough of the code, documentation and workflows to say what the product is today, without reading everything. Tell the user what you found before asking anything, keeping apart what the code does, what you infer it is for, and what you cannot tell, and let them correct it. What is built shows the decisions made so far, not what the user wants next, so ask whether they want to continue in this direction or change it, and treat a pivot as an ordinary outcome.
@@ -54,7 +54,7 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-The first time you create `PRODUCT.md`, add this section to the instruction file the project already uses, listing only the documents that exist. If the project has `AGENTS.md` and no `CLAUDE.md`, add it to `AGENTS.md`, because creating a `CLAUDE.md` would stop Claude Code from loading `AGENTS.md`. Create `CLAUDE.md` only when neither exists. If the section is already there, leave it unless the list changed.
+Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section, listing only the documents that exist. Create `CLAUDE.md` if it is missing. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
 
 ```md
 ## Product context
@@ -63,9 +63,9 @@ The first time you create `PRODUCT.md`, add this section to the instruction file
 - `ARCHITECTURE.md`: Technical direction and constraints.
 - `DESIGN.md`: Experience and visual direction.
 
-Read relevant documents before substantial changes.
-Surface conflicts with established product direction.
-Update them only when I agree the direction has changed.
+Before planning or building a change, read the documents above that it touches, and tell me when the request conflicts with them.
+When a change alters what one of them describes (users, scope, metrics, non-goals, technical or design direction), update that document in the same commit or pull request as the change.
+Change the direction itself only when I agree. A change I asked for or approved counts as agreement; your own suggestions do not.
 ```
 
 ## Finish

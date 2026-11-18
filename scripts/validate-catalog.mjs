@@ -78,6 +78,42 @@ for (const name of seenNames)
 for (const name of groupedNames)
   if (!seenNames.has(name)) errors.push(`skills.sh.json: grouped skill "${name}" has no SKILL.md`)
 
+const readRequired = (file) =>
+  readFile(join(root, file), 'utf8').catch(() => {
+    errors.push(`${file}: missing or unreadable`)
+    return null
+  })
+
+// README.md: the table whose header starts with "Skill", up to the first non-table line.
+const skillsTable = (content) => {
+  const lines = content.split(/\r?\n/)
+  const start = lines.findIndex((line) => /^\|\s*Skill\s*\|/.test(line))
+  if (start === -1) return null
+  const end = lines.findIndex((line, i) => i > start && !line.startsWith('|'))
+  return lines.slice(start + 2, end === -1 ? undefined : end).join('\n')
+}
+
+// PRODUCT.md: the "## Scope" section, up to the next level-2 heading.
+const scopeSection = (content) =>
+  content.match(/^## Scope[ \t]*\r?\n([\s\S]*?)(?=^## |(?![\s\S]))/m)?.[1] ?? null
+
+const readme = await readRequired('README.md')
+const product = await readRequired('PRODUCT.md')
+const table = readme === null ? null : skillsTable(readme)
+const scope = product === null ? null : scopeSection(product)
+if (readme !== null && table === null) errors.push('README.md: no skills table (header "| Skill |")')
+if (product !== null && scope === null) errors.push('PRODUCT.md: no "## Scope" section')
+
+for (const name of seenNames) {
+  if (table !== null && !table.includes(`(skills/${name}/SKILL.md)`))
+    errors.push(`README.md: skill "${name}" is not linked in the skills table`)
+  if (scope !== null && !scope.includes(`\`${name}\``))
+    errors.push(`PRODUCT.md: skill "${name}" is not named in its Scope section`)
+}
+
+for (const [, name] of (table ?? '').matchAll(/\(skills\/([^/)]+)\/SKILL\.md\)/g))
+  if (!seenNames.has(name)) errors.push(`README.md: skills table links "${name}", which has no SKILL.md`)
+
 if (groupedNames.length !== seenNames.size)
   errors.push(
     `skills.sh.json lists ${groupedNames.length} skills but catalog has ${seenNames.size}`,
@@ -89,4 +125,4 @@ if (errors.length) {
   process.exit(1)
 }
 
-console.log(`Catalog OK: ${seenNames.size} skills, frontmatter valid, skills.sh.json in sync`)
+console.log(`Catalog OK: ${seenNames.size} skills, frontmatter valid, skills.sh.json, README.md and PRODUCT.md in sync`)

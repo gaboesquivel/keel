@@ -15,7 +15,7 @@ Act as a product peer. Question assumptions and say when you disagree, because a
 
 ## Start
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and the project's instruction file (`CLAUDE.md` or `AGENTS.md`) if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
 
 - No `PRODUCT.md` and nothing built yet: this is a new idea, so start the conversation.
 - No `PRODUCT.md` in an existing project: read enough of the code, documentation and workflows to say what the product is today, without reading everything. Tell the user what you found before asking anything, keeping apart what the code does, what you infer it is for, and what you cannot tell, and let them correct it. What is built shows the decisions made so far, not what the user wants next, so ask whether they want to continue in this direction or change it, and treat a pivot as an ordinary outcome.
@@ -54,13 +54,7 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-Whenever you create or update `PRODUCT.md`, make sure the project's instructions contain this section, listing only the documents that exist:
-
-- `CLAUDE.md` exists: add it there, or to `AGENTS.md` when `CLAUDE.md` only imports it with `@AGENTS.md`.
-- Only `AGENTS.md` exists: add it to `AGENTS.md`, and create a `CLAUDE.md` whose first line is `@AGENTS.md`. Claude Code reads `AGENTS.md` on its own only in recent versions and only when there is no `CLAUDE.md`, and the import works in every version and keeps one file for other agents.
-- Neither exists: create `CLAUDE.md`.
-
-If the section is already there, bring its document list and rules in line with this block and leave the rest of the file alone.
+Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section, listing only the documents that exist. Create `CLAUDE.md` if it is missing. If an older version of the section is there, replace it with this one and leave the rest of the file alone.
 
 ```md
 ## Product context
@@ -69,10 +63,9 @@ If the section is already there, bring its document list and rules in line with 
 - `ARCHITECTURE.md`: Technical direction and constraints.
 - `DESIGN.md`: Experience and visual direction.
 
-Read relevant documents before substantial changes.
-Surface conflicts with established product direction.
-Update them only when I agree the direction has changed; a change I asked for or approved counts.
-When a change affects what these documents describe, update them in the same pull request.
+Before planning or building a change, read the documents above that it touches, and tell me when the request conflicts with them.
+When a change alters what one of them describes (users, scope, metrics, non-goals, technical or design direction), update that document in the same commit or pull request as the change.
+Change the direction itself only when I agree. A change I asked for or approved counts as agreement; your own suggestions do not.
 ```
 
 ## Finish

@@ -8,7 +8,7 @@ Independent agent skills for product and engineering judgment. Use whichever one
 | --- | --- | --- |
 | [`shape`](skills/shape/SKILL.md) | Your product partner. It helps you decide what to build, for whom, why, and what to leave out, whether for a new idea or a feature weighed against the product's direction. Technical questions come in only as far as those decisions need. Once you adopt a direction, it keeps a short `PRODUCT.md` current. | Only when you call it: `/shape [idea or question]` |
 | [`peer`](skills/peer/SKILL.md) | Your partner for directing coding agents. It helps you clarify intent, write effective prompts, assess agent responses, and decide the next instruction or action. Technical judgment and critical review support that work. | Only when you call it: `/peer` |
-| [`experience`](skills/experience/SKILL.md) | Walks a real journey through your running product as its intended user would, and reports the friction they meet: unclear steps, missing feedback, failed recovery, keyboard and accessibility problems. Findings come with steps to reproduce and are labelled as reproduced, tool-reported or hypothesis. It changes nothing unless you ask for fixes. | Only when you call it: `/experience [journey or task]` |
+| [`experience`](skills/experience/SKILL.md) | Walks a real journey through your running product as its intended user would, and reports the friction they meet: unclear steps, missing feedback, failed recovery, keyboard and accessibility problems. Findings come with steps to reproduce and are labelled as reproduced, inspected, tool-reported or hypothesis. It changes nothing unless you ask for fixes. | Only when you call it: `/experience [journey or task]` |
 
 ## Install
 

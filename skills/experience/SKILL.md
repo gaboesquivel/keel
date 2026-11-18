@@ -37,7 +37,7 @@ Pay attention to what matters for this journey:
 - Affordances, navigation, and steps or decisions that add effort without adding value.
 - Feedback and system status while waiting, and loading, empty and error states.
 - Recovery: after a failed action, can the person tell what went wrong and get back on track without losing work?
-- Keyboard use, focus order and visibility, and what assistive technology would announce.
+- Keyboard use, focus order and visibility, and the names, roles and states exposed to assistive technology. Say what a screen reader or other assistive technology announces only if you tested with it; a reading of the markup or accessibility tree is a prediction.
 - Smaller screens and other conditions the intended user actually has.
 
 Go past the happy path where it is relevant and safe: invalid input, an interrupted step, a slow or failed request, going back, a second attempt. A journey that succeeds on the happy path can still fail the person the first time something goes wrong.
@@ -56,13 +56,14 @@ Lead with the journey, the user and the starting state, and whether the person c
 
 Kinds of finding are not interchangeable, so label each one:
 
-- **Reproduced:** you saw it happen and can repeat it.
+- **Reproduced:** you saw it happen in the running product and can repeat it. A claim about what assistive technology announces is reproduced only when you tested with that technology.
+- **Inspected:** read from source code, markup, the accessibility tree or a screenshot rather than seen in use. It shows what is present, not how it behaves or what assistive technology announces.
 - **Tool finding:** reported by an accessibility or audit tool. An automated scan catches only part of what matters and does not establish compliance.
 - **Hypothesis:** a likely usability problem you reasoned about. Only research with real people would show whether they struggle.
 - **Opinion:** an aesthetic or preference judgement.
 - **Not checked:** what this walk could not cover.
 
-If the product could not be run, say so first. A source-level or screenshot-level review can still help, but label every finding by what it rests on and do not present it as observed behaviour.
+If the product could not be run, say so first. A source-level or screenshot-level review can still help: label those findings **Inspected**, or **Hypothesis** where they predict friction, and do not present them as reproduced behaviour.
 
 Leave out praise padding and findings you cannot support. Stay on the chosen journey rather than auditing every page; mention anything serious you noticed elsewhere in one line.
 

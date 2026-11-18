@@ -54,17 +54,19 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section, listing only the documents that exist. Create `CLAUDE.md` if it is missing. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
+Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section. Create `CLAUDE.md` if it is missing. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
+
+The template names `ARCHITECTURE.md` and `DESIGN.md` conditionally, so write it the same whether or not they exist yet. A file created later is picked up without running this skill again.
 
 ```md
 ## Product context
 
 - `PRODUCT.md`: Users, goals, metrics, and scope.
-- `ARCHITECTURE.md`: Technical direction and constraints.
-- `DESIGN.md`: Experience and visual direction.
+- `ARCHITECTURE.md` and `DESIGN.md`, if they exist: technical direction and constraints; experience and visual direction.
 
-Before planning or building a change, read the documents above that it touches, and tell me when the request conflicts with them.
-When a change alters what one of them describes (users, scope, metrics, non-goals, technical or design direction), update that document in the same commit or pull request as the change.
+Before planning or building a change, read the documents above that it touches.
+A request to build something is not a decision to change direction. When it conflicts with documented goals, scope or non-goals, say so and discuss the change before building. If I have already acknowledged and approved that change, proceed without asking again.
+When an accepted change makes one of them inaccurate (users, scope, metrics, non-goals, technical or design direction), update it in the same commit or pull request. Routine implementation details do not belong in them.
 Change the direction itself only when I agree. A change I asked for or approved counts as agreement; your own suggestions do not.
 ```
 

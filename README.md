@@ -40,7 +40,7 @@ In Claude Code, every keel skill is a slash command only (`disable-model-invocat
 
 ## Contributing
 
-Maintainer notes covering layout, adding a skill, and checks are in [AGENTS.md](AGENTS.md).
+Maintainer notes covering layout, adding a skill, and checks are in [CLAUDE.md](CLAUDE.md).
 
 ## License
 

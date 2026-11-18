@@ -36,4 +36,5 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), for example `f
 
 Read relevant documents before substantial changes.
 Surface conflicts with established product direction.
-Update them only when I agree the direction has changed.
+Update them only when I agree the direction has changed; a change I asked for or approved counts.
+When a change affects what these documents describe, update them in the same pull request.

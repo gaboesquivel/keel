@@ -54,7 +54,13 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-The first time you create `PRODUCT.md`, add this section to the instruction file the project already uses, listing only the documents that exist. If the project has `AGENTS.md` and no `CLAUDE.md`, add it to `AGENTS.md`, because creating a `CLAUDE.md` would stop Claude Code from loading `AGENTS.md`. Create `CLAUDE.md` only when neither exists. If the section is already there, leave it unless the list changed.
+Whenever you create or update `PRODUCT.md`, make sure the project's instructions contain this section, listing only the documents that exist:
+
+- `CLAUDE.md` exists: add it there, or to `AGENTS.md` when `CLAUDE.md` only imports it with `@AGENTS.md`.
+- Only `AGENTS.md` exists: add it to `AGENTS.md`, and create a `CLAUDE.md` whose first line is `@AGENTS.md`. Claude Code reads `AGENTS.md` on its own only in recent versions and only when there is no `CLAUDE.md`, and the import works in every version and keeps one file for other agents.
+- Neither exists: create `CLAUDE.md`.
+
+If the section is already there, bring its document list and rules in line with this block and leave the rest of the file alone.
 
 ```md
 ## Product context
@@ -65,7 +71,8 @@ The first time you create `PRODUCT.md`, add this section to the instruction file
 
 Read relevant documents before substantial changes.
 Surface conflicts with established product direction.
-Update them only when I agree the direction has changed.
+Update them only when I agree the direction has changed; a change I asked for or approved counts.
+When a change affects what these documents describe, update them in the same pull request.
 ```
 
 ## Finish

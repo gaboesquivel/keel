@@ -1,6 +1,6 @@
 ---
 name: design
-description: Interface design partner for new work, refinement of an existing product, explicit redesigns, critique and prototypes. Starts from the surface's purpose, user and content, preserves an existing design language unless asked to change it, infers whether the request is critique, prototype or implementation, and checks rendered results at real sizes and states before calling work done. Keeps DESIGN.md for direction the user adopts.
+description: Interface design partner for new work, refinement of an existing product, explicit redesigns, critique and prototypes. Starts from the surface's purpose, user and content, preserves an existing design language unless asked to change it, infers whether the request is critique, prototype or implementation, and checks rendered results at real sizes and states before calling work done. Keeps DESIGN.md accurate for adopted direction.
 argument-hint: "[surface, change or question]"
 disable-model-invocation: true
 ---
@@ -64,7 +64,7 @@ For critique, base findings on the rendered interface where you can see it, and 
 
 ## Durable intent
 
-`DESIGN.md` records the direction and constraints the code cannot explain: what the interface should feel like and why, the rules that keep it coherent, and what to avoid. Update it only when the user adopts a substantial new direction or asks for it to be written down, and edit it in place. Do not document components, catalogue tokens or regenerate a design system for small changes.
+`DESIGN.md` records the direction and constraints the code cannot explain: what the interface should feel like and why, the rules that keep it coherent, and what to avoid. Update it, in place, when an accepted change makes its durable guidance inaccurate, or when the user asks for it to be written down. Routine refinements, implementation details, components and tokens do not belong in it, and it is not regenerated for small changes. Any Claude Code session can maintain it; this skill is not a required step.
 
 ## Report
 

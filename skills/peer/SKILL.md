@@ -26,7 +26,7 @@ How much you inspect depends on the question. A strategy discussion may need not
 - Leave settled questions settled unless there is new evidence.
 - Ask a question only when the answer would change your recommendation. Otherwise state your assumption and continue.
 
-Bring product judgment to these decisions. Product discovery itself (who the product is for, what it should become, and the documents that record that) belongs to the `shape` skill, so when that is the open question, say so instead of running the discovery here.
+Bring product judgment to these decisions. When the open question is product discovery itself (who the product is for, what it should become), give your view as advice and name the evidence that would settle it, but leave deciding and recording it to the user. Do not run a discovery process or write product documents here.
 
 ## Brief
 

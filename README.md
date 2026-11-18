@@ -2,18 +2,19 @@
 
 A keel gives a boat or a surfboard stability and direction while still letting it turn. These skills aim to do the same for building with AI agents: steadier judgment, without a rigid process.
 
-Independent agent skills for product and engineering judgment. Use whichever one helps, whenever it helps. Neither depends on the other, and there is no required order. They usually run in separate sessions on the same project, working from the context it already has.
+Independent agent skills for product and engineering judgment. Use whichever one helps, whenever it helps. None depends on another, and there is no required order. They usually run in separate sessions on the same project, working from the context it already has.
 
 | Skill | What it does | How it runs |
 | --- | --- | --- |
 | [`shape`](skills/shape/SKILL.md) | Your product partner. It helps you decide what to build, for whom, why, and what to leave out, whether for a new idea or a feature weighed against the product's direction. Technical questions come in only as far as those decisions need. Once you adopt a direction, it keeps a short `PRODUCT.md` current. | Only when you call it: `/shape [idea or question]` |
 | [`peer`](skills/peer/SKILL.md) | Your partner for directing coding agents. It helps you clarify intent, write effective prompts, assess agent responses, and decide the next instruction or action. Technical judgment and critical review support that work. | Only when you call it: `/peer` |
+| [`experience`](skills/experience/SKILL.md) | Walks a real journey through your running product as its intended user would, and reports the friction they meet: unclear steps, missing feedback, failed recovery, keyboard and accessibility problems. Findings come with steps to reproduce and are labelled as reproduced, tool-reported or hypothesis. It changes nothing unless you ask for fixes. | Only when you call it: `/experience [journey or task]` |
 
 ## Install
 
 These commands use the [skills CLI](https://github.com/vercel-labs/skills), which works with Claude Code and other agents that read [Agent Skills](https://agentskills.io).
 
-**Both skills, every project on your machine:**
+**Every skill, every project on your machine:**
 
 ```bash
 npx skills@latest add gaboesquivel/keel -g -y
@@ -35,7 +36,7 @@ npx skills@latest add gaboesquivel/keel --list
 
 **Manual install for Claude Code:** copy `skills/<name>/` into `~/.claude/skills/` for every project, or into `.claude/skills/` for one.
 
-In Claude Code, both skills are slash commands only (`disable-model-invocation`), and `shape` gets your text through `$ARGUMENTS`. Other agents may handle this differently: they may load a skill on their own or not pass your argument.
+In Claude Code, every keel skill is a slash command only (`disable-model-invocation`), and the text you type after the command reaches the skill through `$ARGUMENTS`. Other agents may handle this differently: they may load a skill on their own or not pass your argument.
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 ---
 name: shape
-description: Product discovery conversation. Shape a new product idea, or weigh a feature against an existing product's direction, and keep a short PRODUCT.md current.
+description: Product discovery conversation. Shape a new product idea, work out and reconsider the direction of an existing project that has none written down, or weigh a feature against an existing product's direction, and keep a short PRODUCT.md current.
 argument-hint: "[product idea or feature question]"
 disable-model-invocation: true
 ---
@@ -17,7 +17,8 @@ Act as a product peer. Question assumptions and say when you disagree, because a
 
 Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and the project's instruction file (`CLAUDE.md` or `AGENTS.md`) if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
 
-- No `PRODUCT.md`: work out whether this is a new idea or an existing project that has not been shaped yet. For an existing project, read enough of it to understand its purpose before starting discovery.
+- No `PRODUCT.md` and nothing built yet: this is a new idea, so start the conversation.
+- No `PRODUCT.md` in an existing project: read enough of the code, documentation and workflows to say what the product is today, without reading everything. Tell the user what you found before asking anything, keeping apart what the code does, what you infer it is for, and what you cannot tell, and let them correct it. What is built shows the decisions made so far, not what the user wants next, so ask whether they want to continue in this direction or change it, and treat a pivot as an ordinary outcome.
 - `PRODUCT.md` exists: use it as the current product context. Work out whether the user is exploring a feature, reconsidering the product's direction, or investigating an alternative. Compare the proposal with the documented user, problem, metric, scope and non-goals, and use the primary metric to judge it. If the metric's current level would change your assessment, ask the user where it stands; you cannot see their analytics, and "unknown" is an acceptable answer. Name meaningful conflicts with the documented direction, and do not treat that direction as fixed: the user may be changing it on purpose.
 
 ## The conversation
@@ -38,7 +39,7 @@ The user can stop at any point. When they do, or when they ask to finalize, say 
 
 ## Documents
 
-Write to a file only when the user has clearly adopted a direction, or asks to save or finalize. Your suggestions and unanswered options are not decisions, so do not record them as such. If a feature fits the existing direction, the answer can stay in the conversation with no file changes.
+Write to a file only when the user has clearly adopted a direction, or asks to save or finalize. Your suggestions, unanswered options and your reading of an existing repository are not decisions, so do not record them as such. If a feature fits the existing direction, the answer can stay in the conversation with no file changes.
 
 `PRODUCT.md` is the current direction, on about one page:
 

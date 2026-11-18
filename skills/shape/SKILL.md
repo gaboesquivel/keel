@@ -54,7 +54,7 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section, listing only the documents that exist. Create `CLAUDE.md` if it is missing. If an older version of the section is there, replace it with this one and leave the rest of the file alone.
+Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section, listing only the documents that exist. Create `CLAUDE.md` if it is missing. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
 
 ```md
 ## Product context

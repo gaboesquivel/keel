@@ -46,7 +46,7 @@ Choose each of these for this product rather than taking the defaults any simila
 
 Motion should explain something: where an element came from, what changed, or that an action registered. The more often a person triggers an interaction, the less animation it should have; actions repeated many times a day, especially from the keyboard, are usually better instant. Respect reduced-motion preferences.
 
-When the user asks to see options, or the direction is open and expensive to get wrong, show two or three that differ in concept, not just colour, recommend one, and let the user choose. Otherwise build the direction you recommend and say what else you considered.
+When the user asks to see options, or the direction is open and expensive to get wrong, show alternatives that differ in concept, not just colour, recommend one, and let the user choose. Show as many as the user asked for; when they gave no number, show two or three. Otherwise recommend one direction and say what else you considered. Build it in the product only when the request is to implement: in a critique the recommendation is the result, and a prototype stays apart from production code.
 
 ## Verify the rendered result
 

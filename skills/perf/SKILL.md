@@ -49,7 +49,7 @@ Only once evidence supports a bottleneck:
 
 1. State the hypothesis and the result that would confirm or refute it.
 2. Choose the smallest meaningful change. Removing unnecessary work comes before adding machinery; caching, concurrency, new dependencies or infrastructure need evidence that their complexity pays for itself.
-3. Preserve correctness, behaviour, data freshness, compatibility and accessibility.
+3. Preserve correctness, behaviour, data freshness, compatibility, accessibility and, where the change touches it, adopted design intent (`DESIGN.md`). If a fix would need to compromise that intent, say so and let the user decide.
 4. Measure again under comparable conditions, with enough runs to see the variation.
 5. Keep the change if the evidence supports it. If the difference is within the noise, the result is inconclusive, not a success or a failure; say so and decide with the user whether the change is worth keeping on other grounds.
 

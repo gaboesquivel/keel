@@ -11,7 +11,7 @@ How to locate server-side time and read the evidence. Platform specifics change;
 ## Database
 
 - **N+1 queries:** count queries per request. A count that grows with the number of rows returned is the signature; batching or a join is the usual fix, but confirm the count drops and the latency follows.
-- **Query plans:** in PostgreSQL, `EXPLAIN` shows the planner's estimate without running the query; `EXPLAIN ANALYZE` runs it and reports actual times and rows. Because `ANALYZE` executes the statement, wrap data-modifying statements in a transaction and roll it back, and never run it against production without the user's agreement. Add `BUFFERS` to see I/O. Large gaps between estimated and actual rows point to stale statistics or a misleading predicate.
+- **Query plans:** in PostgreSQL, `EXPLAIN` shows the planner's estimate without running the query; `EXPLAIN ANALYZE` runs it and reports actual times and rows. Because `ANALYZE` executes the statement, prefer a staging copy for anything that writes. A transaction rollback undoes row changes but not every side effect: sequence increments stay consumed, and triggers, notifications or calls to other systems may already have acted. Never run it against production without the user's agreement. Add `BUFFERS` to see I/O. Large gaps between estimated and actual rows point to stale statistics or a misleading predicate.
 - Run plans against realistic data volumes. A plan on a small development database can differ completely from production.
 - An index that helps one query adds write cost and storage. Recommend it with the query it serves and the evidence.
 

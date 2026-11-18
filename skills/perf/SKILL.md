@@ -24,13 +24,13 @@ Name the affected user journey, operation or workload, and who feels it. Recover
 
 These are not equivalent, so label each finding with its kind:
 
-1. **Field:** production or real-user measurements.
+1. **Field:** observations from actual user traffic or operational workloads, such as real-user monitoring, production traces, logs and metrics. A synthetic test run against production is lab evidence, not field evidence.
 2. **Lab:** controlled measurements of a production build.
 3. **Diagnostic:** traces and profiles that show where time goes.
-4. **Static:** code reading and rules of thumb.
-5. **Hypothesis:** unverified reasoning.
+4. **Static:** facts verified by reading code or configuration, such as a query inside a loop or a missing index.
+5. **Hypothesis:** unmeasured claims about runtime impact, including how much a static fact costs, and best-practice rules applied without measurement.
 
-Measure before recommending whenever measurement is possible. Static findings and best-practice rules are hypotheses until a measurement supports them. When no runtime measurement is available, say so, rank hypotheses by likely impact, and give the cheapest measurement that would confirm each.
+Measure before recommending whenever measurement is possible. A static finding establishes what the code does, not what it costs: report the fact as static and its runtime impact as a hypothesis until a measurement supports it. When no runtime measurement is available, say so, rank hypotheses by likely impact, and give the cheapest measurement that would confirm each.
 
 Record enough conditions to make a comparison meaningful: revision and build mode, workload and data size, environment, cache state (cold or warm), device and network conditions when relevant, how you measured, and how much the numbers varied across runs. Development-mode timings are not production performance, and development instrumentation changes what it measures.
 

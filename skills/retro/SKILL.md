@@ -15,7 +15,7 @@ If nothing is named, propose the most recent substantial feature or release from
 
 ## Recover the intent
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md`, the project's instruction file, and the relevant history (pull requests, commit messages, issues, decision notes) as far as the question needs. Reconstruct who it was for, the problem, the expected outcome, the constraints, and the decisions made, including alternatives that were rejected. Where intent was never written down, say what you infer and from what. Ask the user only for what would change the conclusion.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md`, `CLAUDE.md`, and the relevant history (pull requests, commit messages, issues, decision notes) as far as the question needs. Reconstruct who it was for, the problem, the expected outcome, the constraints, and the decisions made, including alternatives that were rejected. Where intent was never written down, say what you infer and from what. Ask the user only for what would change the conclusion.
 
 ## Recover what happened
 

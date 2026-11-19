@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: inherited-project
+expected_outcome: |
+  Describes what the product is from the code and documents, uses the outcome evidence in the
+  repository, keeps observed facts apart from inference, and does not write product documents before
+  the user adopts a direction.
+context:
+  scaffold_script: place-files.sh

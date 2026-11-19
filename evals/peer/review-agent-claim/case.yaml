@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: review-agent-claim
+expected_outcome: |
+  Checks the claim against the branch diff and tests, finds that the limit is still per invoice, the
+  new test cannot fail, the gap per invoice dropped from 7 to 3 days and an unrequested CSV import
+  change was made, and recommends sending it back with a follow-up prompt.
+context:
+  scaffold_script: place-files.sh

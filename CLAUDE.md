@@ -33,6 +33,10 @@ A pull request that changes what the catalog contains or what a skill is for upd
 
 `npm run validate` checks each `SKILL.md`: `name` matches its folder, `description` is one line of at most 1024 characters, `skills.sh.json` lists exactly the skills under `skills/`, the skills table in `README.md` links every skill, and the Scope section of `PRODUCT.md` names every skill. Both files are required. It does not check the rest of the prose or links. `npm test` covers the validator itself.
 
+## Evaluations
+
+`evals/<skill>/<case>/` holds comparison cases for each skill, built on the shared fixture in `evals/fixtures/`. They stay out of `skills/` so installs don't include them. `evals/compare.sh <skill> <case> <out-dir>` runs one case as plain Claude Code and with the skill invoked, and reports whether both runs are usable. The runs are billed. Repeat them after a model change or a change to a skill's behavior; they are not a required check. [evals/README.md](evals/README.md) covers grading, isolation limits and the first results.
+
 ## Git
 
 Use [Conventional Commits](https://www.conventionalcommits.org/), for example `feat(shape): ask for the metric's current level`.

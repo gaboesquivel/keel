@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: create-invoice-on-phone
+expected_outcome: |
+  Walks the new-invoice journey in the running app at a phone viewport, finds that a validation error
+  wipes the form and shows only a generic message, notes the placeholder-only fields, and recommends
+  without changing code.
+context:
+  scaffold_script: place-files.sh

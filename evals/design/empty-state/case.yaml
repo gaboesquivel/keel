@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: empty-state
+expected_outcome: |
+  Implements a scoped empty state using the existing tokens, and verifies it in a rendered browser view of the empty
+  case.
+context:
+  scaffold_script: place-files.sh

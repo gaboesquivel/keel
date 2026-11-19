@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: feature-against-non-goal
+expected_outcome: |
+  Recognises that team accounts conflict with a documented non-goal, weighs the request against the
+  product's direction and metric, and advises (or asks the deciding question) without implementing or
+  rewriting the product documents.
+context:
+  scaffold_script: place-files.sh

@@ -3,3 +3,4 @@ node_modules
 .agents
 .claude
 *.log
+evals/results/

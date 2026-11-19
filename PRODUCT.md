@@ -55,6 +55,6 @@ In dogfooding on real projects, how often a skill changes a decision or surfaces
 
 ## Open questions
 
-- Does this add value over plain Claude Code? Unmeasured so far.
+- Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design` not yet measured.
 - Is there evidence of these problems beyond the author's own experience?
 - How much does it overlap with existing tools (for example the AgentOps `product` skill)? Not checked.

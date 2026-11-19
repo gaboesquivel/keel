@@ -15,7 +15,7 @@ keel is an Agent Skills catalog. This file covers how its skills are laid out, a
 2. Frontmatter: `name` and a single-line `description` that says what the skill does and when to use it (at most 1024 characters, no YAML `|` or `>` blocks).
 3. Add `<name>` to a grouping in [skills.sh.json](skills.sh.json).
 4. Add a row for it to the skills table in [README.md](README.md), and name it with its responsibility in the Scope section of [PRODUCT.md](PRODUCT.md).
-5. Add its website copy (tagline, lede, three benefits, an example) and position to [site/content/skills.mjs](site/content/skills.mjs).
+5. Add its website copy (benefit headline, tagline, lede, three benefits, an example) and position to [site/content/skills.mjs](site/content/skills.mjs).
 6. Run `npm run validate`. Done when it prints `Catalog OK`.
 7. Run `npx skills@latest add . --list`. Done when the skill appears.
 

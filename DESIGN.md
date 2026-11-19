@@ -11,7 +11,7 @@ Accepted visual direction for the keel website (`site/`). Product intent is in [
 
 ## Visual system
 
-Carried over from Flow's approved Prism design: dark surfaces, periwinkle, lavender and restrained pink, editorial hierarchy, generous spacing, and the existing cards, buttons and code blocks.
+Carried over from Flow's approved Prism design: dark surfaces, periwinkle, lavender and restrained pink, generous spacing, and the existing buttons and code blocks.
 
 | Token | Hex | Role |
 | --- | --- | --- |
@@ -22,6 +22,18 @@ Carried over from Flow's approved Prism design: dark surfaces, periwinkle, laven
 | Periwinkle → Lavender → Pink | `#9ea6f8` → `#c6a8f6` → `#f0a6cf` | Brand gradient |
 
 Typography: Geist Sans for text, Geist Mono for labels, commands and skill names (`/shape`). Only h1 accents carry the gradient; the install band is the one large gradient surface.
+
+## Composition
+
+The site should read like a well-made engineering instrument, not a SaaS landing page. It shares a design sensibility with [gaboesquivel.com](https://gaboesquivel.com) (confident type, deliberate whitespace, fine rules, restraint) while keeping its own Prism identity.
+
+- **Typography leads.** Hierarchy comes from differences in scale, not from containers, icons or extra accent colours. Intro paragraphs sit near 18 px on desktop with a comfortable measure.
+- **Few cards.** Lists of equals (skills, problems, benefits) are editorial entries separated by fine rules. Bordered containers are reserved for things you act on, such as commands.
+- **Asymmetric, editorial layouts.** Headline on one side, introduction on the other; not every section uses the same structure.
+- **Gradient with purpose.** h1 accents, the mark and the install band. Not a default fill for components.
+- **The mark as the hero image.** The keel silhouette at scale on a single waterline, with one caption. No nautical scenes, labels or diagrams.
+- **Context hierarchy is visible.** `PRODUCT.md` and `CLAUDE.md` are primary; `ARCHITECTURE.md` and `DESIGN.md` are shown as optional and quieter.
+- **Motion is minimal.** Colour transitions on hover and copy feedback only; respect reduced motion.
 
 ## Rules
 

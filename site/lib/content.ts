@@ -9,6 +9,7 @@ export type Skill = {
   argumentHint: string | null;
   frontmatter: string;
   body: string;
+  headline: string;
   tagline: string;
   lede: string;
   benefits: string[];

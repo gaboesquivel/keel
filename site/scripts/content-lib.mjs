@@ -168,6 +168,7 @@ export const validatePresentation = (skillNames, presentation) => {
       continue
     }
     const fail = (reason) => problems.push(`${file}: "${name}" ${reason}`)
+    if (typeof entry.headline !== 'string' || !entry.headline.trim()) fail('needs a short benefit headline')
     if (typeof entry.tagline !== 'string' || !entry.tagline.trim()) fail('needs a short tagline')
     if (typeof entry.lede !== 'string' || !entry.lede.trim()) fail('needs a lede')
     else if (entry.lede.length > 240) fail(`lede is ${entry.lede.length} characters; keep it near two lines (240 max)`)

@@ -69,7 +69,7 @@ The first evaluation used Opus 5.5 and Claude Code 2.1.317, with one run per arm
 | `ux` | Clearest value: it changed no code and labelled what it had reproduced. In both cases the baseline rewrote files without being asked, and made false claims along the way. |
 | `retro` | One win: it avoided claiming an effect the data can't show. Otherwise close to the baseline. |
 | `shape`, `peer` | Narrow wins or ties. Opus 5.5 already respects documented non-goals and catches the planted review flaws. |
-| `design` | **Not measured.** Rechecked on 2026-11-19 with the same CLI version and flags: `/design` under `--plugin-dir` runs Claude Code's built-in artifact skill, not keel's. That explains the four claude.ai artifacts and the missing rendered check. The original transcripts were not kept, so this is a reproduction, not a direct reading of those runs. |
+| `design` | **Not measured.** Rechecked on 2026-11-19 with the same CLI version and flags: `/design` under `--plugin-dir` runs Claude Code's built-in artifact skill, not keel's. That explains the four claude.ai artifacts and the missing rendered check. The original transcripts were not kept, so this is a reproduction, not a direct reading of those runs. A rerun with keel's skill actually invoked (`/design:design`) and Claude Code's default tools, including `Artifact`, used no artifact tool in either case. It implemented the empty state in code and critiqued from screenshots at two viewports. That was one run per arm, not yet graded. |
 
 Limitations:
 

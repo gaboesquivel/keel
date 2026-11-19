@@ -15,11 +15,13 @@ Independent agent skills for product and engineering judgment. Use whichever one
 
 ## Working across models
 
-keel grew out of an experiment in separating execution from independent judgment.
+keel grew out of a practice of separating execution from independent judgment. I build with Claude Code and use separate advisory conversations, often with ChatGPT, to explore ideas, challenge assumptions, and review decisions. That's what [`/peer`](skills/peer/SKILL.md) is for.
 
-I use coding agents like Claude Code for implementation and verification, and keep a separate advisory conversation, often with ChatGPT, to challenge assumptions, preserve intent, and examine decisions without inheriting the entire execution history.
+The separation serves two practical purposes: preserving coding-agent usage for implementation and keeping speculative ideas and execution history from unnecessarily influencing each other. Only adopted decisions should become durable project requirements.
 
-I'm also exploring model asymmetry: whether different model families, contexts, and harness capabilities give complementary perspectives and help uncover correlated blind spots. This is an open question, not a proven advantage.
+For example, combining a $20/month ChatGPT Plus subscription for exploration and research with a $100/month Claude Max plan for implementation can go a long way. It's a relatively affordable way to leverage different models and harnesses while keeping coding usage available for building and shipping.
+
+I'm also exploring **model asymmetry**: whether different model families, contexts, and harness capabilities offer complementary perspectives and help uncover correlated blind spots. This remains an open question, not a proven advantage.
 
 This is an optional practice, not a prescribed workflow. keel's skills remain independent, and using multiple models is never a requirement. The goal is better judgment, not more agents.
 

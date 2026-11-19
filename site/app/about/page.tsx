@@ -42,13 +42,13 @@ export default function AboutPage() {
             </p>
           </div>
           <p>
-            That is the whole metaphor. Coding agents provide the speed. You decide the direction. keel provides judgment that helps the work stay aligned with what matters, and leaves room for a deliberate change of course.
+            That is the whole metaphor. Coding agents provide the speed. You decide the direction. keel helps preserve the intent behind that direction, resisting scope creep and accidental drift while leaving room to change course deliberately.
           </p>
         </Block>
 
         <Block id="direction" title="Why direction matters more now">
           <p>
-            Agents increasingly work out how to implement things, and they do it quickly. That makes the remaining questions more important, not less: what deserves building, why, for whom, whether it worked, and what should change.
+            Agents increasingly work out how to implement things, and they do it quickly. As building gets easier, it gets easier to accumulate features that don’t serve users or product goals. That makes the remaining questions more important, not less: what deserves building, why, for whom, whether it worked, and what should change.
           </p>
           <p>
             Without a place for those answers, the familiar problems compound at agent speed. Work drifts from the product’s goals, intent is lost between sessions, ideas go straight to code, and settled decisions get reopened.

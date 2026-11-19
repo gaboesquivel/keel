@@ -6,7 +6,7 @@ Accepted visual direction for the keel website (`site/`). Product intent is in [
 
 - **Name and wordmark:** lowercase **keel**, set in Geist Sans, semibold with tight tracking.
 - **Tagline:** *Move fast. Stay on course.* **Descriptor:** *Independent agent skills for product and engineering judgment.*
-- **Metaphor:** a keel keeps a sailboat from drifting sideways without preventing it from changing course. Agents provide speed, people set direction, keel supplies judgment. The metaphor explains the product; it is not a theme.
+- **Metaphor:** a keel keeps a sailboat from drifting sideways without preventing it from changing course. Agents provide speed, people set direction, and keel provides stability against product drift. The metaphor explains the product; it is not a theme.
 - **Mark:** a hull in profile with a raked keel blade beneath it, one solid silhouette in the Prism gradient. The paths live once in `site/components/logo.tsx` (`KEEL_PATHS`) and are reused by the favicon (`site/app/icon.svg`), Apple icon and OG image. Update them together. It must stay legible at 16 px and in one colour.
 
 ## Visual system

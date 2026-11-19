@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A lean, opinionated collection of independent skills for building better software with capable AI coding agents. Agents increasingly work out how to implement things. What remains is deciding what deserves building, why, for whom, whether it worked, and what should change. keel supplies focused judgment, context and evidence that agents don't reliably produce on their own. Like a keel, it gives direction without stopping movement or a change of course.
+A lean, opinionated collection of independent skills for building better software with capable AI coding agents. Agents increasingly work out how to implement things. What remains is deciding what deserves building, why, for whom, whether it worked, and what should change. keel supplies focused judgment, context and evidence that agents don't reliably produce on their own. Like a keel, it provides stability against drift without preventing movement or a deliberate change of course.
 
 ## Audience
 

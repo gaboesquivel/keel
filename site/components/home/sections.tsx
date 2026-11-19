@@ -84,7 +84,7 @@ export function SkillsSection() {
 
 // Problems and principles from the repository's PRODUCT.md.
 const PROBLEMS = [
-  { title: "Product drift", text: "Agents build well without asking whether the work serves the product’s goals, so scope creeps." },
+  { title: "Product drift", text: "Agents can keep adding features without checking whether they serve the product’s goals, allowing scope to creep." },
   { title: "Lost intent", text: "Decisions about users, scope and direction vanish between sessions." },
   { title: "Premature implementation", text: "An idea goes straight to code, unexamined." },
   { title: "Repeated decisions", text: "New sessions reopen what was already settled." },
@@ -158,7 +158,7 @@ export function CourseSection() {
             Keeping the project on course
           </h2>
           <Lede className="mt-8 sm:text-lg">
-            <code className="font-mono text-[0.92em] text-fg">/shape</code> establishes and revisits product direction. Accepted decisions survive coding sessions through a few lightweight documents in your project, so the next session doesn’t have to reconstruct the intent, and scope creep and unintended drift have less room to start.
+            <code className="font-mono text-[0.92em] text-fg">/shape</code> establishes and revisits product direction. Accepted decisions survive coding sessions through a few lightweight documents in your project, so the next session doesn’t have to reconstruct the intent or unknowingly drift from it.
           </Lede>
         </div>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

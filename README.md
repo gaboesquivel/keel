@@ -13,6 +13,16 @@ Independent agent skills for product and engineering judgment. Use whichever one
 | [`experience`](skills/experience/SKILL.md) | Walks a real journey through your running product as its intended user would, and reports the friction they meet: unclear steps, missing feedback, failed recovery, keyboard and accessibility problems. Findings come with steps to reproduce and are labelled as reproduced, inspected, tool-reported or hypothesis. It changes nothing unless you ask for fixes. | Only when you call it: `/experience [journey or task]` |
 | [`design`](skills/design/SKILL.md) | Your interface design partner for new screens, refinements, redesigns, critique and prototypes. It starts from what the surface is for, keeps an existing design language unless you ask to change it, and checks the rendered result at real sizes and states. It keeps `DESIGN.md` for direction you adopt. | Only when you call it: `/design [surface or change]` |
 
+## Working across models
+
+keel grew out of an experiment in separating execution from independent judgment.
+
+I use coding agents like Claude Code for implementation and verification, and keep a separate advisory conversation, often with ChatGPT, to challenge assumptions, preserve intent, and examine decisions without inheriting the entire execution history.
+
+I'm also exploring model asymmetry: whether different model families, contexts, and harness capabilities give complementary perspectives and help uncover correlated blind spots. This is an open question, not a proven advantage.
+
+This is an optional practice, not a prescribed workflow. keel's skills remain independent, and using multiple models is never a requirement. The goal is better judgment, not more agents.
+
 ## Install
 
 These commands use the [skills CLI](https://github.com/vercel-labs/skills), which works with Claude Code and other agents that read [Agent Skills](https://agentskills.io).

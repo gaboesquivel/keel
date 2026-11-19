@@ -4,4 +4,3 @@ node_modules
 .claude
 *.log
 evals/results/
-skills/*/evals/results/

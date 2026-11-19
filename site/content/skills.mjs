@@ -1,0 +1,87 @@
+// Presentation copy for the website only: a tagline, a short lede, three outcome-focused benefits, and an example.
+// The skills' instructions live only in skills/<name>/SKILL.md, which the site renders in full at build time.
+// Keep this copy faithful to those files. The content build fails when this list and skills/ disagree.
+
+/** Display order on the site. Order is presentation only: the skills are independent and run in any order. */
+export const ORDER = ['shape', 'peer', 'design', 'ux', 'perf', 'retro']
+
+export const PRESENTATION = {
+  shape: {
+    tagline: 'Product direction and scope.',
+    lede: 'A product discovery conversation that helps you decide what to build, for whom and why, then keeps a short PRODUCT.md current once you adopt a direction.',
+    benefits: [
+      'Assumptions questioned before code is written, including real alternatives to building at all.',
+      'One primary metric and a clear scope, with non-goals recorded so later sessions don’t reopen them.',
+      'Adopted direction saved in PRODUCT.md and connected to Claude Code through CLAUDE.md.',
+    ],
+    example: {
+      situation: 'You have a new idea, or a feature request that may not fit what the product is for.',
+      invocation: '/shape should we add shared team workspaces?',
+    },
+  },
+  peer: {
+    tagline: 'Independent judgment and agent guidance.',
+    lede: 'An independent product engineering peer that advises while a separate agent implements: discuss a decision, brief the implementing agent, or review its plan and results.',
+    benefits: [
+      'One recommendation with its tradeoff, and disagreement when it is warranted.',
+      'Ready-to-paste prompts for Claude Code that carry what it cannot discover on its own.',
+      'Reviews that check an agent’s claims against the diff and tests, ending in a clear verdict.',
+    ],
+    example: {
+      situation: 'An agent reports a change as done and you want an independent check before accepting it.',
+      invocation: '/peer review the agent’s results for the billing migration',
+    },
+  },
+  design: {
+    tagline: 'Visual and interface design.',
+    lede: 'An interface design partner for new work, refinements, redesigns, critique and prototypes, grounded in what the surface is for and checked in the rendered result.',
+    benefits: [
+      'Interfaces that fit the product’s purpose and existing visual language, not generic layouts.',
+      'Critique, prototype or implementation inferred from the request, with redesigns only when asked.',
+      'Rendered results checked at real sizes and states before the work is called done.',
+    ],
+    example: {
+      situation: 'A settings page works but feels cluttered, and you want it refined without a redesign.',
+      invocation: '/design refine the settings page',
+    },
+  },
+  ux: {
+    tagline: 'Real user journeys and friction.',
+    lede: 'Walks a real user journey through the running product, as the intended user would, and reports the friction they meet, judged against what the product is for.',
+    benefits: [
+      'Findings from using the product, not reading its code, each labelled by how it was established.',
+      'Coverage past the happy path: errors, recovery, keyboard and focus, accessibility and small screens.',
+      'The smallest worthwhile improvement for each finding, highest user impact first.',
+    ],
+    example: {
+      situation: 'Few people finish sign-up, and you want to see what a new user actually runs into.',
+      invocation: '/ux a new user signing up on a phone',
+    },
+  },
+  perf: {
+    tagline: 'Evidence-based performance investigation.',
+    lede: 'Evidence-led performance investigation for web apps and their backends: measure first, find the demonstrated bottleneck, and verify whether a change helped.',
+    benefits: [
+      'Every finding labelled by its evidence: field, lab, diagnostic, static or hypothesis.',
+      'Bottlenecks traced across browser, rendering, server, database and platform.',
+      'Code changed only when you ask, kept small, and measured again under comparable conditions.',
+    ],
+    example: {
+      situation: 'The dashboard feels slow since the last release, and you want to know why before changing anything.',
+      invocation: '/perf the dashboard’s first load',
+    },
+  },
+  retro: {
+    tagline: 'Product and engineering retrospective.',
+    lede: 'A retrospective on something you delivered. Knowing what you know now, would you build the same product the same way?',
+    benefits: [
+      'Original intent recovered and compared with what was built and how it is used.',
+      'Delivered, used and outcome kept apart, so a missing metric reads as unknown, not failure.',
+      'At most three ranked recommendations, with leaving it alone always a candidate.',
+    ],
+    example: {
+      situation: 'A feature shipped a few months ago and you are deciding whether to invest in it further.',
+      invocation: '/retro the saved searches feature',
+    },
+  },
+}

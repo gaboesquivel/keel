@@ -46,8 +46,11 @@ const unknownCommand = transcript.some((e) => e.attachment?.type === 'unknown_co
 if (arm === 'treatment') {
   if (unknownCommand) reasons.push('the slash command was not recognised')
   if (!skillSent) reasons.push(`skill instructions not found in the requests (${missing.length}/${skillLines.length} lines missing)`)
-} else if (missing.length < skillLines.length / 2) {
-  reasons.push('baseline requests contain the skill instructions')
+} else {
+  // Any distinctive line (40+ characters, unlikely to occur by chance) counts as contamination,
+  // so a partial copy of the skill is caught too. Short lines such as headings are ignored.
+  const leaked = skillLines.filter((l) => l.length >= 40 && sentText.includes(l))
+  if (leaked.length) reasons.push(`baseline requests contain ${leaked.length} line(s) of the skill instructions`)
 }
 
 const status = {

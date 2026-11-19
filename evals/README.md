@@ -29,7 +29,7 @@ A comparison counts only if `<out-dir>/<skill>/<case>/status.json` says `"valid"
 - The stream has no final `result` event, which means the run was interrupted or crashed.
 - The run ends in anything other than `success`, for example `error_max_budget_usd` or `error_max_turns`.
 - The treatment's own API requests don't contain every line of the skill's `SKILL.md`, or the slash command was not recognised.
-- The baseline's requests do contain the skill.
+- The baseline's requests contain any line of the skill of 40 or more characters. Shorter lines, such as headings, are ignored because they can match by chance.
 
 These checks read the session transcript. `compare.sh` moves it from `~/.claude/projects/` into the arm's directory, so test sessions don't show up in your history.
 
@@ -59,7 +59,7 @@ Anthropic's skill-creator uses a different format: a single `evals/evals.json` i
 - **Private data in results:** transcripts and results contain your environment, including global instructions and account details. Keep them local; `results/` is gitignored.
 - **No variance:** one run per arm shows no variance. Treat narrow wins as ties until repeated.
 
-## First evaluation (2026-11-19)
+## First evaluation (2026-11-19, preliminary)
 
 The first evaluation used Opus 5.5 and Claude Code 2.1.317, with one run per arm and a blind comparison by a Claude subagent. It cost about $14. The skills' author wrote the fixture, the prompts and the expectations. The full report is in the local `results/2026-11-19/REVIEW.md`, which is not in git.
 

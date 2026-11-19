@@ -1,11 +1,11 @@
 ---
-name: experience
+name: ux
 description: Walks a real user journey through the running product, as the intended user would, and reports the friction they meet in comprehension, feedback, waiting, empty and error states, recovery, keyboard and focus, accessibility and small screens, judged against what the product is for. Reproducible findings come with evidence and the smallest worthwhile improvement. Investigates and recommends; changes the product only when asked to fix.
 argument-hint: "[journey, task or user to examine]"
 disable-model-invocation: true
 ---
 
-# Experience
+# UX
 
 The journey to examine: $ARGUMENTS
 

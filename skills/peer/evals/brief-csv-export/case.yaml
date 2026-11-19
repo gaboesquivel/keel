@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: brief-csv-export
+expected_outcome: |
+  Writes a complete, paste-ready prompt that states the goal, what done looks like and the relevant
+  constraints from this repository, and leaves implementation to the other agent.
+context:
+  scaffold_script: place-files.sh

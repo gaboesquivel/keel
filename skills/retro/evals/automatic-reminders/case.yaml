@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: automatic-reminders
+expected_outcome: |
+  Recovers the intent and expected outcome from ADR 0003, separates delivery and use from outcome
+  using the metrics and ops notes, judges the channel abstraction against its cost, and gives a short
+  set of evidence-backed recommendations without changing anything.
+context:
+  scaffold_script: place-files.sh

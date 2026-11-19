@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: critique-dashboard
+expected_outcome: |
+  Critiques the rendered dashboard against DESIGN.md and phone use: the fixed-width table that scrolls
+  sideways on a phone, low-contrast muted text, the removed focus outline and unlabelled icon button,
+  with recommendations in the existing design language and no code changes.
+context:
+  scaffold_script: place-files.sh

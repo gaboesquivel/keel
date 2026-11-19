@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: send-reminder
+expected_outcome: |
+  Uses the running app to find the missing confirmation after sending, the 1.5-second wait without
+  feedback and the risk of duplicate reminders, and the unlabelled icon button, labelling what was
+  reproduced versus inferred.
+context:
+  scaffold_script: place-files.sh

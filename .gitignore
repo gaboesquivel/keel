@@ -3,3 +3,5 @@ node_modules
 .agents
 .claude
 *.log
+evals/results/
+skills/*/evals/results/

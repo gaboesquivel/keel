@@ -35,6 +35,6 @@ Identify the LCP element first (a trace or a `largest-contentful-paint` Performa
 
 ## Tool caveats
 
-- Check what a tool measures before trusting its output. For example, the Chrome DevTools MCP `lighthouse_audit` tool currently covers accessibility, SEO and best practices but excludes performance; its performance tracing tools are separate.
+- Check what a tool measures before trusting its output. For example, a Lighthouse tool exposed through an MCP server may report only some categories; check that performance is among them before relying on it.
 - Automated scores summarise lab conditions. Report the underlying metrics and the trace evidence, not only a score.
 - One tool is enough. Do not install several browser or profiling tools to cross-check each other unless a result is in genuine doubt.

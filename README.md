@@ -1,62 +1,94 @@
-# keel
+# keel — Move fast. Stay on course.
 
-A keel gives a boat or a surfboard stability and direction while still letting it turn. These skills aim to do the same for building with AI agents: steadier judgment, without a rigid process.
+A keel keeps a sailboat from drifting sideways without preventing it from changing course. AI coding agents provide the speed. Humans decide where to go. Keel helps keep the work aligned with what matters.
 
-Independent agent skills for product and engineering judgment. Use whichever one helps, whenever it helps. None depends on another, and there is no required order. They usually run in separate sessions on the same project, working from the context it already has.
+**Independent agent skills for product and engineering judgment.** Built for Claude Code and capable frontier models. No orchestration. No mandatory workflow. Just focused judgment when you need it.
 
-| Skill | What it does | How it runs |
-| --- | --- | --- |
-| [`shape`](skills/shape/SKILL.md) | Your product partner. It helps you decide what to build, for whom, why, and what to leave out, whether for a new idea or a feature weighed against the product's direction. Technical questions come in only as far as those decisions need. Once you adopt a direction, it keeps a short `PRODUCT.md` current. | Only when you call it: `/shape [idea or question]` |
-| [`peer`](skills/peer/SKILL.md) | Your partner for directing coding agents. It helps you clarify intent, write effective prompts, assess agent responses, and decide the next instruction or action. Technical judgment and critical review support that work. | Only when you call it: `/peer` |
-| [`retro`](skills/retro/SKILL.md) | Looks back at a delivered feature, release or product and asks whether you would build the same thing the same way. It recovers the original intent, keeps what was delivered, used and achieved apart, and recommends at most three things to keep, change, remove or explore. It advises; it does not implement. | Only when you call it: `/retro [feature or release]` |
-| [`perf`](skills/perf/SKILL.md) | Finds where time and resources go, what causes a slowdown, and whether a change helped. It measures before recommending, keeps field, lab, profile and code-reading evidence apart, and only changes code when you ask it to improve something. | Only when you call it: `/perf [page, operation or goal]` |
-| [`ux`](skills/ux/SKILL.md) | Walks a real journey through your running product as its intended user would, and reports the friction they meet: unclear steps, missing feedback, failed recovery, keyboard and accessibility problems. Findings come with steps to reproduce and are labelled as reproduced, inspected, tool-reported or hypothesis. It changes nothing unless you ask for fixes. | Only when you call it: `/ux [journey or task]` |
-| [`design`](skills/design/SKILL.md) | Your interface design partner for new screens, refinements, redesigns, critique and prototypes. It starts from what the surface is for, keeps an existing design language unless you ask to change it, and checks the rendered result at real sizes and states. It keeps `DESIGN.md` for direction you adopt. | Only when you call it: `/design [surface or change]` |
+## Skills
 
-## Working across models
+| Skill | What it helps you do |
+| --- | --- |
+| [`/shape`](skills/shape/SKILL.md) | Decide what to build, for whom, why, and what to leave out. Preserve adopted product direction. |
+| [`/peer`](skills/peer/SKILL.md) | Get an independent second opinion, challenge assumptions, and better direct coding agents. |
+| [`/design`](skills/design/SKILL.md) | Shape visual direction, critique interfaces, explore prototypes, and verify rendered designs. |
+| [`/ux`](skills/ux/SKILL.md) | Walk real user journeys, uncover friction, and identify improvements supported by evidence. |
+| [`/perf`](skills/perf/SKILL.md) | Measure performance, identify bottlenecks, and verify improvements. |
+| [`/retro`](skills/retro/SKILL.md) | Revisit delivered product decisions, compare intent with outcomes, and decide what should change. |
 
-keel grew out of a practice of separating execution from independent judgment. I build with Claude Code and use separate advisory conversations, often with ChatGPT, to explore ideas, challenge assumptions, and review decisions. That's what [`/peer`](skills/peer/SKILL.md) is for.
+Each skill works independently. Invoke whichever one you need, whenever you need it. No required order or automatic chaining.
 
-The separation serves two practical purposes: preserving coding-agent usage for implementation and keeping speculative ideas and execution history from unnecessarily influencing each other. Only adopted decisions should become durable project requirements.
+## Keeping the project on course
 
-For example, combining a $20/month ChatGPT Plus subscription for exploration and research with a $100/month Claude Max plan for implementation can go a long way. It's a relatively affordable way to leverage different models and harnesses while keeping coding usage available for building and shipping.
+`/shape` establishes the foundation. It helps define what deserves building and preserves accepted product direction so future coding sessions don't have to reconstruct the intent.
 
-I'm also exploring **model asymmetry**: whether different model families, contexts, and harness capabilities offer complementary perspectives and help uncover correlated blind spots. This remains an open question, not a proven advantage.
+Keel uses a few small project documents to maintain that context:
 
-This is an optional practice, not a prescribed workflow. keel's skills remain independent, and using multiple models is never a requirement. The goal is better judgment, not more agents.
+- **`PRODUCT.md`** — Purpose, users, goals, success metrics, scope, and non-goals. Created and maintained by `/shape` when you adopt a direction.
+- **`ARCHITECTURE.md`** — Lasting technical direction, boundaries, and constraints that aren't obvious from the code. Created only when needed.
+- **`DESIGN.md`** — Accepted experience and visual direction. Created when needed and kept current by `/design` or ordinary development work.
+- **`CLAUDE.md`** — Directs Claude Code to the project context and helps prevent unintended changes in direction. `/shape` establishes or updates this guidance when recording product intent.
+
+These aren't mandatory documents to generate upfront. Decisions are recorded when adopted, not merely proposed. The code remains the source of truth for routine implementation details.
+
+Other skills complement this foundation. `/retro`, for example, looks back at what shipped and whether it achieved its intended outcomes. It may recommend changing direction, but doesn't rewrite accepted decisions without your approval.
+
+The goal is to preserve intent, prevent product drift and scope creep, and still allow deliberate changes of course.
 
 ## Install
 
-These commands use the [skills CLI](https://github.com/vercel-labs/skills), which works with Claude Code and other agents that read [Agent Skills](https://agentskills.io).
+Install using the [skills CLI](https://github.com/vercel-labs/skills).
 
-**Every skill, every project on your machine:**
+**All skills, globally:**
 
 ```bash
 npx skills@latest add gaboesquivel/keel -g -y
 ```
 
-**One skill, this project only:**
+**One skill, in your project:**
 
 ```bash
 npx skills@latest add gaboesquivel/keel --skill shape -y
 ```
 
-**List without installing:**
+**List available skills:**
 
 ```bash
 npx skills@latest add gaboesquivel/keel --list
 ```
 
-`pnpm dlx` and `bunx` work in place of `npx`.
+For manual Claude Code installation, copy a skill directory into `~/.claude/skills/` (global) or `.claude/skills/` (project).
 
-**Manual install for Claude Code:** copy `skills/<name>/` into `~/.claude/skills/` for every project, or into `.claude/skills/` for one.
+## Built for Claude Code
 
-In Claude Code, every keel skill is a slash command only (`disable-model-invocation`), and the text you type after the command reaches the skill through `$ARGUMENTS`. Other agents may handle this differently: they may load a skill on their own or not pass your argument.
+Keel is designed primarily for [Claude Code](https://code.claude.com/docs/en/skills), complementing its native capabilities instead of replacing them.
 
-## Contributing
+Skills are explicitly invoked using slash commands, such as `/shape [idea]` or `/peer`. They don't run automatically in Claude Code.
 
-Maintainer notes covering layout, adding a skill, and checks are in [CLAUDE.md](CLAUDE.md).
+Keel uses the portable [Agent Skills](https://agentskills.io) format, but equivalent behavior across other coding agents hasn't yet been fully validated.
 
-## License
+The skills are informed by [Anthropic's skill authoring best practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices) and refined through real product use. They are deliberately lean: every instruction should provide distinct value beyond what capable models already do.
 
-[MIT](LICENSE)
+Keel focuses on **what matters and why**, leaving implementation to the coding agent.
+
+## Working across models
+
+I build with Claude Code and use separate advisory conversations, often with ChatGPT, to explore ideas, challenge assumptions, and review decisions.
+
+Separating independent judgment from implementation helps preserve coding-agent usage and keeps speculative context from unnecessarily influencing execution.
+
+For example, combining a $20/month ChatGPT Plus subscription with a $100/month Claude Max plan can be a practical way to separate exploration from implementation.
+
+I'm also exploring **model asymmetry**: whether different models, contexts, and harnesses can uncover blind spots that a single agent might miss. It's an experiment, not a requirement.
+
+The goal is better judgment, not more agents.
+
+## Influences
+
+- **[Anthropic — Claude Code Skills](https://code.claude.com/docs/en/skills)** and **[Skill Authoring Best Practices](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)** — Native capabilities, focused instructions, and model-aware skill design.
+- **[Google Labs — DESIGN.md](https://github.com/google-labs-code/design.md)** — An influence on maintaining durable, agent-readable design context. Keel does not claim conformance to its specification.
+
+---
+
+Created by [Gabo Esquivel](https://gaboesquivel.com).
+
+[Contributing](CLAUDE.md) · [MIT License](LICENSE)

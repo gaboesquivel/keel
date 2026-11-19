@@ -5,9 +5,9 @@ import { ButtonLink, Container, Eyebrow, Lede, Section, TextLink } from "@/compo
 import { getSkill, INSTALL, repo, skills } from "@/lib/content";
 
 const METAPHOR = [
-  { kicker: "Speed", text: "Coding agents explore, build and verify quickly." },
-  { kicker: "Direction", text: "You decide what deserves building, and when to change course." },
-  { kicker: "Judgment", text: "keel helps the work resist drift without stopping it from turning." },
+  { kicker: "Speed", text: "AI coding agents make implementation increasingly fast." },
+  { kicker: "Direction", text: "You decide what to build, for whom, and what success looks like." },
+  { kicker: "Stability", text: "keel helps prevent scope creep and product drift without preventing deliberate changes of course." },
 ] as const;
 
 export function HomeHero() {
@@ -22,9 +22,9 @@ export function HomeHero() {
         </h1>
         <p className="mt-7 text-xl font-medium leading-snug text-fg sm:text-2xl">Independent agent skills for product and engineering judgment.</p>
         <div className="mt-6 max-w-[36rem] space-y-4 text-lg leading-relaxed text-fg-muted">
-          <p>AI coding agents can move fast. But speed alone doesn’t mean you’re building the right thing.</p>
-          <p>keel is a small collection of independent skills that help you challenge assumptions, stay aligned with product goals, improve the experience, and learn from what you build.</p>
-          <p className="text-fg">No orchestration. No mandatory workflow. Just better judgment, when you need it.</p>
+          <p>AI coding agents make building easier than ever. But more features don’t necessarily mean a better product.</p>
+          <p>keel helps you stay focused on real user problems, preserve product intent across sessions, and resist scope creep as your agents build.</p>
+          <p className="text-fg">No orchestration. No mandatory workflow. Just focused skills to help you stay on course.</p>
         </div>
         <div className="mt-9 flex flex-wrap gap-3">
           <ButtonLink href="/skills" arrow={false}>
@@ -41,10 +41,10 @@ export function HomeHero() {
           A keel keeps a sailboat from drifting sideways without preventing it from changing course.
         </figcaption>
         <dl className="mt-8 border-t border-line">
-          {METAPHOR.map((m, i) => (
+          {METAPHOR.map((m) => (
             <div key={m.kicker} className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 border-b border-line py-4 last:border-b-0 last:pb-0">
               <dt className="label-mono pt-1 text-lavender/90">
-                0{i + 1} {m.kicker}
+                {m.kicker}
               </dt>
               <dd className="leading-relaxed text-fg">{m.text}</dd>
             </div>
@@ -63,7 +63,7 @@ export function SkillsSection() {
           <div>
             <Eyebrow>Six independent skills</Eyebrow>
             <h2 id="skills-heading" className="headline mt-5 text-[clamp(2.2rem,4.6vw,3.4rem)] text-fg">
-              Judgment, when you ask for it.
+              Stay focused on what matters.
             </h2>
           </div>
           <p className="max-w-[26rem] leading-relaxed text-fg-muted">
@@ -84,7 +84,7 @@ export function SkillsSection() {
 
 // Problems and principles from the repository's PRODUCT.md.
 const PROBLEMS = [
-  { title: "Product drift", text: "Agents build well without asking whether the work serves the product’s goals." },
+  { title: "Product drift", text: "Agents can keep adding features without checking whether they serve the product’s goals, allowing scope to creep." },
   { title: "Lost intent", text: "Decisions about users, scope and direction vanish between sessions." },
   { title: "Premature implementation", text: "An idea goes straight to code, unexamined." },
   { title: "Repeated decisions", text: "New sessions reopen what was already settled." },
@@ -108,10 +108,10 @@ export function WhySection() {
         <div>
           <Eyebrow>Why keel exists</Eyebrow>
           <h2 id="why-heading" className="headline mt-5 text-[clamp(2.2rem,4.6vw,3.4rem)] text-fg">
-            Better software requires more than faster execution.
+            Building more isn’t the same as building better.
           </h2>
           <Lede className="mt-8 sm:text-lg">
-            Agents increasingly work out how to implement things. What remains is deciding what deserves building, why, for whom, whether it worked, and what should change.
+            AI makes it easy to move from an idea to implementation. The harder part is staying focused on the problems worth solving, the people you’re solving them for, and the outcomes that matter.
           </Lede>
           <ul aria-label="Principles" className="mt-10 grid gap-x-6 gap-y-3 sm:grid-cols-2">
             {PRINCIPLES.map((p) => (
@@ -158,7 +158,7 @@ export function CourseSection() {
             Keeping the project on course
           </h2>
           <Lede className="mt-8 sm:text-lg">
-            <code className="font-mono text-[0.92em] text-fg">/shape</code> establishes and revisits product direction. Accepted decisions survive coding sessions through a few lightweight documents in your project, so the next session doesn’t have to reconstruct the intent.
+            <code className="font-mono text-[0.92em] text-fg">/shape</code> establishes and revisits product direction. Accepted decisions survive coding sessions through a few lightweight documents in your project, so the next session doesn’t have to reconstruct the intent or unknowingly drift from it.
           </Lede>
         </div>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

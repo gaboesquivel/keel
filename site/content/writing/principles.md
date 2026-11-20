@@ -7,7 +7,7 @@ date: 2026-11-19
 
 ## Why principles, and why now
 
-Coding agents changed the price of implementation. A settings page, a CSV export, a second authentication provider, a caching layer: each can now arrive in minutes, tested and documented. What did not get cheaper is everything around the code. Someone still has to decide whether the settings page should exist, maintain it once it does, explain it to users, and live with the paths it closes off.
+Coding agents changed the price of implementation. A settings page, a CSV export, a second authentication provider, a caching layer: each can now arrive within a session, often with tests and docs. What did not get cheaper is everything around the code. Someone still has to decide whether the settings page should exist, maintain it once it does, explain it to users, and live with the paths it closes off.
 
 keel's principles are about that remaining work. They are written for the person directing the agents: a solo builder, an independent product maker, a small technical team. They are not a methodology, they impose no order, and none of them requires a document or a meeting. They describe how to think when the cost of building drops faster than the cost of owning what you built.
 
@@ -19,7 +19,7 @@ They are grouped by the question they help answer. Within each group, the princi
 
 **Statement.** People set direction, make the consequential decisions and remain accountable for the result. Agents do much of the tactical work of implementing, testing and verifying.
 
-**Why it matters now.** A capable agent will build whatever it is pointed at, competently and without objection. That is its strength and its limitation. It does not carry your users' context, your commitments or your sense of what the product is for, unless you give it those things, and even then it cannot own the outcome.
+**Why it matters now.** A capable agent will usually build what it is pointed at, competently, and rarely asks whether it should. That is its strength and its limitation. It does not carry your users' context, your commitments or your sense of what the product is for, unless you give it those things, and even then it cannot own the outcome.
 
 **In practice.** Delegate the *how* freely and keep the *whether* and *why*. Review agent output the way you would review a capable colleague's pull request: for correctness, but also for whether it should be merged at all.
 
@@ -29,7 +29,7 @@ They are grouped by the question they help answer. Within each group, the princi
 
 **Statement.** Say what matters and why, and let the agent work out how.
 
-**Why it matters now.** Detailed implementation instructions age quickly and often encode worse choices than the agent would make. Intent ages slowly. "Users must be able to recover a draft after a crash" survives a framework migration; "write the draft to localStorage every five seconds" does not.
+**Why it matters now.** Detailed implementation instructions age quickly and often encode choices made without the context the agent finds in the code. Intent ages slowly. "Users must be able to recover a draft after a crash" survives a framework migration; "write the draft to localStorage every five seconds" does not.
 
 **In practice.** When briefing an agent, lead with the user, the outcome and the constraints that are not negotiable. Specify implementation only where it is a real decision, such as a security boundary, a data model other systems depend on, or a dependency you have deliberately ruled out.
 
@@ -59,7 +59,7 @@ The cost of a feature was never mostly in writing it. It is in the surface area 
 
 **Statement.** Prefer the simplest thing that serves the goal, and decide scope explicitly rather than letting it grow by accretion.
 
-**Why it matters now.** Agents tend to be thorough. Asked for a feature, they often add configuration, edge-case handling and extensibility that no one requested. Each addition looks responsible in isolation. Together they make a product harder to change.
+**Why it matters now.** Agents can be thorough to a fault, especially without stated limits: asked for a feature, they often add configuration, edge-case handling and extensibility that no one requested. Each addition looks responsible in isolation. Together they make a product harder to change.
 
 **In practice.** Set the scope before the work starts and state what is out. Ryan Singer's [Shape Up](https://basecamp.com/shapeup/1.2-chapter-03) calls the time you are willing to spend an *appetite*, and treats it as a fixed budget that the design must fit, rather than an estimate derived from the design. keel borrows the attitude even where there are no six-week cycles: decide how much a problem is worth, then shape the solution to that size. [/skills/shape](/skills/shape) helps with that conversation.
 
@@ -87,7 +87,7 @@ The cost of a feature was never mostly in writing it. It is in the surface area 
 
 **Statement.** An abstraction, layer, dependency or generalisation stays only if it pays for its upkeep.
 
-**Why it matters now.** Agents produce abstractions readily, and they can make code look well designed before there is any second use case to design for. Generality you do not need is not free. Every layer is something a future reader, human or agent, must understand before making a change.
+**Why it matters now.** Abstractions now cost almost nothing to generate, and they can make code look well designed before there is any second use case to design for. Generality you do not need is not free. Every layer is something a future reader, human or agent, must understand before making a change.
 
 **In practice.** Wait for the second or third real case before generalising. Prefer duplication you understand over an abstraction you have to explain. When reviewing agent output, ask of each new interface: what would break, or get harder, if this were inlined?
 
@@ -99,7 +99,7 @@ The cost of a feature was never mostly in writing it. It is in the surface area 
 
 **Why it matters now.** Agents state things fluently and with confidence, whether or not they are true. A fluent explanation of why a page is slow is not a measurement of why it is slow. The same applies to your own assumptions about users, which an agent will happily build on.
 
-**In practice.** Ask for the evidence behind consequential claims: the profile, the failing test, the user conversation, the existing implementation. When the evidence does not exist yet, say so, and treat the decision as provisional. [/skills/perf](/skills/perf) applies this to performance: measure before recommending, then measure again.
+**In practice.** Ask for the evidence behind consequential claims: the profile, the failing test, the user conversation, the existing implementation. When the evidence does not exist yet, say so, and treat the decision as provisional. Before you have users, use what you do have: your own use of the product, support email, basic analytics. [/skills/perf](/skills/perf) applies this to performance: measure before recommending, then measure again.
 
 **Background.** Steve Blank's [customer development](https://steveblank.com/category/customer-development-manifesto/) argues that a new venture's beliefs about customers are hypotheses to be tested outside the building. Teresa Torres' [Continuous Discovery Habits](https://www.producttalk.org/) makes the same discipline a weekly habit, with small, regular contact with customers. keel does not prescribe either practice. It shares their premise: what you believe about users is a guess until users tell you otherwise.
 
@@ -115,7 +115,7 @@ The cost of a feature was never mostly in writing it. It is in the surface area 
 
 **Statement.** Judge work by what changed for users and the product, not by how much was produced.
 
-**Why it matters now.** Agents make activity metrics meaningless. Lines of code, merged pull requests, tickets closed and features shipped all rise effortlessly. None of them says whether anything got better.
+**Why it matters now.** Agents make activity metrics even less meaningful. Lines of code, merged pull requests, tickets closed and features shipped all rise effortlessly. None of them says whether anything got better.
 
 **In practice.** Before building, decide what would show it worked. After shipping, look. Sometimes the honest answer is "we can't tell yet", which is still more useful than a count of what was produced. [/skills/retro](/skills/retro) asks whether something delivered was worth building that way.
 
@@ -125,7 +125,7 @@ The cost of a feature was never mostly in writing it. It is in the surface area 
 
 **Statement.** Improve decisions without adding steps, stages or documents.
 
-**Why it matters now.** Process often grows to compensate for unclear thinking. Capable agents already plan, implement and verify; wrapping them in a mandatory lifecycle mostly adds tokens and friction. What they lack is context and judgment, and those do not come from ceremony.
+**Why it matters now.** Process often grows to compensate for unclear thinking. Capable agents already plan and implement, and verify when given a check to run; wrapping them in a mandatory lifecycle mostly adds tokens and friction. What they lack is context and judgment, and those do not come from ceremony.
 
 **In practice.** Use a tool or practice when it changes a decision, and skip it when it would not. This is why keel's skills are independent: you invoke one when its question is the one in front of you, in any order, or not at all.
 

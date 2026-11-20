@@ -9,7 +9,7 @@ date: 2026-11-19
 
 For most of the time I have been building software, the hard constraint was implementation. There were always more good ideas than hours to build them, and the work of choosing was partly done for you by that scarcity. A feature that would take three weeks had to be worth three weeks. A refactor that would stall everything else had to be urgent. Cost was a crude filter, but it was a filter.
 
-Coding agents have loosened that constraint more than any tool I have used. A capable agent can read a codebase, propose a plan, write the change, run the tests and explain what it did, often faster than I could have described the change to a colleague. Work that used to fill a week can now fill an afternoon of review.
+Coding agents have loosened that constraint more than any tool I have used. A capable agent can read a codebase, propose a plan, write the change, run the tests and explain what it did, often faster than I could have described the change to a colleague. Some work that used to fill a week now fills an afternoon of review.
 
 That is genuinely good news, and I do not want to argue against it. But it moves the bottleneck. When implementation stops being the scarce resource, the scarce resources become the things implementation never covered: knowing what deserves to be built, knowing when something is good enough, knowing what to leave out, and being accountable for what ships. None of those got cheaper. Some got harder, because the old filter is gone and nothing has replaced it by default.
 
@@ -21,7 +21,7 @@ The most visible change is in what a working day looks like. Less of it is spent
 
 **Framing.** Deciding what problem the next piece of work addresses, for whom, and what would count as done. A well-framed task gives an agent room to make good implementation choices. A badly framed one produces a correct solution to the wrong problem.
 
-**Constraining.** Saying what is out of scope, which dependencies are off the table, which interfaces must not change, how much the problem is worth. Agents are thorough by temperament. Without stated limits, thoroughness turns into sprawl.
+**Constraining.** Saying what is out of scope, which dependencies are off the table, which interfaces must not change, how much the problem is worth. Without stated limits, an agent's thoroughness can turn into sprawl.
 
 **Reviewing.** Reading what came back, not only for correctness but for fit. Does this change make the product simpler or more complicated? Does it introduce a concept the rest of the system does not have? Would I be comfortable maintaining it in a year?
 
@@ -31,7 +31,7 @@ Directing is not a lesser form of engineering; it is the part that was always th
 
 One is the *rubber stamp*: the agent's output looks reasonable, the tests pass, and so it ships. Over weeks, the codebase fills with reasonable-looking decisions that nobody actually made. Another is the *micromanager*: specifying every function signature and file name, which wastes the agent's ability and usually produces worse code than a clear statement of intent would have. A third is the *accumulator*: because each feature is cheap, every idea gets built, and the product slowly loses its shape.
 
-The common thread is that the agent is doing what it was asked. The problem is upstream, in what it was asked to do.
+The common thread is that the agent is doing what it was asked. The problem is upstream, in what it was asked to do. [Directing and Reviewing AI Coding Agents](/guides/directing-and-reviewing-agents) covers the practical side of briefing and review.
 
 ## Why product thinking matters more, not less
 
@@ -69,9 +69,9 @@ I think it becomes more important, but its role changes. It shifts from producin
 
 **Correctness.** Passing tests are evidence, not proof. Experience tells you where tests tend to lie: concurrency, time zones, partial failures, migrations, permission checks, money. Those are the places to read slowly, whoever wrote the code.
 
-**Maintainability.** Agents are prolific with abstractions. They will introduce a strategy pattern, a plugin registry or a configuration layer because the problem resembles one where such a thing helped. The [Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) catalogue by Gamma, Helm, Johnson and Vlissides gave the industry a shared vocabulary for these structures, and that vocabulary is valuable. But a pattern is a solution to a recurring problem, and if the problem has not recurred, the pattern is just indirection. keel's rule is that every abstraction must justify its maintenance cost. Experience is what lets you tell, when reading an agent's change, which abstractions are earning their keep.
+**Maintainability.** An agent may introduce a strategy pattern, a plugin registry or a configuration layer because the problem resembles one where such a thing helped. The [Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns) catalogue by Gamma, Helm, Johnson and Vlissides gave the industry a shared vocabulary for these structures, and that vocabulary is valuable. But a pattern is a solution to a recurring problem, and if the problem has not recurred, the pattern is just indirection. keel's rule is that every abstraction must justify its maintenance cost. Experience is what lets you tell, when reading an agent's change, which abstractions are earning their keep.
 
-**Language.** Eric Evans' [Domain-Driven Design](https://www.domainlanguage.com/ddd/) argues that software should be built around a model of the domain, expressed in a language shared by the people who understand the domain and the people who build for it. With agents, this shared language matters more, because the agent is now one of the participants. A codebase whose names match the way users and the business talk about the problem is far easier to direct than one where every concept has three names. Keeping that language coherent is a human job; the agent will adopt whatever vocabulary it finds.
+**Language.** Eric Evans' [Domain-Driven Design](https://www.domainlanguage.com/ddd/) argues that software should be built around a model of the domain, expressed in a language shared by the people who understand the domain and the people who build for it. With agents, this shared language matters more, because the agent is now one of the participants. A codebase whose names match the way users and the business talk about the problem is far easier to direct than one where every concept has three names. Keeping that language coherent is a human job; the agent tends to adopt, and sometimes add to, whatever vocabulary it finds.
 
 None of these is exotic. What has changed is that they are now most of the job, rather than the part you did between bouts of typing.
 
@@ -122,7 +122,7 @@ So I keep reading, keep building small things by hand now and then, and keep ask
 
 ## Where keel fits
 
-keel is a small, practical response to all of this. It is a set of independent agent skills, each aimed at one kind of judgment that capable agents do not reliably supply on their own: shaping what to build ([/skills/shape](/skills/shape)), choosing the next useful increment ([/skills/slice](/skills/slice)), getting an independent second opinion ([/skills/peer](/skills/peer)), looking back at whether something was worth building ([/skills/retro](/skills/retro)), and focused investigation of performance, usability and visual design.
+keel is a small, practical response to all of this. It is a set of independent agent skills, each aimed at one kind of judgment that capable agents do not reliably supply on their own: shaping what to build ([/skills/shape](/skills/shape)), choosing the next useful increment ([/skills/slice](/skills/slice)), getting an independent second opinion ([/skills/peer](/skills/peer)), looking back at whether something was worth building ([/skills/retro](/skills/retro)), and focused investigation of performance ([/skills/perf](/skills/perf)), usability ([/skills/ux](/skills/ux)) and visual design ([/skills/design](/skills/design)).
 
 They are not a methodology and have no required order. You use one when its question is the one in front of you, or not at all. The [principles](/principles) behind them are the longer version of this essay's argument, and like the skills, they are meant to change as agents and experience change.
 

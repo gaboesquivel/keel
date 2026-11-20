@@ -11,10 +11,10 @@ What to check: $ARGUMENTS
 
 Check whether the project still reflects its accepted decisions. This is not a judgment of whether those decisions were right (`/retro`), what the product should become (`/shape`), or code quality.
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` where present, and compare their decisions with the code, its behavior where practical, and Git history.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` where present, along with the code, its behavior where practical, and Git history. Check both directions: whether the implementation honors the documented decisions, and whether the product as built has meaningful capabilities, surfaces or responsibilities the documented direction does not account for. The documents need not list every feature, page or route.
 
 Neither the documents nor the code are authoritative. Use the history to tell intentional evolution, which the documents have not caught up with, from unintended drift away from a decision. When you cannot tell whether a change was approved, say so.
 
-Report only material inconsistencies: what disagrees, the evidence, what it costs if left, and the smallest correction. Keep verified findings apart from what you suspect. If the project is aligned, say so and stop; do not pad the report.
+Report only material inconsistencies in product, architecture or design, ahead of differences in wording: what disagrees, the evidence, what it costs if left, and the smallest correction. Keep verified findings apart from what you suspect. If the project is aligned, say so and stop; do not pad the report.
 
 Advise only. Change code, documents or direction only when the user explicitly asks.

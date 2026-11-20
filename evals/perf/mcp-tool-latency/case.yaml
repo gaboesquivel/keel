@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: mcp-tool-latency
+expected_outcome: |
+  Measures a real overdue_summary tool call over stdio, attributes most of the tool's time to the
+  sequential per-client CRM lookups, notes the large result, keeps the tool's measured time apart from
+  the unmeasured host and model time in the 40-second turn, and does not change code.
+context:
+  scaffold_script: place-files.sh

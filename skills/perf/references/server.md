@@ -8,6 +8,14 @@ How to locate server-side time and read the evidence. Platform specifics change;
 - Report percentiles (p50 and p95 or p99) with the number of requests behind them. Averages hide tail latency, and the tail is often what users notice.
 - Separate cold from warm: first request after a deploy or idle period, versus steady state.
 
+## API workloads
+
+- Define the workload before measuring: endpoint and method, request payload and authentication, data volume behind it, number of requests, concurrency and cache state. Two numbers from different workloads are not a comparison.
+- Latency under one request at a time and latency under concurrency answer different questions. Under load, look for saturation: connection pools, database connections, worker or event-loop blocking, and rate limits from upstream services.
+- Count errors and timeouts alongside latency. A faster p95 with more failures is not an improvement.
+- Check payload size and serialization when responses are large: time to serialize, bytes on the wire, and whether the client needs all of it.
+- Use the load tool the project already has (for example k6, autocannon, wrk or hey); a short script is often enough. Do not add one as a dependency to answer a single question. Make sure the load generator itself is not the bottleneck.
+
 ## Database
 
 - **N+1 queries:** count queries per request. A count that grows with the number of rows returned is the signature; batching or a join is the usual fix, but confirm the count drops and the latency follows.

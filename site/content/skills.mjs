@@ -65,10 +65,10 @@ export const PRESENTATION = {
   perf: {
     headline: 'Measure before you optimize.',
     tagline: 'Evidence-based performance investigation.',
-    lede: 'Measure what makes a web page or interaction slow, trace the bottleneck across the stack when needed, and verify whether a change helps.',
+    lede: 'Find what’s slowing down your app, API, or MCP tool. Measure the bottleneck and verify improvements with evidence.',
     benefits: [
       'Every finding labelled by its evidence: field, lab, diagnostic, static or hypothesis.',
-      'Bottlenecks traced across browser, rendering, server, database and platform.',
+      'Bottlenecks traced across web and mobile clients, APIs, MCP tools, databases and platforms.',
       'Code changed only when you ask, kept small, and measured again under comparable conditions.',
     ],
     example: {

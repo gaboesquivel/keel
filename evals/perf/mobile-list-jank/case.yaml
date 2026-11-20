@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: mobile-list-jank
+expected_outcome: |
+  Treats this as a mobile performance question with no device or profiler available, reports the
+  per-row work in the list as static findings whose runtime cost is a hypothesis, invents no frame
+  rates or timings, gives a reproducible measurement procedure on a release or profileable build on a
+  real device, and does not change code.
+context:
+  scaffold_script: place-files.sh

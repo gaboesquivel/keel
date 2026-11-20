@@ -40,7 +40,7 @@ A pull request that changes what the catalog contains or what a skill is for upd
 
 ## Evaluations
 
-`evals/<skill>/<case>/` holds comparison cases for each skill, built on the shared fixture in `evals/fixtures/`. They stay out of `skills/` so installs don't include them. `evals/compare.sh <skill> <case> <out-dir>` runs one case as plain Claude Code and with the skill invoked, and reports whether both runs are usable. The runs are billed. Repeat them after a model change or a change to a skill's behavior; they are not a required check. [evals/README.md](evals/README.md) covers grading, isolation limits and the first results.
+`evals/<skill>/<case>/` holds comparison cases for each skill, built on the shared fixture in `evals/fixtures/`. They stay out of `skills/` so installs don't include them. `evals/compare.sh <skill> <case> <out-dir>` runs one case as plain Claude Code and with the skill invoked, and reports whether both runs are usable. The runs use model capacity: included in a Claude subscription's limits, charged under an API key or extra usage ([evals/README.md](evals/README.md#running-a-comparison)). Repeat them after a model change or a change to a skill's behavior; they are not a required check. [evals/README.md](evals/README.md) covers grading, isolation limits and the first results.
 
 ## Git
 

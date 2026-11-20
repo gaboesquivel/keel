@@ -17,7 +17,14 @@ These cases check whether a keel skill does better than plain Claude Code on the
 evals/compare.sh <skill> <case> <out-dir> [max-usd-per-run]
 ```
 
-The script runs the arms one after the other, each in a fresh fixture copy under `<out-dir>`. The default cap is $2.50 per run, and the runs are billed.
+The script runs the arms one after the other, each in a fresh fixture copy under `<out-dir>`. The default cap is $2.50 per run.
+
+**Cost.** Every run uses model capacity. Dollar figures here, the `--max-budget-usd` cap and the `cost_usd` that `check-run.mjs` records are Claude Code's API-equivalent estimates from token counts, not charges. What you actually pay depends on how Claude Code is authenticated:
+
+- **Claude subscription (for example Max):** usage counts against the plan's limits and is included in the plan.
+- **API key, or extra usage credits beyond the plan:** usage is charged, roughly in line with the estimate.
+
+`--max-budget-usd` stops a run once its estimated usage reaches the cap; it is not a payment.
 
 - **Baseline:** the prompt without the slash command.
 - **Treatment:** the same prompt with the skill loaded through `--plugin-dir skills/<skill>` and invoked by its slash command.
@@ -62,7 +69,7 @@ Anthropic's skill-creator uses a different format: a single `evals/evals.json` i
 
 ## First evaluation (2026-11-19, preliminary)
 
-The first evaluation used Opus 5.5 and Claude Code 2.1.317, with one run per arm and a blind comparison by a Claude subagent. It cost about $14. The skills' author wrote the fixture, the prompts and the expectations. The full report is in the local `results/2026-11-19/REVIEW.md`, which is not in git.
+The first evaluation used Opus 5.5 and Claude Code 2.1.317, with one run per arm and a blind comparison by a Claude subagent. Its API-equivalent estimate was about $14. The skills' author wrote the fixture, the prompts and the expectations. The full report is in the local `results/2026-11-19/REVIEW.md`, which is not in git.
 
 | Skill | Result |
 |---|---|

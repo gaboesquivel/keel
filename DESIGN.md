@@ -33,7 +33,9 @@ The site should read like a well-made engineering instrument, not a SaaS landing
 - **Gradient with purpose.** h1 accents, the mark and the install band. Not a default fill for components.
 - **The mark as the hero image.** The keel silhouette at scale on a single waterline, with no caption. No nautical scenes, labels or diagrams.
 - **Context hierarchy is visible.** `PRODUCT.md` and `CLAUDE.md` are primary; `ARCHITECTURE.md` and `DESIGN.md` are shown as optional and quieter.
-- **Reading pages are quiet.** Principles, essays and guides use one h1, a measure near 70 characters, `.prose-reading` on top of `.prose-keel`, an on-page contents list for longer pieces (sticky beside the text on desktop, collapsed on phones), and a small arrow on external links. No illustrations, hero images or decoration.
+- **Reading pages are quiet.** Essays and guides use one h1, a measure near 70 characters, `.prose-reading` on top of `.prose-keel`, an on-page contents list for longer pieces (sticky beside the text on desktop, collapsed on phones), and a small arrow on external links. No illustrations, hero images or decoration.
+- **The Library is explored, not scrolled.** It is a distinctive knowledge library organised by idea: concepts, categories, relationships and search are the ways in, and entries are never presented as a dated feed or article list. Its exact form is open, within this visual system.
+- **Ask reads as a reference, not a chat.** A question yields one perspective with its references to Library entries visible, and makes clear where keel interprets and where the Library has no answer. No chat transcript, persona or typing theatrics. Where Ask is unavailable, the Library shows no broken or teasing entry point.
 - **Motion is minimal.** Colour transitions on hover and copy feedback only; respect reduced motion.
 
 ## Rules
@@ -41,5 +43,6 @@ The site should read like a well-made engineering instrument, not a SaaS landing
 - Skills are independent. Never show them as stages, a sequence, a lifecycle or a workflow diagram.
 - No decorative nautical UI or sailing vocabulary for features.
 - No invented metrics, testimonials, usage counts or case studies. Field notes appear only with real content.
+- Library entries attribute their authors and link their sources; they never reproduce the original work.
 - Skill instructions are shown from `SKILL.md` as written, never paraphrased into a competing version.
 - Check rendered pages at phone and desktop widths, with keyboard focus visible, before calling a visual change done.

@@ -1,5 +1,5 @@
 // Builds the site's content from the authoritative skill sources in ../skills/<name>/SKILL.md and the authored writing
-// in content/writing/ (principles.md, essays/*.md, guides/*.md; KEEL_WRITING_DIR overrides the directory for local tests).
+// in content/writing/ (library.md, essays/*.md, guides/*.md; KEEL_WRITING_DIR overrides the directory for local tests).
 // Output: content/generated/content.json (gitignored; regenerated before every dev start, type check and build).
 // `--watch` regenerates whenever a file under ../skills or the writing directory changes.
 import { execSync } from 'node:child_process'

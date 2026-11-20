@@ -1,5 +1,5 @@
 ---
-title: Principles
+title: Library
 subtitle: How keel thinks about directing AI-powered development.
 description: The ideas behind keel. Humans set direction and stay accountable, scope is a deliberate choice, and evidence decides what comes next.
 date: 2026-11-19

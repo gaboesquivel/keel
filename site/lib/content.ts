@@ -23,7 +23,7 @@ export type Skill = {
 };
 
 /** Kinds of authored writing under content/writing/. The list can grow (for example field notes) with its routes. */
-export type WritingKind = "principles" | "essay" | "guide";
+export type WritingKind = "library" | "essay" | "guide";
 
 /** One piece of authored writing from content/writing/, rendered at build time. */
 export type Writing = {
@@ -59,16 +59,16 @@ export const getSkill = (name: string) => skills.find((s) => s.name === name);
 
 /** Authored writing in display order. A section with no files is absent, so nothing links to an empty page. */
 export const writing = content.writing;
-export const principles = writing.find((w) => w.kind === "principles");
+export const library = writing.find((w) => w.kind === "library");
 export const essays = writing.filter((w) => w.kind === "essay");
 export const guides = writing.filter((w) => w.kind === "guide");
 export const getWriting = (kind: WritingKind, slug: string) => writing.find((w) => w.kind === kind && w.slug === slug);
 
-/** Learning pages for navigation, in reading order; only sections that have content. */
+/** Learning pages for navigation; only sections that have content. */
 export const learnNav = [
-  ...(principles ? [{ href: "/principles", label: "Principles" }] : []),
-  ...(essays.length ? [{ href: "/essays", label: "Essays" }] : []),
   ...(guides.length ? [{ href: "/guides", label: "Guides" }] : []),
+  ...(library ? [{ href: "/library", label: "Library" }] : []),
+  ...(essays.length ? [{ href: "/essays", label: "Essays" }] : []),
 ];
 
 /** "19 November 2026" from YYYY-MM-DD, independent of the build machine's time zone. */

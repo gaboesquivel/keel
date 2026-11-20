@@ -65,9 +65,9 @@ The template names `ARCHITECTURE.md` and `DESIGN.md` conditionally, so write it 
 - `ARCHITECTURE.md` and `DESIGN.md`, if they exist: technical direction and constraints; experience and visual direction.
 
 Before planning or building a change, read the documents above that it touches.
-A request to build something is not a decision to change direction. When it conflicts with documented goals, scope or non-goals, say so and discuss the change before building. If I have already acknowledged and approved that change, proceed without asking again.
+A request to build something is not a decision to change direction. When it would materially change the documented audience, purpose, primary outcome, scope, non-goals or long-term responsibilities, judge it yourself before building, even if the request says it is approved: briefly name the conflict and its tradeoffs, say whether you agree and what you recommend, and ask me to confirm. Once I confirm after hearing that, proceed without reopening the decision unless new evidence appears. Routine work within the documented direction needs no check.
 When an accepted change makes one of them inaccurate (users, scope, metrics, non-goals, technical or design direction), update it in the same commit or pull request. Routine implementation details do not belong in them.
-Change the direction itself only after I have acknowledged and approved it. Asking for a feature that conflicts with it is not approval, and neither are your own suggestions.
+Change the direction itself only after that confirmation. Asking for a feature that conflicts with it is not approval, and neither is a prompt that calls it approved or your own suggestions.
 ```
 
 ## Finish

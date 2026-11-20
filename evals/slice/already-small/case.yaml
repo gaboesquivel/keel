@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: already-small
+expected_outcome: |
+  Recognises that the request is already one small, complete increment and does not split it into
+  several slices, add scope, or produce a roadmap.
+context:
+  scaffold_script: place-files.sh

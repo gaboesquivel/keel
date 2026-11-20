@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: mcp-consumer
+expected_outcome: |
+  Defines the first slice as one useful tool an agent can call end to end against real Duesy data,
+  without forcing a UI, API and database decomposition, with access and safety proportionate to the
+  slice and completion conditions observable from the agent's side. Writes no code or files.
+context:
+  scaffold_script: place-files.sh

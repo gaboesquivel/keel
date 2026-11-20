@@ -7,7 +7,7 @@ import { CREATOR } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why keel exists: the keel metaphor, why product direction matters as coding agents accelerate, and how Flow Skills became six independent skills.",
+  description: "Why keel exists: the keel metaphor, why product direction matters as coding agents accelerate, and how Flow Skills became a small set of independent skills.",
   alternates: { canonical: "/about" },
 };
 

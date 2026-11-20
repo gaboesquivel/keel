@@ -3,7 +3,7 @@
 // Keep this copy faithful to those files. The content build fails when this list and skills/ disagree.
 
 /** Display order on the site. Order is presentation only: the skills are independent and run in any order. */
-export const ORDER = ['shape', 'peer', 'design', 'ux', 'perf', 'retro']
+export const ORDER = ['shape', 'slice', 'peer', 'design', 'ux', 'perf', 'retro']
 
 export const PRESENTATION = {
   shape: {
@@ -18,6 +18,20 @@ export const PRESENTATION = {
     example: {
       situation: 'You have a new idea, or a feature request that may not fit what the product is for.',
       invocation: '/shape should we add shared team workspaces?',
+    },
+  },
+  slice: {
+    headline: 'Deliver the next useful increment.',
+    tagline: 'Product-aligned vertical slicing.',
+    lede: 'Find the next smallest useful increment from where your product stands today. Prioritize user value, define what can wait, and reassess as you learn.',
+    benefits: [
+      'A meaningful next increment grounded in user or consumer value.',
+      'Clear delivery boundaries and deliberate exclusions.',
+      'Iterative recommendations informed by what’s already built and learned.',
+    ],
+    example: {
+      situation: 'You’ve delivered the first version of a feature and want to decide what to build next.',
+      invocation: '/slice the rental search experience',
     },
   },
   peer: {

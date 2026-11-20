@@ -6,7 +6,7 @@ date: 2026-11-19
 order: 2
 ---
 
-Capable coding agents have changed where the work is. Writing the code is often the fast part. The slow, valuable parts are deciding what the code should achieve, telling an agent clearly enough that it builds that, and checking afterwards that it did. This guide covers the two ends: directing and reviewing.
+Capable coding agents have changed where the work is. Writing the code is often the fast part. The slow, valuable parts are deciding what the code should achieve, telling an agent clearly enough that it builds that, and checking afterwards that it did. This guide covers the two ends: directing and reviewing. The [essay on building with agents](/essays/the-art-of-building-with-agents) makes the longer argument for why they matter.
 
 None of it depends on special phrasing. There are no magic words that reliably make a model better, and this guide does not offer any. What helps is the same thing that helps a capable colleague: knowing the goal, the constraints and their reasons, and what you will check at the end.
 
@@ -63,13 +63,13 @@ multi-currency invoices in the data model, stop and tell me before changing
 anything; that would change the scope.
 ```
 
-That one paragraph prevents a common failure: an agent meets a surprise, makes a reasonable local decision about it, and buries a product decision inside an implementation.
+That one paragraph prevents a failure worth preventing: an agent meets a surprise, makes a reasonable local decision about it, and buries a product decision inside an implementation.
 
 ## Preserve accepted product context
 
 Agents start each session without your history. Decisions that were settled last week (who the product is for, what is deliberately out of scope, which tradeoff you chose) are invisible unless they are written down somewhere the agent reads.
 
-Keep those decisions in the repository: a `CLAUDE.md` for working conventions, and product or design documents for direction. Keel uses `PRODUCT.md` and `DESIGN.md`. Then brief against them instead of restating them:
+Keep those decisions in the repository: a `CLAUDE.md` for working conventions, and product or design documents for direction. keel uses `PRODUCT.md` and `DESIGN.md`, and [preserves decisions without making them immutable](/principles#preserve-decisions-without-making-them-immutable). Then brief against them instead of restating them:
 
 ```text
 Before
@@ -99,11 +99,11 @@ Steering is not a vocabulary. It is a handful of habits that make intent legible
 - **Ask for evidence, not reassurance.** "Report the commands you ran and their output" gets you something to check. "Make sure it works" gets you a sentence saying it does.
 - **Use plain emphasis sparingly.** If everything is marked important, nothing is. Capable current models generally follow a calm, clear instruction; shouting it rarely adds anything.
 
-Frontier models do not need ceremony: role-play preambles, long rule lists copied between projects, or elaborate templates for small tasks. Those are tools. Use a role or an example when it demonstrably improves the result, and drop it when it does not. A two-line follow-up in a session that already holds the context is often the best brief you can write.
+Frontier models do not need ceremony: role-play preambles, long rule lists copied between projects, or elaborate templates for small tasks. Roles and templates are tools, not requirements. Use a role or an example when it demonstrably improves the result, and drop it when it does not. A two-line follow-up in a session that already holds the context is often the best brief you can write.
 
 ```text
 Before
-You are a world-class senior staff engineer with 20 years of experience.
+You are a world-class senior engineer.
 You always write perfect, clean, production-ready code. Think step by step.
 Fix the bug in the date picker.
 ```
@@ -148,7 +148,7 @@ Proportion matters: a typo fix does not need the same scrutiny as a change to bi
 - **Read the diff**, not just the summary. `git diff --stat origin/main...HEAD` shows quickly whether the change stayed in scope.
 - **Run the checks yourself** when you can. A test suite that passed in the agent's session may not pass on a clean checkout or a rebased branch.
 - **Look at the rendered result** for anything a user sees. Many UI bugs are invisible in the code and obvious on the screen: overflow at narrow widths, a focus state that disappeared, a dark mode that was never tried.
-- **Check the tests themselves.** If tests changed in the same diff as the code, read what changed. A test edited so that it passes is a common way for a wrong change to look right.
+- **Check the tests themselves.** If tests changed in the same diff as the code, read what changed. A test edited so that it passes is one way a wrong change looks right.
 
 The gaps worth hunting for are consistent:
 
@@ -161,7 +161,7 @@ The gaps worth hunting for are consistent:
 
 The agent that wrote a change is not the best judge of it. It shares the assumptions that produced the change, and it has a natural tendency to describe its own work favourably. A second opinion from a session that did not write the code, and that is asked to evaluate rather than to agree, catches a different class of problem.
 
-That second session can be another Claude Code session, a different model, or a person. Keel's [/peer](/skills/peer) skill packages this role: it advises and reviews without implementing, so it stays independent of the change. It is one option, not a required step.
+That second session can be another Claude Code session, a different model, or a person. keel's [/peer](/skills/peer) skill packages this role: it advises and reviews without implementing, so it stays independent of the change. It is one option, not a required step.
 
 Brief the reviewer with the original goal and the diff, not with the implementer's conclusions:
 
@@ -195,7 +195,7 @@ The opposite failure is real too. A reviewer, especially an agent asked to "find
 
 ## Evidence and uncertainty
 
-Ask agents to state what they verified and what they assumed, and do the same in your own reviews. "The migration runs on a fresh database; I did not test it against a copy of production data" is a complete, honest status. "Everything works" is not.
+Ask agents to state what they verified and what they assumed, and do the same in your own reviews. "The migration runs on a fresh database; I did not test it against a copy of production data" is a complete, honest status. "Everything works" is not. This is [evidence over assumptions](/principles#evidence-over-assumptions) applied to a single change.
 
 When uncertainty matters, turn it into a check rather than a debate. If you are unsure whether a change slows down a page, measure it. If you are unsure whether users will find a setting, that is a product question, and no amount of code review will settle it.
 
@@ -215,9 +215,9 @@ Asking for a plan before implementation, for risky or ambiguous work, gives you 
 
 Two kinds of question arrive in every review, and they need different people, or at least different hats.
 
-**Implementation questions** have answers you can check: does it work, is it correct, does it follow the project's conventions, is it fast enough. Agents are increasingly good at these, and good at checking each other on them.
+**Implementation questions** have answers you can check: does it work, is it correct, does it follow the project's conventions, is it fast enough. Agents handle these well, and a separately briefed agent can check them.
 
-**Product questions** are judgments: should this exist, who is it for, is this the right tradeoff, what does it mean for what we said we would not do. An agent can lay out options and consequences, and that is useful. The decision belongs to whoever is accountable for the product.
+**Product questions** are judgments: should this exist, who is it for, is this the right tradeoff, what does it mean for what we said we would not do. An agent can lay out options and consequences, and that is useful. The decision belongs to whoever is accountable for the product: [humans direct; agents execute](/principles#humans-direct-agents-execute), and [ownership does not delegate](/essays/the-art-of-building-with-agents#ownership-does-not-delegate).
 
 Keeping the two apart makes both reviews better. Do not let a well-built implementation carry a product decision through review on the strength of its code quality. And do not reopen settled product decisions in a code review unless there is new evidence; that is how projects drift without anyone choosing to.
 
@@ -225,5 +225,7 @@ Keeping the two apart makes both reviews better. Do not let a well-built impleme
 
 - [Claude Code: best practices](https://code.claude.com/docs/en/best-practices): Anthropic's guidance, organized around telling Claude what it cannot see from the code and giving it a check to run.
 - [Claude Code: common workflows](https://code.claude.com/docs/en/common-workflows): recipes for plan mode, subagents and pull requests.
-- [Keel /peer](/skills/peer): an independent second-opinion skill for briefing and reviewing a separate implementing agent.
+- [keel principles](/principles): the ideas these practices rest on, including evidence over assumptions and preserving decisions.
+- [The Art of Building with Agents](/essays/the-art-of-building-with-agents): why directing and reviewing become the main work when implementation gets cheap.
+- [keel /peer](/skills/peer): an independent second-opinion skill for briefing and reviewing a separate implementing agent.
 - [Developing with Parallel Agent Sessions](/guides/parallel-agent-sessions): how to split work across sessions and integrate it again.

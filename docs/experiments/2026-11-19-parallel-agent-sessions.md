@@ -1,4 +1,4 @@
-# Experiment: parallel agent sessions for Keel's editorial library
+# Experiment: parallel agent sessions for keel's editorial library
 
 Date: 2026-11-19
 Status: draft from contributor B's seat. The lead finalizes it.
@@ -7,7 +7,7 @@ Sections marked **Observed** record what contributor B saw directly. **Expected*
 
 ## Objective
 
-1. Publish Keel's first editorial content (principles, an essay, two guides) on the site.
+1. Publish keel's first editorial content (principles, an essay, two guides) on the site.
 2. Learn how several AI coding sessions collaborate on one repository through Git branches, worktrees and review, with a human-directed lead integrating.
 
 ## Setup
@@ -26,7 +26,7 @@ Sections marked **Observed** record what contributor B saw directly. **Expected*
 
 **Observed** (from the lead's brief):
 
-- Product direction is accepted and not to be changed: Keel as a free, open-source toolkit for product and engineering judgment, for technical solopreneurs, independent builders and small teams using AI coding agents. Humans direct; agents execute. Not an orchestration framework or mandatory methodology.
+- Product direction is accepted and not to be changed: keel as a free, open-source toolkit for product and engineering judgment, for technical solopreneurs, independent builders and small teams using AI coding agents. Humans direct; agents execute. Not an orchestration framework or mandatory methodology.
 - Hard boundaries: no edits to `skills/**`, `skills.sh.json`, `evals/**`, CI, Vercel config or permissions; `PRODUCT.md` is read-only; no invented statistics, testimonials, quotes or achievements.
 - Content contract: Markdown under `site/content/writing/`; flat `key: value` frontmatter (`title`, optional `subtitle`, `description` of at most 160 characters, `date`, optional `order`); no h1, sections from `##`; no raw HTML, images or footnotes; root-relative internal links; a closing `## Further reading` or `## Sources` section.
 - Fixed slugs and routes: `/principles`, `/essays/the-art-of-building-with-agents`, `/guides/parallel-agent-sessions`, `/guides/directing-and-reviewing-agents`.

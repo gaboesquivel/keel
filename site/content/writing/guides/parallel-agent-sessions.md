@@ -8,7 +8,7 @@ order: 1
 
 Running several coding agents at once is easy to start and easy to regret. Starting a second session takes seconds. Merging what two sessions built, against product decisions that moved while they worked, takes judgment. This guide is about that second part.
 
-The practical default it argues for is modest: short-lived branches, one independent worktree per session, focused pull requests, and integration done deliberately by a person. That is a default, not a lifecycle. Plenty of good work happens in one session, and nothing here says your project needs more than one.
+The practical default it argues for is modest: short-lived branches, one independent worktree per session, focused pull requests, and integration done deliberately by a person. That is a default, not a lifecycle. Plenty of good work happens in one session, and nothing here says your project needs more than one; [focus over accumulation](/principles#focus-over-accumulation) applies to sessions as much as to features.
 
 ## One session or several
 
@@ -38,7 +38,7 @@ Signals that it will hurt:
 
 ## Three shapes of parallel work
 
-Claude Code offers more than one way to run agents side by side. They differ in who coordinates and what is isolated. The descriptions below follow the [Claude Code documentation](https://code.claude.com/docs/en/agent-teams) as of this writing; check it for current behaviour, because these features change.
+Claude Code offers more than one way to run agents side by side. They differ in who coordinates and what is isolated. The descriptions below follow the [Claude Code documentation](https://code.claude.com/docs/en/agent-teams) as of November 2026; check it for current behaviour, because these features change.
 
 | Shape | Who coordinates | What is isolated | Good for |
 | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ Claude Code offers more than one way to run agents side by side. They differ in 
 
 **Independent sessions** are the plainest option: you open two terminals and run Claude Code in two checkouts. Claude Code can create the checkout for you with `claude --worktree <name>` (or `-w`), which by default makes a worktree under `.claude/worktrees/<name>/` on a new branch named `worktree-<name>`. You can also make the worktree yourself with git, as below, and run `claude` inside it.
 
-**Agent teams** are experimental and disabled by default; you enable them with the `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` setting. One session acts as lead, teammates share a task list and can message each other. The documentation is direct about the costs: more coordination overhead, significantly more tokens, and two teammates editing the same file leads to overwrites. It recommends starting with research and review rather than parallel implementation. That is good advice regardless of which tool you use.
+**Agent teams** are experimental and disabled by default; you enable them with the `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` environment variable. One session acts as lead, teammates share a task list and can message each other. The documentation is direct about the costs: more coordination overhead, significantly more tokens, and two teammates editing the same file leads to overwrites. It recommends starting with research and review rather than parallel implementation. That is good advice regardless of which tool you use.
 
 If you are unsure, use independent sessions in worktrees. They are the most transparent: every change lands on a branch you can read, diff and throw away with ordinary git.
 
@@ -108,7 +108,7 @@ and see at once whether the branch stayed inside its lane.
 
 ### Put shared decisions where every session reads them
 
-Each session starts without your conversation history. What they share is the repository: `CLAUDE.md`, and whatever product and design documents you keep (in Keel's case `PRODUCT.md`, `DESIGN.md` and, where one exists, `ARCHITECTURE.md`). Decisions that every session must respect belong there, committed to main before the sessions start, not repeated in five slightly different briefs.
+Each session starts without your conversation history. What they share is the repository: `CLAUDE.md`, and whatever product and design documents you keep (in keel's case `PRODUCT.md`, `DESIGN.md` and, where one exists, `ARCHITECTURE.md`). Decisions that every session must respect belong there, committed to main before the sessions start, not repeated in five slightly different briefs.
 
 The brief for each session then carries only what is specific: the outcome, the files it owns, the constraints with their reasons, and what to report. [Directing and Reviewing AI Coding Agents](/guides/directing-and-reviewing-agents) covers writing those briefs.
 
@@ -137,15 +137,13 @@ Integration is where parallel work becomes one product again, and it is the step
 
 ### Rebase onto current main
 
-Before merging, bring each branch up to date with what has already landed:
+Before merging, bring each branch up to date with what has already landed. Run this in the branch's own worktree, where it is already checked out (`git switch` to a branch fails while another worktree has it checked out):
 
 ```bash
-git fetch origin
-git switch feat/billing-page
-git rebase origin/main
+git fetch origin && git rebase origin/main
 ```
 
-Run that in the branch's own worktree; it is already checked out there. If conflicts appear, git stops at each conflicting commit. Resolve the files, then `git add` them and `git rebase --continue`. `git rebase --abort` returns you to where you started if the resolution is going badly.
+If conflicts appear, git stops at each conflicting commit. Resolve the files, then `git add` them and `git rebase --continue`. `git rebase --abort` returns you to where you started if the resolution is going badly.
 
 Two optional git features help when you resolve the same kinds of conflict repeatedly:
 
@@ -185,7 +183,7 @@ When two branches both change one of these files, git will flag line overlaps, b
 
 A few rules hold up:
 
-- **Settle direction before the sessions start.** If a change of scope or audience is under discussion, decide it and commit it to main first. Parallel sessions should build against settled context, not negotiate it.
+- **Settle direction before the sessions start.** If a change of scope or audience is under discussion, decide it and commit it to main first ([preserve decisions without making them immutable](/principles#preserve-decisions-without-making-them-immutable)). Parallel sessions should build against settled context, not negotiate it.
 - **Let at most one session change a given document.** Others can propose changes in their pull request description or report, for a person to apply.
 - **Merge document changes by reading, not by resolving markers.** After integration, read the whole section that changed, not just the hunks.
 
@@ -193,9 +191,9 @@ When two sessions have made incompatible product decisions, no amount of rebasin
 
 ## Adapting for solo developers and small teams
 
-For a solo developer, the main constraint is attention. Two sessions in two worktrees is a comfortable ceiling for many people, because you can still read every diff. Beyond that, sessions finish faster than you can review them and either wait or get merged with a glance, which defeats the point.
+For a solo developer, the main constraint is attention. A reasonable starting ceiling is the number of diffs you can still read in full; for many solo builders that is two. Beyond that, sessions finish faster than you can review them and either wait or get merged with a glance, which defeats the point.
 
-A pattern that works well solo: one session implementing in a worktree, and a second session that only discusses and reviews, with no write access to the feature branch. The second session gives you an independent read on the first one's plan and results. Keel's [/peer](/skills/peer) skill is built for that role, though any separate session briefed to review works.
+A pattern that works well solo: one session implementing in a worktree, and a second session that reviews and doesn't edit the feature branch. The second session gives you an independent read on the first one's plan and results. keel's [/peer](/skills/peer) skill is built for that role, though any separate session briefed to review works.
 
 For a small team, map sessions to people. Each person runs their own sessions on their own branches, and the team integrates through ordinary pull requests and review, just as it would without agents. The thing to add is a habit: when an agent's work changes shared context, the pull request says so plainly, so a teammate does not discover it at merge time.
 
@@ -204,7 +202,7 @@ For a small team, map sessions to people. Each person runs their own sessions on
 - **Parallel work on unsettled decisions.** Symptoms: branches that disagree about naming, scope or behaviour. Fix: stop, decide, commit the decision, restart the affected sessions.
 - **Ownership drift.** A session "helpfully" edits a shared file. Symptoms: unexpected paths in `git diff --stat`. Fix: send it back, or move the change to the session that owns the file.
 - **Stale bases.** Long-lived branches fall behind main and accumulate conflicts. Fix: keep branches short, rebase often, merge soon.
-- **Review debt.** Work arrives faster than it is reviewed and gets merged on the strength of its summary. Fix: run fewer sessions. Throughput you cannot review is not throughput.
+- **Review debt.** Work arrives faster than it is reviewed and gets merged on the strength of its summary. Fix: run fewer sessions. Throughput you cannot review is not throughput; directing, not producing, is [where the work now sits](/essays/the-art-of-building-with-agents#from-implementing-to-directing).
 - **Environment collisions.** Shared ports, databases or caches outside git. Fix: per-worktree configuration, or one owner per shared resource.
 - **Forgotten worktrees.** Old directories and branches pile up. Fix: `git worktree list` at the end of each integration, then remove what is done.
 

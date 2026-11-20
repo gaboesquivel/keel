@@ -18,7 +18,7 @@ export default function SkillsPage() {
     <Container className="pb-24 pt-16 sm:pb-32 sm:pt-24">
       <Eyebrow>Skills</Eyebrow>
       <Headline lead="Independent skills." accent="One job each." className="mt-7" />
-      <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+      <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
         <Lede>{description}</Lede>
         <div>
           <p className="label-mono mb-2.5">Install all, globally</p>

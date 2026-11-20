@@ -89,6 +89,11 @@
   .rule-top {
     border-top: 1px solid var(--color-line);
   }
+  /* Quiet horizontal scrollbar for one-line commands that are wider than their box. */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.72rem;

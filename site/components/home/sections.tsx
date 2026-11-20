@@ -29,12 +29,9 @@ export function HomeHero() {
         </div>
         <p className="label-mono mt-8 normal-case tracking-[0.02em]">Six independent skills. No orchestration. No mandatory workflow.</p>
       </div>
-      <figure className="mx-auto w-full max-w-[30rem] lg:max-w-none">
+      <div className="mx-auto w-full max-w-[30rem] lg:max-w-none">
         <KeelFigure className="w-full" />
-        <figcaption className="mx-auto mt-6 max-w-[20rem] text-center font-mono text-[0.8rem] leading-relaxed text-fg-subtle">
-          A keel resists drift without preventing a change of course.
-        </figcaption>
-      </figure>
+      </div>
     </Container>
   );
 }

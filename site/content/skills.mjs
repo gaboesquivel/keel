@@ -9,7 +9,7 @@ export const PRESENTATION = {
   shape: {
     headline: 'Decide what deserves building.',
     tagline: 'Product direction and scope.',
-    lede: 'A product discovery conversation that helps you decide what to build, for whom and why, then keeps a short PRODUCT.md current once you adopt a direction.',
+    lede: 'Decide what deserves building, for whom and why. Choose one primary outcome, define what to leave out, and preserve accepted direction in PRODUCT.md.',
     benefits: [
       'Assumptions questioned before code is written, including real alternatives to building at all.',
       'One primary metric and a clear scope, with non-goals recorded so later sessions don’t reopen them.',
@@ -65,7 +65,7 @@ export const PRESENTATION = {
   perf: {
     headline: 'Measure before you optimize.',
     tagline: 'Evidence-based performance investigation.',
-    lede: 'Evidence-led performance investigation for web apps and their backends: measure first, find the demonstrated bottleneck, and verify whether a change helped.',
+    lede: 'Measure what makes a web page or interaction slow, trace the bottleneck across the stack when needed, and verify whether a change helps.',
     benefits: [
       'Every finding labelled by its evidence: field, lab, diagnostic, static or hypothesis.',
       'Bottlenecks traced across browser, rendering, server, database and platform.',
@@ -79,7 +79,7 @@ export const PRESENTATION = {
   retro: {
     headline: 'Learn from what you shipped.',
     tagline: 'Product and engineering retrospective.',
-    lede: 'A retrospective on something you delivered. Knowing what you know now, would you build the same product the same way?',
+    lede: 'Review what you built against its original intent, actual usage, and outcomes. Decide what to keep, change, or stop.',
     benefits: [
       'Original intent recovered and compared with what was built and how it is used.',
       'Delivered, used and outcome kept apart, so a missing metric reads as unknown, not failure.',

@@ -35,7 +35,7 @@ export function CommandLine({
   return (
     <div
       className={cn(
-        "flex items-start gap-3 font-mono text-sm sm:items-center sm:gap-4",
+        "flex min-w-0 items-center gap-3 font-mono text-sm sm:gap-4",
         variant === "boxed" && "rounded-xl border border-line-strong bg-canvas-deep px-4 py-3.5 sm:px-5 sm:py-4",
         className,
       )}
@@ -43,12 +43,15 @@ export function CommandLine({
       <span aria-hidden="true" className={cn("select-none", prompt === "$" ? "text-pink" : "text-periwinkle")}>
         {prompt}
       </span>
-      <code className="min-w-0 flex-1 text-[#ead9ff] [overflow-wrap:anywhere] sm:overflow-x-auto sm:whitespace-nowrap sm:[overflow-wrap:normal]">{command}</code>
+      {/* One logical line: long commands scroll inside this region; the page itself never overflows. */}
+      <code className="scrollbar-thin min-w-0 flex-1 overflow-x-auto whitespace-nowrap py-1 pr-4 text-[#ead9ff] [mask-image:linear-gradient(to_right,#000_calc(100%-1.25rem),transparent)] focus-visible:outline-offset-1 sm:pr-0 sm:[mask-image:none]">
+        {command}
+      </code>
       <button
         type="button"
         onClick={copy}
         className={cn(
-          "-my-1 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 font-sans text-xs font-medium transition-colors",
+          "inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 font-sans text-xs font-medium transition-colors",
           copied ? "border-lavender/40 text-lavender" : "border-line-strong text-fg-muted hover:border-lavender/40 hover:text-fg",
         )}
       >

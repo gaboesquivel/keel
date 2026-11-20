@@ -65,9 +65,6 @@ export default function AboutPage() {
           <p>
             So the answer was to simplify. The prescribed workflow went away, and what remained were independent capabilities for the part agents don’t reliably supply on their own: decisions, product direction, experience, design, performance and outcomes.
           </p>
-          <p>
-            That isn’t a claim that autonomous coding factories are obsolete. Factory-level orchestration may still be worth building, as a separate project. The lesson is narrower:
-          </p>
           <p className="border-l-2 border-violet pl-5 text-2xl font-semibold leading-snug tracking-[-0.03em] text-fg sm:text-[1.75rem]">Complexity should justify itself.</p>
         </Block>
 

@@ -31,7 +31,7 @@ The site should read like a well-made engineering instrument, not a SaaS landing
 - **Few cards.** Lists of equals (skills, problems, benefits) are editorial entries separated by fine rules. Bordered containers are reserved for things you act on, such as commands.
 - **Asymmetric, editorial layouts.** Headline on one side, introduction on the other; not every section uses the same structure.
 - **Gradient with purpose.** h1 accents, the mark and the install band. Not a default fill for components.
-- **The mark as the hero image.** The keel silhouette at scale on a single waterline, with one caption. No nautical scenes, labels or diagrams.
+- **The mark as the hero image.** The keel silhouette at scale on a single waterline, with no caption. No nautical scenes, labels or diagrams.
 - **Context hierarchy is visible.** `PRODUCT.md` and `CLAUDE.md` are primary; `ARCHITECTURE.md` and `DESIGN.md` are shown as optional and quieter.
 - **Motion is minimal.** Colour transitions on hover and copy feedback only; respect reduced motion.
 

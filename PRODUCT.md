@@ -29,7 +29,7 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 - Independent and composable: no required order, chaining or lifecycle.
 - Every instruction must earn its place by changing behavior.
 
-These govern keel's own decisions about its skills. The principles published on the website are broader guidance for people directing AI-powered product development: the two should agree, but need not match.
+These govern keel's own product decisions, including its skills, website and writing. The principles published on the website are broader guidance for people directing AI-powered product development: the two should agree, but need not match.
 
 ## Scope
 
@@ -53,7 +53,7 @@ In dogfooding on real projects, how often a skill changes a decision or surfaces
 
 - No methodology, mandatory lifecycle, sequence or automatic chaining: that is the ceremony keel exists to avoid.
 - No replacing or wrapping native agent features.
-- No generic implementation workflows, which agents already do well. Specialized work (for example profiling or design critique) is not excluded.
+- No generic implementation workflow skills or mandatory processes, which agents already handle well. Specialized work (for example profiling or design critique) is not excluded, and the writing may teach practical engineering and agent-development techniques.
 - No growth in skill count for its own sake: each skill costs upkeep.
 - No fixed roadmap: candidate skills are explored, not committed.
 

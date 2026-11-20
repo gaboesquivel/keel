@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { LogoMark } from "@/components/logo";
 import { ButtonLink, Container, Eyebrow, Headline, Lede } from "@/components/ui";
@@ -97,7 +98,7 @@ export default function AboutPage() {
             keel is created by <a href={CREATOR.url} rel="noopener">{CREATOR.name}</a> and open source under the MIT license. The skills, their history and this site live in one <a href={repo.url} rel="noopener">GitHub repository</a>.
           </p>
           <p>
-            Longer writing on product engineering with agents is at <a href={`${CREATOR.url}/blog`} rel="noopener">gaboesquivel.com/blog</a>.
+            keel’s <Link href="/essays">essays</Link> and <Link href="/guides">guides</Link> cover product engineering with agents. More writing by {CREATOR.name} is at <a href={`${CREATOR.url}/blog`} rel="noopener">gaboesquivel.com/blog</a>.
           </p>
         </Block>
       </div>

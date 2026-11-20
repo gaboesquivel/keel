@@ -4,6 +4,8 @@ A keel keeps a sailboat from drifting sideways without preventing it from changi
 
 **Independent agent skills for product and engineering judgment.** Built for Claude Code and capable frontier models. No orchestration. No mandatory workflow. Just focused judgment when you need it.
 
+Website: [product-keel.vercel.app](https://product-keel.vercel.app/)
+
 ## Skills
 
 | Skill | What it helps you do |

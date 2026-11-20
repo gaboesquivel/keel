@@ -1,4 +1,4 @@
-// Presentation copy for the website only: a tagline, a short lede, three outcome-focused benefits, and an example.
+// Presentation copy for the website only: a benefit headline, a tagline, a short lede, three outcome-focused benefits, and an example.
 // The skills' instructions live only in skills/<name>/SKILL.md, which the site renders in full at build time.
 // Keep this copy faithful to those files. The content build fails when this list and skills/ disagree.
 
@@ -7,8 +7,9 @@ export const ORDER = ['shape', 'peer', 'design', 'ux', 'perf', 'retro']
 
 export const PRESENTATION = {
   shape: {
+    headline: 'Decide what deserves building.',
     tagline: 'Product direction and scope.',
-    lede: 'A product discovery conversation that helps you decide what to build, for whom and why, then keeps a short PRODUCT.md current once you adopt a direction.',
+    lede: 'Decide what deserves building, for whom and why. Choose one primary outcome, define what to leave out, and preserve accepted direction in PRODUCT.md.',
     benefits: [
       'Assumptions questioned before code is written, including real alternatives to building at all.',
       'One primary metric and a clear scope, with non-goals recorded so later sessions don’t reopen them.',
@@ -20,6 +21,7 @@ export const PRESENTATION = {
     },
   },
   peer: {
+    headline: 'Think beyond one agent.',
     tagline: 'Independent judgment and agent guidance.',
     lede: 'An independent product engineering peer that advises while a separate agent implements: discuss a decision, brief the implementing agent, or review its plan and results.',
     benefits: [
@@ -33,6 +35,7 @@ export const PRESENTATION = {
     },
   },
   design: {
+    headline: 'Make the interface fit its purpose.',
     tagline: 'Visual and interface design.',
     lede: 'An interface design partner for new work, refinements, redesigns, critique and prototypes, grounded in what the surface is for and checked in the rendered result.',
     benefits: [
@@ -46,6 +49,7 @@ export const PRESENTATION = {
     },
   },
   ux: {
+    headline: 'Walk the journey your users walk.',
     tagline: 'Real user journeys and friction.',
     lede: 'Walks a real user journey through the running product, as the intended user would, and reports the friction they meet, judged against what the product is for.',
     benefits: [
@@ -59,8 +63,9 @@ export const PRESENTATION = {
     },
   },
   perf: {
+    headline: 'Measure before you optimize.',
     tagline: 'Evidence-based performance investigation.',
-    lede: 'Evidence-led performance investigation for web apps and their backends: measure first, find the demonstrated bottleneck, and verify whether a change helped.',
+    lede: 'Measure what makes a web page or interaction slow, trace the bottleneck across the stack when needed, and verify whether a change helps.',
     benefits: [
       'Every finding labelled by its evidence: field, lab, diagnostic, static or hypothesis.',
       'Bottlenecks traced across browser, rendering, server, database and platform.',
@@ -72,8 +77,9 @@ export const PRESENTATION = {
     },
   },
   retro: {
+    headline: 'Learn from what you shipped.',
     tagline: 'Product and engineering retrospective.',
-    lede: 'A retrospective on something you delivered. Knowing what you know now, would you build the same product the same way?',
+    lede: 'Review what you built against its original intent, actual usage, and outcomes. Decide what to keep, change, or stop.',
     benefits: [
       'Original intent recovered and compared with what was built and how it is used.',
       'Delivered, used and outcome kept apart, so a missing metric reads as unknown, not failure.',

@@ -40,7 +40,7 @@ export function Headline({
 }
 
 export function Lede({ className, ...props }: ComponentProps<"p">) {
-  return <p className={cn("max-w-[46rem] text-lg leading-relaxed text-fg-muted sm:text-xl", className)} {...props} />;
+  return <p className={cn("max-w-[40rem] text-[1.0625rem] leading-[1.7] text-fg-muted sm:text-lg", className)} {...props} />;
 }
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -128,5 +128,5 @@ export function Breadcrumbs({ items }: { items: { href?: string; label: string }
 }
 
 export function Section({ className, ...props }: ComponentProps<"section">) {
-  return <section className={cn("py-16 sm:py-24", className)} {...props} />;
+  return <section className={cn("py-20 sm:py-28 lg:py-32", className)} {...props} />;
 }

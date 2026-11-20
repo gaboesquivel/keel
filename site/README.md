@@ -13,7 +13,7 @@ pnpm dev
 
 Each skill's instructions live only in [`../skills/<name>/SKILL.md`](../skills). `pnpm content` (run before `dev`, `check-types` and `build`) discovers every skill directory, parses its frontmatter, renders the complete Markdown body, and writes `content/generated/content.json` (gitignored). `pnpm dev` also watches `../skills` and regenerates on change. Never edit the generated file.
 
-[`content/skills.mjs`](content/skills.mjs) holds presentation copy only: a tagline, a short lede, three benefits and an example invocation per skill, plus display order. It must not restate instructions.
+[`content/skills.mjs`](content/skills.mjs) holds presentation copy only: a short benefit headline, a tagline, a short lede, three benefits and an example invocation per skill, plus display order. It must not restate instructions.
 
 The build fails, naming the file to fix, when a `SKILL.md` is missing, has no frontmatter, has a `name` that differs from its folder, a missing or multi-line `description`, or no body, or when `content/skills.mjs` doesn't cover exactly the skills under `skills/`. Adding, renaming or removing a skill therefore needs its copy updated in the same change.
 

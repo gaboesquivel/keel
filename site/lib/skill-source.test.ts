@@ -41,6 +41,7 @@ describe("parseSkill", () => {
 
 describe("validatePresentation", () => {
   const entry = {
+    headline: "X.",
     tagline: "x.",
     lede: "A lede.",
     benefits: ["a", "b", "c"],

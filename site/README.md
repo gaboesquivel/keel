@@ -1,6 +1,6 @@
 # keel website
 
-The public site for keel: the homepage, the skill catalog, one page per skill, and About. Next.js (App Router), React, TypeScript, Tailwind and pnpm, statically generated. It started as a simplified copy of the Flow Skills website.
+The public site for keel: the homepage, the skill catalog, one page per skill, the principles, essays and guides, and About. Next.js (App Router), React, TypeScript, Tailwind and pnpm, statically generated. It started as a simplified copy of the Flow Skills website.
 
 ## Develop
 
@@ -19,6 +19,22 @@ The build fails, naming the file to fix, when a `SKILL.md` is missing, has no fr
 
 Rendering escapes raw HTML, drops unsafe link schemes, links `skills/<name>/SKILL.md` to its page, and links every other relative path (such as `references/web.md`) to the file on GitHub.
 
+### Writing
+
+Principles, essays and guides are Markdown in [`content/writing/`](content/writing): `principles.md` → `/principles`, `essays/<slug>.md` → `/essays/<slug>`, `guides/<slug>.md` → `/guides/<slug>` (the file name is the slug). The same build renders them into the `writing` collection of the generated content, with headings for the contents list, a word count and reading time.
+
+```
+---
+title: The Art of Building with Agents
+subtitle: Optional one line.
+description: One plain sentence, at most 160 characters, used for meta tags and index listings.
+date: 2026-11-19
+order: 1   # optional, orders the guides index
+---
+```
+
+Frontmatter is flat `key: value` lines. The body starts at `##` (the page renders the title as the only h1); no raw HTML, images or footnotes. Root-relative links (`/principles`, `/skills/shape`) stay site routes; external links get `rel="noopener"`. The build fails, naming the file, on a missing title, description or date, a multi-line or over-long description, a date that isn't a real YYYY-MM-DD, a non-numeric `order`, a non-kebab-case file name or an h1. A missing file or directory is not an error: that section, its navigation link, its homepage mention and its sitemap entries are simply absent. To try layouts without touching `content/writing/`, point the build at another directory with `KEEL_WRITING_DIR=/path/to/writing pnpm build`. New kinds (such as field notes) are added to `WRITING_KINDS` in `scripts/content-lib.mjs` together with their routes.
+
 | Script | Purpose |
 | --- | --- |
 | `pnpm content` | Regenerate the content from `../skills` |
@@ -29,8 +45,11 @@ Rendering escapes raw HTML, drops unsafe link schemes, links `skills/<name>/SKIL
 
 | Path | Owns |
 | --- | --- |
-| `scripts/content-lib.mjs` | Markdown rendering and the skill source contract; pure, tested by `lib/skill-source.test.ts` |
-| `scripts/build-content.mjs` | Reads `../skills` and writes the generated content |
+| `scripts/content-lib.mjs` | Markdown rendering and the skill and writing source contracts; pure, tested by `lib/skill-source.test.ts` and `lib/writing-source.test.ts` |
+| `scripts/build-content.mjs` | Reads `../skills` and `content/writing/` and writes the generated content |
+| `content/writing/` | Principles, essays and guides (Markdown) |
+| `app/principles`, `app/essays`, `app/guides` | Reading pages and section indexes; 404 when their source is absent |
+| `components/writing/article.tsx`, `lib/writing-metadata.ts` | Article layout, contents list, index lists, and article metadata |
 | `content/skills.mjs` | Presentation copy and display order |
 | `components/home/sections.tsx` | Homepage sections |
 | `components/logo.tsx`, `app/icon.svg`, `lib/og.tsx` | The keel mark; one set of paths shared by the header, favicon, Apple icon and OG image |

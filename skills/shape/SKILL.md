@@ -17,6 +17,8 @@ Act as a product peer. Question assumptions and say when you disagree, because a
 
 Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
 
+When invoked without arguments, read the relevant project context silently, then ask: "What would you like to shape?" Do not summarize the documents, list possible topics, or explain the skill unless needed.
+
 - No `PRODUCT.md` and nothing built yet: this is a new idea, so start the conversation.
 - No `PRODUCT.md` in an existing project: read enough of the code, documentation and workflows to say what the product is today, without reading everything. Tell the user what you found before asking anything, keeping apart what the code does, what you infer it is for, and what you cannot tell, and let them correct it. What is built shows the decisions made so far, not what the user wants next, so ask whether they want to continue in this direction or change it, and treat a pivot as an ordinary outcome.
 - `PRODUCT.md` exists: use it as the current product context. Work out whether the user is exploring a feature, reconsidering the product's direction, or investigating an alternative. Compare the proposal with the documented user, problem, metric, scope and non-goals, and use the primary metric to judge it. If the metric's current level would change your assessment, ask the user where it stands; you cannot see their analytics, and "unknown" is an acceptable answer. Name meaningful conflicts with the documented direction, and do not treat that direction as fixed: the user may be changing it on purpose.

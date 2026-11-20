@@ -5,7 +5,7 @@
     {
       "title": "Keel",
       "description": "Independent skills for product and engineering judgment when building with AI agents.",
-      "skills": ["shape", "slice", "peer", "retro", "perf", "ux", "design"]
+      "skills": ["shape", "slice", "peer", "retro", "align", "perf", "ux", "design"]
     }
   ]
 }

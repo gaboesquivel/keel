@@ -17,6 +17,7 @@ Website: [product-keel.vercel.app](https://product-keel.vercel.app/)
 | [`/ux`](skills/ux/SKILL.md) | Walk real user journeys, uncover friction, and identify improvements supported by evidence. |
 | [`/perf`](skills/perf/SKILL.md) | Measure performance across web, mobile, APIs and MCP servers, identify bottlenecks, and verify improvements. |
 | [`/retro`](skills/retro/SKILL.md) | Revisit delivered product decisions, compare intent with outcomes, and decide what should change. |
+| [`/align`](skills/align/SKILL.md) | Check that accepted product, architecture and design decisions, the documents and the code still agree, and tell intentional evolution from drift. |
 
 Each skill works independently. Invoke whichever one you need, whenever you need it. No required order or automatic chaining.
 
@@ -33,7 +34,7 @@ Keel uses a few small project documents to maintain that context:
 
 These aren't mandatory documents to generate upfront. Decisions are recorded when adopted, not merely proposed. The code remains the source of truth for routine implementation details.
 
-Other skills complement this foundation. `/retro`, for example, looks back at what shipped and whether it achieved its intended outcomes. It may recommend changing direction, but doesn't rewrite accepted decisions without your approval.
+Other skills complement this foundation. `/retro`, for example, looks back at what shipped and whether it achieved its intended outcomes. It may recommend changing direction, but doesn't rewrite accepted decisions without your approval. `/align` checks whether these documents and the code still agree, and recommends the smallest correction where they don't.
 
 The goal is to preserve intent, prevent product drift and scope creep, and still allow deliberate changes of course.
 

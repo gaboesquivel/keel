@@ -148,7 +148,13 @@ describe("build-content", () => {
     for (const s of out.skills) {
       const source = readFileSync(path.join(repoRoot, s.source), "utf8");
       const lastHeading = [...source.matchAll(/^## (.+)$/gmu)].at(-1)?.[1];
-      expect(s.html, s.name).toContain(`>${lastHeading}</h2>`);
+      if (lastHeading) {
+        expect(s.html, s.name).toContain(`>${lastHeading}</h2>`);
+      } else {
+        // A short skill without sections: its last line must still be published.
+        const lastLine = source.trim().split("\n").at(-1)!.replace(/[`*_]/gu, "");
+        expect(s.html.replace(/<[^>]+>/gu, ""), s.name).toContain(lastLine);
+      }
     }
   });
 

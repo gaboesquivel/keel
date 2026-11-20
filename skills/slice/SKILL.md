@@ -53,4 +53,4 @@ Recommend one next slice, weighing user value, what it will teach, how directly 
 - **Done when:** a few observable behaviours. Where it matters, separate delivering the slice from the product outcome to watch afterwards.
 - **Later:** other candidates only when they clarify this choice, and never as commitments.
 
-Do not invent metrics, baselines, targets or estimates. Do not write implementation plans, task lists, code, files, issues or branches; planning and building the slice is ordinary Claude Code work the user starts when they choose. If the user asks to save the decision or prepare a handoff, provide it in the format they ask for.
+Do not invent metrics, baselines, targets or estimates. Do not write implementation plans, task lists or code, and do not create files, issues or branches on your own; planning and building the slice is ordinary Claude Code work the user starts when they choose. When the user explicitly asks to save a slice decision they have adopted, or to prepare a handoff, write it where and in the format they ask, recording only what they adopted.

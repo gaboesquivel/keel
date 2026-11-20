@@ -6,7 +6,7 @@ A lean, opinionated collection of independent skills for building better softwar
 
 ## Audience
 
-Solo developers building products with AI coding agents, starting with Claude Code.
+Technical solopreneurs, independent product builders and small technical teams building products with AI coding agents, starting with Claude Code.
 
 ## Problems
 

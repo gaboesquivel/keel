@@ -5,7 +5,7 @@ import { CommandLine } from "@/components/command-line";
 import { ArrowUpRight, Container, Eyebrow, Headline, Lede } from "@/components/ui";
 import { INSTALL, skills } from "@/lib/content";
 
-const description = "Seven independent skills, each with one responsibility. Invoke any of them in Claude Code, in any order, whenever you need it.";
+const description = "Independent skills, each with one responsibility. Invoke any of them in Claude Code, in any order, whenever you need it.";
 
 export const metadata: Metadata = {
   title: "Skills",

@@ -27,7 +27,7 @@ export function HomeHero() {
             View on GitHub
           </ButtonLink>
         </div>
-        <p className="label-mono mt-8 normal-case tracking-[0.02em]">Seven independent skills. No orchestration. No mandatory workflow.</p>
+        <p className="label-mono mt-8 normal-case tracking-[0.02em]">Independent skills. No orchestration. No mandatory workflow.</p>
       </div>
       <div className="mx-auto w-full max-w-[30rem] lg:max-w-none">
         <KeelFigure className="w-full" />
@@ -42,7 +42,7 @@ export function SkillsSection() {
       <Container>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-10">
           <div>
-            <Eyebrow>Seven independent skills</Eyebrow>
+            <Eyebrow>Independent skills</Eyebrow>
             <h2 id="skills-heading" className="headline h-section mt-6 text-fg">
               Stay focused on what matters.
             </h2>

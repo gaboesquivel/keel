@@ -29,6 +29,8 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 - Independent and composable: no required order, chaining or lifecycle.
 - Every instruction must earn its place by changing behavior.
 
+These govern keel's own product decisions, including its skills, website and writing. The principles published on the website are broader guidance for people directing AI-powered product development: the two should agree, but need not match.
+
 ## Scope
 
 A small set of independent skills, each with a clear, distinct responsibility. Today: `shape` (what to build, scope, preserved intent), `slice` (the next smallest useful end-to-end increment, reassessed against what is already delivered and learned), `peer` (an independent second opinion for directing and evaluating coding agents), `retro` (looking back at whether what was delivered was worth building that way), `align` (whether accepted intent, documents and implementation still agree, telling intentional evolution from drift), `perf` (measured diagnosis of where time and resources go in web apps, mobile apps, backends and APIs, and MCP servers, and whether a change helped), `ux` (user journeys, interaction flows, usability, friction, feedback, accessibility and task completion) and `design` (visual language, typography, layout, hierarchy, consistency and aesthetics).
@@ -41,6 +43,8 @@ A skill belongs only if it:
 
 Skills may be changed, merged or removed.
 
+The website supports the skills: it presents them and publishes principles, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill.
+
 ## Primary metric
 
 In dogfooding on real projects, how often a skill changes a decision or surfaces something plain Claude Code wouldn't, judged right on later review. Evaluated selectively, by comparing against baseline Claude Code on real work, not by logging every use. No baseline yet. Weakness: the author is also the judge.
@@ -49,12 +53,12 @@ In dogfooding on real projects, how often a skill changes a decision or surfaces
 
 - No methodology, mandatory lifecycle, sequence or automatic chaining: that is the ceremony keel exists to avoid.
 - No replacing or wrapping native agent features.
-- No generic implementation workflows, which agents already do well. Specialized work (for example profiling or design critique) is not excluded.
+- No generic implementation workflow skills or mandatory processes, which agents already handle well. Specialized work (for example profiling or design critique) is not excluded, and the writing may teach practical engineering and agent-development techniques.
 - No growth in skill count for its own sake: each skill costs upkeep.
 - No fixed roadmap: candidate skills are explored, not committed.
 
 ## Open questions
 
-- Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design` and `slice` not yet measured.
+- Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design`, `slice` and `align` not yet measured.
 - Is there evidence of these problems beyond the author's own experience?
 - How much does it overlap with existing tools (for example the AgentOps `product` skill)? Not checked.

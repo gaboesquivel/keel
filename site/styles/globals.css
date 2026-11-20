@@ -284,4 +284,49 @@
   .prose-keel tr:last-child td {
     border-bottom: 0;
   }
+
+  /* Long-form writing (principles, essays, guides): a narrower measure and larger type than rendered skills. */
+  .prose-reading {
+    /* About 70 characters per line in Geist at 18px (its "ch" is wide, so a ch-based measure runs long). */
+    max-width: 42rem;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+  @media (min-width: 640px) {
+    .prose-reading {
+      font-size: 1.125rem;
+    }
+  }
+  .prose-reading > * + * {
+    margin-top: 1.25em;
+  }
+  .prose-reading > h2:first-child {
+    margin-top: 0;
+  }
+  .prose-reading h2 {
+    font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+    margin-top: 2.6em;
+  }
+  .prose-reading h3 {
+    font-size: 1.25rem;
+    margin-top: 2em;
+  }
+  .prose-reading h2 + *,
+  .prose-reading h3 + * {
+    margin-top: 0.8em;
+  }
+  .prose-reading blockquote {
+    padding: 0.1em 0 0.1em 1.25em;
+    color: var(--color-fg);
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  /* External links say so; the arrow is decorative for assistive technology. */
+  .prose-reading a[href^="http"]::after {
+    content: "↗" / "";
+    display: inline-block;
+    margin-left: 0.15em;
+    font-size: 0.75em;
+    color: var(--color-fg-subtle);
+  }
 }

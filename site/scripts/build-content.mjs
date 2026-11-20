@@ -1,18 +1,51 @@
-// Builds the site's content from the authoritative skill sources in ../skills/<name>/SKILL.md.
+// Builds the site's content from the authoritative skill sources in ../skills/<name>/SKILL.md and the authored writing
+// in content/writing/ (principles.md, essays/*.md, guides/*.md; KEEL_WRITING_DIR overrides the directory for local tests).
 // Output: content/generated/content.json (gitignored; regenerated before every dev start, type check and build).
-// `--watch` regenerates whenever a file under ../skills changes.
+// `--watch` regenerates whenever a file under ../skills or the writing directory changes.
 import { execSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, watch, writeFileSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { ORDER, PRESENTATION } from '../content/skills.mjs'
-import { commandsFor, createRenderer, createSiteRoutes, parseSkill, validatePresentation } from './content-lib.mjs'
+import { WRITING_KINDS, commandsFor, createRenderer, createSiteRoutes, parseSkill, parseWriting, sortWriting, validatePresentation } from './content-lib.mjs'
 
 const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const repoRoot = resolve(siteRoot, '..')
 const skillsRoot = join(repoRoot, 'skills')
 const outDir = join(siteRoot, 'content/generated')
+const writingRoot = process.env.KEEL_WRITING_DIR ? resolve(process.env.KEEL_WRITING_DIR) : join(siteRoot, 'content/writing')
+const writingSource = (rel) => (process.env.KEEL_WRITING_DIR ? `${writingRoot}/${rel}` : `site/content/writing/${rel}`)
+
+/** Every piece of writing that exists. A missing file or directory is not an error: that section is simply not published. */
+const readWriting = () => {
+  const problems = []
+  const entries = []
+  for (const { kind, file, dir, route } of WRITING_KINDS) {
+    const files = file
+      ? [{ rel: file, slug: null }]
+      : existsSync(join(writingRoot, dir))
+        ? readdirSync(join(writingRoot, dir))
+            .filter((f) => f.endsWith('.md') && !f.startsWith('.'))
+            .sort()
+            .map((f) => ({ rel: `${dir}/${f}`, slug: f.replace(/\.md$/u, '') }))
+        : []
+    for (const { rel, slug } of files) {
+      const path = join(writingRoot, rel)
+      if (!existsSync(path)) continue
+      const { entry, problems: p } = parseWriting({
+        kind,
+        slug: slug ?? kind,
+        route: slug ? `${route}/${slug}` : route,
+        source: writingSource(rel),
+        text: readFileSync(path, 'utf8'),
+      })
+      problems.push(...p)
+      if (entry) entries.push(entry)
+    }
+  }
+  return { problems, entries: sortWriting(entries) }
+}
 const REPO = { owner: 'gaboesquivel', name: 'keel', branch: 'main' }
 const repoUrl = `https://github.com/${REPO.owner}/${REPO.name}`
 
@@ -38,9 +71,13 @@ const build = () => {
   problems.push(...validatePresentation(folders, PRESENTATION))
   const orderMismatch = ORDER.length !== folders.length || folders.some((n) => !ORDER.includes(n))
   if (orderMismatch) problems.push(`site/content/skills.mjs: ORDER [${ORDER.join(', ')}] must list exactly [${folders.join(', ')}]`)
+  const written = readWriting()
+  problems.push(...written.problems)
   if (problems.length) return problems
 
   const { render } = createRenderer({ repoUrl, branch: REPO.branch, siteRouteFor: createSiteRoutes(names) })
+  const { render: renderWriting } = createRenderer({ repoUrl, branch: REPO.branch, siteRouteFor: createSiteRoutes(names), rootLinksAreRoutes: true })
+  const writing = written.entries.map(({ body, ...entry }) => ({ ...entry, ...renderWriting(body, entry.source) }))
 
   const skills = ORDER.map((name) => {
     const skill = parsed.find((s) => s.name === name)
@@ -72,15 +109,16 @@ const build = () => {
   })()
 
   mkdirSync(outDir, { recursive: true })
-  const content = { generatedAt: new Date().toISOString(), commit, repo: { ...REPO, url: repoUrl }, skills }
+  const content = { generatedAt: new Date().toISOString(), commit, repo: { ...REPO, url: repoUrl }, skills, writing }
   writeFileSync(join(outDir, 'content.json'), `${JSON.stringify(content)}\n`)
   console.log(`content: ${skills.length} skills from skills/*/SKILL.md (${skills.map((s) => s.name).join(', ')})`)
+  console.log(`content: ${writing.length} pieces of writing${writing.length ? ` (${writing.map((w) => w.route).join(', ')})` : ''}`)
   return []
 }
 
 const report = (problems) => {
   if (!problems.length) return true
-  console.error(`content: the skill sources do not meet the site's contract\n${problems.map((p) => `  - ${p}`).join('\n')}`)
+  console.error(`content: the sources do not meet the site's contract\n${problems.map((p) => `  - ${p}`).join('\n')}`)
   return false
 }
 
@@ -88,11 +126,13 @@ const ok = report(build())
 
 if (process.argv.includes('--watch')) {
   let timer
-  watch(skillsRoot, { recursive: true }, () => {
+  const rebuild = () => {
     clearTimeout(timer)
     timer = setTimeout(() => report(build()), 100)
-  })
-  console.log('content: watching skills/ for changes')
+  }
+  watch(skillsRoot, { recursive: true }, rebuild)
+  if (existsSync(writingRoot)) watch(writingRoot, { recursive: true }, rebuild)
+  console.log('content: watching skills/ and the writing directory for changes')
 } else if (!ok) {
   process.exit(1)
 }

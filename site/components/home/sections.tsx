@@ -2,7 +2,7 @@ import { CommandLine } from "@/components/command-line";
 import { KeelFigure } from "@/components/logo";
 import { SkillEntry } from "@/components/skills/skill-entry";
 import { ButtonLink, Container, Eyebrow, Lede, Section, TextLink } from "@/components/ui";
-import { getSkill, INSTALL, repo, skills } from "@/lib/content";
+import { essays, getSkill, guides, INSTALL, principles, repo, skills } from "@/lib/content";
 
 export function HomeHero() {
   return (
@@ -103,6 +103,69 @@ export function WhySection() {
             Read the story behind keel
           </TextLink>
         </div>
+      </Container>
+    </Section>
+  );
+}
+
+/**
+ * The broader mission in one restrained section: philosophy (principles), education (essays, guides) and tools (skills).
+ * Each column appears only when its writing exists; with no writing at all the section is omitted.
+ */
+export function LibrarySection() {
+  if (!principles && !essays.length && !guides.length) return null;
+  const education = [...essays.slice(0, 1).map((e) => ({ href: e.route, label: e.title })), ...(guides.length ? [{ href: "/guides", label: "Guides" }] : [])];
+  const columns = [
+    principles && {
+      purpose: "Philosophy",
+      title: "How to think",
+      text: "Principles for deciding what is worth building, how to spend effort, and when to change course.",
+      links: [{ href: "/principles", label: "Read the principles" }],
+    },
+    education.length > 0 && {
+      purpose: "Education",
+      title: "How to practice",
+      text: "Essays and practical guides for directing agents, reviewing their work, and keeping judgment with you.",
+      links: education,
+    },
+    {
+      purpose: "Tools",
+      title: "What to invoke",
+      text: "Independent skills you call when a decision deserves care. Small on purpose.",
+      links: [{ href: "/skills", label: "Explore the skills" }],
+    },
+  ].filter((c) => !!c);
+
+  return (
+    <Section aria-labelledby="library-heading" className="rule-top">
+      <Container>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-10">
+          <div>
+            <Eyebrow>Beyond the skills</Eyebrow>
+            <h2 id="library-heading" className="headline h-section mt-6 max-w-[16ch] text-fg">
+              Judgment is learned, then practiced.
+            </h2>
+          </div>
+          <p className="max-w-[28rem] text-[1.0625rem] leading-[1.7] text-fg-muted sm:text-lg">
+            keel is also a growing collection of product and engineering lessons for people who build with agents. The writing can be expansive; the skills stay minimal.
+          </p>
+        </div>
+        <ul className="mt-16 grid gap-x-16 gap-y-10 md:grid-cols-3">
+          {columns.map((c) => (
+            <li key={c.purpose} className="border-t border-line-strong pt-7">
+              <p className="label-mono">{c.purpose}</p>
+              <p className="mt-3 text-2xl font-semibold leading-snug tracking-[-0.03em] text-fg">{c.title}</p>
+              <p className="mt-3 leading-relaxed text-fg-muted">{c.text}</p>
+              <ul className="mt-5 space-y-2">
+                {c.links.map((l) => (
+                  <li key={l.href}>
+                    <TextLink href={l.href}>{l.label}</TextLink>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
       </Container>
     </Section>
   );

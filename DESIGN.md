@@ -33,6 +33,7 @@ The site should read like a well-made engineering instrument, not a SaaS landing
 - **Gradient with purpose.** h1 accents, the mark and the install band. Not a default fill for components.
 - **The mark as the hero image.** The keel silhouette at scale on a single waterline, with no caption. No nautical scenes, labels or diagrams.
 - **Context hierarchy is visible.** `PRODUCT.md` and `CLAUDE.md` are primary; `ARCHITECTURE.md` and `DESIGN.md` are shown as optional and quieter.
+- **Reading pages are quiet.** Principles, essays and guides use one h1, a measure near 70 characters, `.prose-reading` on top of `.prose-keel`, an on-page contents list for longer pieces (sticky beside the text on desktop, collapsed on phones), and a small arrow on external links. No illustrations, hero images or decoration.
 - **Motion is minimal.** Colour transitions on hover and copy feedback only; respect reduced motion.
 
 ## Rules

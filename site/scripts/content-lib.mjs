@@ -51,12 +51,15 @@ export const createSiteRoutes = (skillNames) => (repoPath) => {
 
 /**
  * Markdown renderer bound to the repository. Relative links resolve against the source file and become a site route
- * when one exists, otherwise the file on GitHub. Raw HTML is shown as text and unsafe link schemes lose their link.
+ * when one exists, otherwise the file on GitHub. With `rootLinksAreRoutes`, root-relative links (`/skills/shape`) are
+ * kept as site routes instead of being resolved against the source file. Raw HTML is shown as text and unsafe link schemes lose their link.
  */
-export const createRenderer = ({ repoUrl, branch, siteRouteFor }) => {
+export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRoutes = false }) => {
   const rewriteHref = (href, sourcePath) => {
     if (!href || /^(?:[a-z][a-z0-9+.-]*:|\/\/)/iu.test(href)) return href
     if (href.startsWith('#')) return href
+    // Authored writing links to site routes such as `/principles`; keep those as they are.
+    if (rootLinksAreRoutes && href.startsWith('/') && !/^\/[/\\]/u.test(href)) return href
     const [pathPart = '', hash] = href.split('#')
     const resolved = posix.normalize(posix.join(posix.dirname(sourcePath), pathPart))
     const route = siteRouteFor(resolved)
@@ -114,6 +117,108 @@ export const createRenderer = ({ repoUrl, branch, siteRouteFor }) => {
   }
 
   return { render, rewriteHref }
+}
+
+// ---------- writing source contract ----------
+
+/**
+ * Kinds of authored writing under site/content/writing/. `file` is a single page; `dir` holds one page per Markdown
+ * file, routed by its file name. Adding a kind (for example field notes) means adding an entry here and its routes.
+ */
+export const WRITING_KINDS = [
+  { kind: 'principles', file: 'principles.md', route: '/principles' },
+  { kind: 'essay', dir: 'essays', route: '/essays' },
+  { kind: 'guide', dir: 'guides', route: '/guides' },
+]
+
+const DATE = /^(\d{4})-(\d{2})-(\d{2})$/u
+const WORDS_PER_MINUTE = 230
+
+/** Words in the readable text and whole minutes to read them (at least one). Code blocks are not counted. */
+export const readingStats = (markdown) => {
+  const text = plain(markdown)
+  const words = text ? text.split(' ').length : 0
+  return { words, readingMinutes: Math.max(1, Math.round(words / WORDS_PER_MINUTE)) }
+}
+
+/** Level-1 ATX headings outside fenced code. The page renders the title, so the body must start at `##`. */
+const hasH1 = (markdown) => {
+  let fence = null
+  for (const line of markdown.split(/\r?\n/u)) {
+    const f = line.match(/^\s{0,3}(`{3,}|~{3,})/u)
+    if (f) {
+      if (!fence) fence = f[1][0]
+      else if (f[1][0] === fence) fence = null
+      continue
+    }
+    if (!fence && /^\s{0,3}#(?:\s|$)/u.test(line)) return true
+  }
+  return false
+}
+
+const validDate = (value) => {
+  const m = value.match(DATE)
+  if (!m) return false
+  const d = new Date(`${value}T00:00:00Z`)
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === value
+}
+
+/**
+ * Validate one piece of writing against the content contract and return what the site publishes (without HTML).
+ * `source` is the repository path used in messages; `slug` comes from the file name.
+ * @returns {{ entry: null | { kind: string, slug: string, route: string, source: string, title: string, subtitle: string | null, description: string, date: string, order: number | null, body: string, words: number, readingMinutes: number }, problems: string[] }}
+ */
+export const parseWriting = ({ kind, slug, route, source, text }) => {
+  const problems = []
+  const fail = (reason) => problems.push(`${source}: ${reason}`)
+  const fm = parseFrontmatter(text)
+  if (!fm) {
+    fail('missing front matter (--- title / description / date ---)')
+    return { entry: null, problems }
+  }
+  const { data, body, duplicates } = fm
+  if (duplicates.length) fail(`duplicate front matter keys: ${duplicates.join(', ')}`)
+  if (!NAME.test(slug)) fail(`file name "${slug}" must be kebab-case`)
+  const single = (key, { required = false, max } = {}) => {
+    const value = data[key]
+    if (!value) {
+      if (required) fail(`front matter has no "${key}"`)
+      return null
+    }
+    if (/^[|>]/u.test(value)) fail(`"${key}" must be a single line, not a YAML block`)
+    else if (max && value.length > max) fail(`"${key}" exceeds ${max} characters (${value.length})`)
+    return value
+  }
+  const title = single('title', { required: true, max: 120 })
+  const subtitle = single('subtitle', { max: 200 })
+  const description = single('description', { required: true, max: 160 })
+  const date = single('date', { required: true })
+  if (date && !validDate(date)) fail(`date "${date}" must be a real date as YYYY-MM-DD`)
+  let order = null
+  if (data.order !== undefined && data.order !== '') {
+    if (/^\d+$/u.test(data.order)) order = Number(data.order)
+    else fail(`order "${data.order}" must be a whole number`)
+  }
+  if (!body.trim()) fail('has no body after the front matter')
+  else if (hasH1(body)) fail('body has a level-1 heading; the page renders the title, so start sections at ##')
+  if (problems.length) return { entry: null, problems }
+  return {
+    entry: { kind, slug, route, source, title, subtitle, description, date, order, body, ...readingStats(body) },
+    problems,
+  }
+}
+
+/** Display order: principles, then essays newest first, then guides by `order` (unordered last) and title. */
+export const sortWriting = (entries) => {
+  const rank = Object.fromEntries(WRITING_KINDS.map((k, i) => [k.kind, i]))
+  return entries.slice().sort((a, b) => {
+    if (a.kind !== b.kind) return rank[a.kind] - rank[b.kind]
+    if (a.kind === 'essay' && a.date !== b.date) return a.date < b.date ? 1 : -1
+    const ao = a.order ?? Number.POSITIVE_INFINITY
+    const bo = b.order ?? Number.POSITIVE_INFINITY
+    if (ao !== bo) return ao - bo
+    return a.title.localeCompare(b.title)
+  })
 }
 
 // ---------- skill source contract ----------

@@ -22,11 +22,33 @@ export type Skill = {
   headings: Heading[];
 };
 
+/** Kinds of authored writing under content/writing/. The list can grow (for example field notes) with its routes. */
+export type WritingKind = "principles" | "essay" | "guide";
+
+/** One piece of authored writing from content/writing/, rendered at build time. */
+export type Writing = {
+  kind: WritingKind;
+  slug: string;
+  route: string;
+  source: string;
+  title: string;
+  subtitle: string | null;
+  description: string;
+  /** YYYY-MM-DD */
+  date: string;
+  order: number | null;
+  words: number;
+  readingMinutes: number;
+  html: string;
+  headings: Heading[];
+};
+
 type Content = {
   generatedAt: string;
   commit: string | null;
   repo: { owner: string; name: string; branch: string; url: string };
   skills: Skill[];
+  writing: Writing[];
 };
 
 export const content = raw as unknown as Content;
@@ -34,6 +56,24 @@ export const repo = content.repo;
 /** Skills in display order. The order is presentation only; each skill is independent. */
 export const skills = content.skills;
 export const getSkill = (name: string) => skills.find((s) => s.name === name);
+
+/** Authored writing in display order. A section with no files is absent, so nothing links to an empty page. */
+export const writing = content.writing;
+export const principles = writing.find((w) => w.kind === "principles");
+export const essays = writing.filter((w) => w.kind === "essay");
+export const guides = writing.filter((w) => w.kind === "guide");
+export const getWriting = (kind: WritingKind, slug: string) => writing.find((w) => w.kind === kind && w.slug === slug);
+
+/** Learning pages for navigation, in reading order; only sections that have content. */
+export const learnNav = [
+  ...(principles ? [{ href: "/principles", label: "Principles" }] : []),
+  ...(essays.length ? [{ href: "/essays", label: "Essays" }] : []),
+  ...(guides.length ? [{ href: "/guides", label: "Guides" }] : []),
+];
+
+/** "19 November 2026" from YYYY-MM-DD, independent of the build machine's time zone. */
+export const formatDate = (date: string) =>
+  new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));
 
 /** GitHub URL for a file or directory in this repository. */
 export const sourceUrl = (path: string, kind: "blob" | "tree" = "blob") => `${repo.url}/${kind}/${repo.branch}/${path}`;

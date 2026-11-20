@@ -3,9 +3,10 @@ import Link from "next/link";
 import { Wordmark } from "@/components/logo";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ArrowUpRight, Container } from "@/components/ui";
-import { repo } from "@/lib/content";
+import { learnNav, repo } from "@/lib/content";
 import { NAV } from "@/lib/site";
 
+/** Reading (principles, essays, guides) sits apart from the tools (skills) and About, so the two purposes stay distinct. */
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur-md">
@@ -14,7 +15,15 @@ export function SiteHeader() {
           <Wordmark />
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-8 text-sm font-medium text-fg-muted">
+          <ul className="flex items-center gap-6 text-sm font-medium text-fg-muted lg:gap-8">
+            {learnNav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="transition-colors hover:text-fg">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            {learnNav.length ? <li aria-hidden="true" className="h-4 w-px bg-line-strong" /> : null}
             {NAV.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="transition-colors hover:text-fg">
@@ -29,7 +38,7 @@ export function SiteHeader() {
             </li>
           </ul>
         </nav>
-        <MobileMenu />
+        <MobileMenu learn={learnNav} items={[...NAV]} repoUrl={repo.url} />
       </Container>
     </header>
   );

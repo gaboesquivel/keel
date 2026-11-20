@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { Wordmark } from "@/components/logo";
 import { ArrowUpRight, Container } from "@/components/ui";
-import { repo } from "@/lib/content";
+import { learnNav, repo } from "@/lib/content";
 import { CREATOR, SITE_TAGLINE } from "@/lib/site";
 
 export function SiteFooter() {
@@ -16,6 +16,13 @@ export function SiteFooter() {
           <p className="text-sm text-fg-muted">{SITE_TAGLINE}</p>
         </div>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-fg-muted">
+          {learnNav.map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} className="hover:text-fg">
+                {item.label}
+              </Link>
+            </li>
+          ))}
           <li>
             <Link href="/skills" className="hover:text-fg">
               Skills

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { CourseSection, HomeHero, InstallSection, SkillsSection, WhySection } from "@/components/home/sections";
+import { CourseSection, HomeHero, InstallSection, LibrarySection, SkillsSection, WhySection } from "@/components/home/sections";
 import { repo } from "@/lib/content";
 import { CREATOR, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, siteOrigin } from "@/lib/site";
 
@@ -41,6 +41,7 @@ export default function Home() {
       <HomeHero />
       <SkillsSection />
       <WhySection />
+      <LibrarySection />
       <CourseSection />
       <InstallSection />
     </>

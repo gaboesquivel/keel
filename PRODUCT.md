@@ -29,7 +29,7 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 - Independent and composable: no required order, chaining or lifecycle.
 - Every instruction must earn its place by changing behavior.
 
-These govern keel's own product decisions, including its skills, website and writing. The principles published on the website are broader guidance for people directing AI-powered product development: the two should agree, but need not match.
+These govern keel's own product decisions, including its skills, website and writing. The Library on the website is a broader body of knowledge for people directing AI-powered product development: the two should agree, but need not match.
 
 ## Scope
 
@@ -43,11 +43,22 @@ A skill belongs only if it:
 
 Skills may be changed, merged or removed.
 
-The website supports the skills: it presents them and publishes principles, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill.
+The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill.
+
+### Library
+
+An explorable, public collection of product, startup and software engineering ideas for people building with AI agents, browsed by concept, category, relationship and search. The author is its first user: it should help them learn, revisit important ideas and make better decisions, before it reaches anyone else.
+
+- It replaces the published principles: one collection, at `/library`, with `/principles` permanently redirected. The principles published so far and the curated concepts become its entries, with genuine duplicates consolidated rather than kept as separate entries. Essays and guides keep their routes and are discoverable alongside it.
+- Each entry is keel's own synthesis of an idea: it attributes the authors and links the original sources (with verified Wayback Machine copies where needed). It never reproduces copyrighted work.
+- **Ask**: describe a real problem or question and get a grounded perspective drawn only from the Library, with references to its entries. It faithfully represents the relevant concepts, keeps keel's interpretation apart from what the sources say, and says when the Library lacks the evidence to answer. It is a single question and answer, not a conversation.
+- Ask is available only to the author until real usage and answer quality justify opening it. The Library is public, and fully useful without Ask.
 
 ## Primary metric
 
 In dogfooding on real projects, how often a skill changes a decision or surfaces something plain Claude Code wouldn't, judged right on later review. Evaluated selectively, by comparing against baseline Claude Code on real work, not by logging every use. No baseline yet. Weakness: the author is also the judge.
+
+Supporting measure for the Library: how often consulting it, by browsing or through Ask, changes a decision the author later judges right. Reviewed from a lightweight record of Ask questions and answers, not an analytics workflow. No baseline yet; the same weakness applies.
 
 ## Non-goals
 
@@ -56,9 +67,15 @@ In dogfooding on real projects, how often a skill changes a decision or surfaces
 - No generic implementation workflow skills or mandatory processes, which agents already handle well. Specialized work (for example profiling or design critique) is not excluded, and the writing may teach practical engineering and agent-development techniques.
 - No growth in skill count for its own sake: each skill costs upkeep.
 - No fixed roadmap: candidate skills are explored, not committed.
+- The Library is not a blog or article feed: it is organised by idea and relationship, not by date.
+- Ask is not a general chatbot: no multi-turn conversation and no answers from outside the Library, because grounding is its value.
+- No user accounts for the Library or Ask: one private user doesn't justify the infrastructure.
+- Skills don't depend on the Library: they must work when installed alone.
 
 ## Open questions
 
 - Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design`, `slice` and `align` not yet measured.
 - Is there evidence of these problems beyond the author's own experience?
 - How much does it overlap with existing tools (for example the AgentOps `product` skill)? Not checked.
+- Library: the curated collection and its categories are not yet in the repository; categories are set once it is.
+- Ask: are its answers faithful enough, and used often enough, to open it publicly? Unknown until the author has used it on real questions.

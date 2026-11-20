@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: horizontal-plan
+expected_outcome: |
+  Identifies the plan as layer by layer with no usable result until the end, proposes an earlier
+  complete user-facing increment that includes the data, API and UI pieces it needs, and explains
+  why that boundary is better. Does not rewrite the plan or write code.
+context:
+  scaffold_script: place-files.sh

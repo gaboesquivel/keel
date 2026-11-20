@@ -6,7 +6,8 @@ These cases check whether a keel skill does better than plain Claude Code on the
 
 - `<skill>/<case>/`: one comparison case: `prompt.md` (settings block, then the prompt, which starts with `/<skill>`), `case.yaml` (expected outcome), `graders/*.md` (one expectation each) and `place-files.sh` (builds the project the run starts in).
 - `<skill>/<case>/files/` (optional): files that the case's `place-files.sh` adds on top of the shared fixture as a later commit, such as the Duesy MCP server or mobile client for `perf`.
-- `fixtures/`: Duesy, a small invoice-reminder app that every case shares. `setup.sh` builds a fresh copy with git history.
+- `fixtures/`: Duesy, a small invoice-reminder app that most cases share. `setup.sh` builds a fresh copy with git history.
+- `fixtures/shelf/`: Shelf, a neighbourhood tool-lending app, for `slice` cases that need a product at different stages. `shelf/setup.sh <dest> <stage> [--notes]` builds it with nothing built (0), browsing shipped (1), or borrow requests shipped with an earlier plan (2), optionally with pilot notes.
 - `compare.sh`: runs one case as a baseline and as a treatment.
 - `check-run.mjs`: decides whether a single arm's run can be used.
 - `results/`: local output, gitignored.

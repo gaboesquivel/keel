@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: repeated-slicing
+expected_outcome: |
+  Recognises that browsing and borrow requests are delivered, uses the pilot notes (lenders don't
+  see requests, 4 of 18 became loans, returns untracked, nobody asked for search) to reassess, and
+  recommends closing the request-to-loan gap rather than taking search and filters from the stale
+  plan. Writes no code or files.
+context:
+  scaffold_script: place-files.sh

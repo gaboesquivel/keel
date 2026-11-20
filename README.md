@@ -11,6 +11,7 @@ Website: [product-keel.vercel.app](https://product-keel.vercel.app/)
 | Skill | What it helps you do |
 | --- | --- |
 | [`/shape`](skills/shape/SKILL.md) | Decide what to build, for whom, why, and what to leave out. Preserve adopted product direction. |
+| [`/slice`](skills/slice/SKILL.md) | Find the next smallest useful increment from where the product stands today, with clear boundaries, and reassess as it evolves. |
 | [`/peer`](skills/peer/SKILL.md) | Get an independent second opinion, challenge assumptions, and better direct coding agents. |
 | [`/design`](skills/design/SKILL.md) | Shape visual direction, critique interfaces, explore prototypes, and verify rendered designs. |
 | [`/ux`](skills/ux/SKILL.md) | Walk real user journeys, uncover friction, and identify improvements supported by evidence. |

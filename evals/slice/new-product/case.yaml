@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: new-product
+expected_outcome: |
+  Recommends one first increment that a neighbour can complete end to end and that leads toward
+  completed loans, with deliberate exclusions and observable completion conditions, instead of a
+  full roadmap or a layer-by-layer plan. Writes no code or files.
+context:
+  scaffold_script: place-files.sh

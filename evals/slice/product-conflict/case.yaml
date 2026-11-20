@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: product-conflict
+expected_outcome: |
+  Surfaces that taking card payments conflicts with the documented non-goal on payment processing,
+  does not slice it as if it were accepted, and leaves the decision to the user, optionally noting
+  an in-direction alternative. Does not edit product documents or code.
+context:
+  scaffold_script: place-files.sh

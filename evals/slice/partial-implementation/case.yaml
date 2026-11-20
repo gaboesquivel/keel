@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: partial-implementation
+expected_outcome: |
+  Confirms from the code and history that browsing and tool details exist, treats them as delivered
+  but unverified with users, and recommends a next increment tied to completed loans, such as
+  asking to borrow with the lender actually learning of it, without rebuilding browsing. Writes no
+  code or files.
+context:
+  scaffold_script: place-files.sh

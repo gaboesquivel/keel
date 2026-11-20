@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: missing-evidence
+expected_outcome: |
+  Separates shipped from used and valuable, says there is no evidence yet of requests becoming
+  loans (and that the product cannot record loans, so the primary metric cannot be observed),
+  invents no usage, and questions search before the request-to-loan path is known to work. Writes
+  no code or files.
+context:
+  scaffold_script: place-files.sh

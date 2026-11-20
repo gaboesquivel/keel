@@ -69,20 +69,20 @@ describe("readingStats", () => {
 
 describe("sortWriting", () => {
   const e = (kind: string, title: string, extra: Record<string, unknown> = {}) => ({ kind, title, date: "2026-01-01", order: null, ...extra });
-  it("puts principles first, essays newest first, and guides by order then title", () => {
+  it("puts the library first, essays newest first, and guides by order then title", () => {
     const sorted = sortWriting([
       e("guide", "B"),
       e("guide", "Z", { order: 2 }),
       e("essay", "Old", { date: "2025-01-01" }),
       e("guide", "A", { order: 1 }),
-      e("principles", "Principles"),
+      e("library", "Library"),
       e("essay", "New", { date: "2026-06-01" }),
     ]);
-    expect(sorted.map((w: { title: string }) => w.title)).toEqual(["Principles", "New", "Old", "A", "Z", "B"]);
+    expect(sorted.map((w: { title: string }) => w.title)).toEqual(["Library", "New", "Old", "A", "Z", "B"]);
   });
 
   it("knows the published kinds and their routes", () => {
-    expect(WRITING_KINDS.map((k: { route: string }) => k.route)).toEqual(["/principles", "/essays", "/guides"]);
+    expect(WRITING_KINDS.map((k: { route: string }) => k.route)).toEqual(["/library", "/essays", "/guides"]);
   });
 });
 
@@ -91,8 +91,8 @@ describe("rendering writing", () => {
 
   it("keeps root-relative links as site routes and marks external links noopener", () => {
     const { render } = createRenderer({ ...options, rootLinksAreRoutes: true });
-    const { html } = render("[p](/principles) [s](/skills/shape#use) [g](/guides/parallel-agent-sessions) [x](https://example.com) [o](//evil.example)", source);
-    expect(html).toContain('href="/principles"');
+    const { html } = render("[p](/library) [s](/skills/shape#use) [g](/guides/parallel-agent-sessions) [x](https://example.com) [o](//evil.example)", source);
+    expect(html).toContain('href="/library"');
     expect(html).toContain('href="/skills/shape#use"');
     expect(html).toContain('href="/guides/parallel-agent-sessions"');
     expect(html).toContain('href="https://example.com" rel="noopener"');

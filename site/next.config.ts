@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    // The principles became the Library.
+    return [{ source: "/principles", destination: "/library", permanent: true }];
+  },
   async headers() {
     return [
       {

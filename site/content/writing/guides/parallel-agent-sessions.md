@@ -8,7 +8,7 @@ order: 1
 
 Running several coding agents at once is easy to start and easy to regret. Starting a second session takes seconds. Merging what two sessions built, against product decisions that moved while they worked, takes judgment. This guide is about that second part.
 
-The practical default it argues for is modest: short-lived branches, one independent worktree per session, focused pull requests, and integration done deliberately by a person. That is a default, not a lifecycle. Plenty of good work happens in one session, and nothing here says your project needs more than one; [focus over accumulation](/principles#focus-over-accumulation) applies to sessions as much as to features.
+The practical default it argues for is modest: short-lived branches, one independent worktree per session, focused pull requests, and integration done deliberately by a person. That is a default, not a lifecycle. Plenty of good work happens in one session, and nothing here says your project needs more than one; [focus over accumulation](/library#focus-over-accumulation) applies to sessions as much as to features.
 
 ## One session or several
 
@@ -183,7 +183,7 @@ When two branches both change one of these files, git will flag line overlaps, b
 
 A few rules hold up:
 
-- **Settle direction before the sessions start.** If a change of scope or audience is under discussion, decide it and commit it to main first ([preserve decisions without making them immutable](/principles#preserve-decisions-without-making-them-immutable)). Parallel sessions should build against settled context, not negotiate it.
+- **Settle direction before the sessions start.** If a change of scope or audience is under discussion, decide it and commit it to main first ([preserve decisions without making them immutable](/library#preserve-decisions-without-making-them-immutable)). Parallel sessions should build against settled context, not negotiate it.
 - **Let at most one session change a given document.** Others can propose changes in their pull request description or report, for a person to apply.
 - **Merge document changes by reading, not by resolving markers.** After integration, read the whole section that changed, not just the hunks.
 

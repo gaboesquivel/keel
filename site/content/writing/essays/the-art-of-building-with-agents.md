@@ -124,7 +124,7 @@ So I keep reading, keep building small things by hand now and then, and keep ask
 
 keel is a small, practical response to all of this. It is a set of independent agent skills, each aimed at one kind of judgment that capable agents do not reliably supply on their own: shaping what to build ([/skills/shape](/skills/shape)), choosing the next useful increment ([/skills/slice](/skills/slice)), getting an independent second opinion ([/skills/peer](/skills/peer)), looking back at whether something was worth building ([/skills/retro](/skills/retro)), and focused investigation of performance ([/skills/perf](/skills/perf)), usability ([/skills/ux](/skills/ux)) and visual design ([/skills/design](/skills/design)).
 
-They are not a methodology and have no required order. You use one when its question is the one in front of you, or not at all. The [principles](/principles) behind them are the longer version of this essay's argument, and like the skills, they are meant to change as agents and experience change.
+They are not a methodology and have no required order. You use one when its question is the one in front of you, or not at all. The [library](/library) behind them are the longer version of this essay's argument, and like the skills, they are meant to change as agents and experience change.
 
 The underlying conviction is simple. Agents provide the speed. Direction has to come from someone, and it is worth doing well.
 

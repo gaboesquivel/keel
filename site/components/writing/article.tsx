@@ -4,7 +4,7 @@ import { Prose } from "@/components/prose";
 import { Breadcrumbs, Container, Eyebrow, TextLink } from "@/components/ui";
 import { formatDate, type Heading, type Writing, writing } from "@/lib/content";
 
-const KIND_LABEL = { principles: "Principles", essay: "Essay", guide: "Guide" } as const;
+const KIND_LABEL = { library: "Library", essay: "Essay", guide: "Guide" } as const;
 const SECTION = { essay: { href: "/essays", label: "Essays" }, guide: { href: "/guides", label: "Guides" } } as const;
 
 /** Minimum number of sections before a page gets a table of contents. */
@@ -35,7 +35,7 @@ const nextReads = (entry: Writing) => {
 export function Article({ entry }: { entry: Writing }) {
   const sections = entry.headings.filter((h) => h.depth === 2);
   const showToc = sections.length >= TOC_MIN;
-  const section = entry.kind === "principles" ? null : SECTION[entry.kind];
+  const section = entry.kind === "library" ? null : SECTION[entry.kind];
   const more = nextReads(entry);
 
   return (
@@ -48,7 +48,7 @@ export function Article({ entry }: { entry: Writing }) {
           <h1 className="headline mt-6 text-[clamp(2.4rem,5.4vw,4rem)] text-fg">{entry.title}</h1>
           {entry.subtitle ? <p className="mt-6 max-w-[38rem] text-xl font-medium leading-snug tracking-[-0.015em] text-fg-muted sm:text-2xl">{entry.subtitle}</p> : null}
           <p className="label-mono mt-8 flex flex-wrap gap-x-3 gap-y-1">
-            {entry.kind !== "principles" ? (
+            {entry.kind !== "library" ? (
               <>
                 <time dateTime={entry.date}>{formatDate(entry.date)}</time>
                 <span aria-hidden="true">·</span>

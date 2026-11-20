@@ -69,7 +69,7 @@ That one paragraph prevents a failure worth preventing: an agent meets a surpris
 
 Agents start each session without your history. Decisions that were settled last week (who the product is for, what is deliberately out of scope, which tradeoff you chose) are invisible unless they are written down somewhere the agent reads.
 
-Keep those decisions in the repository: a `CLAUDE.md` for working conventions, and product or design documents for direction. keel uses `PRODUCT.md` and `DESIGN.md`, and [preserves decisions without making them immutable](/principles#preserve-decisions-without-making-them-immutable). Then brief against them instead of restating them:
+Keep those decisions in the repository: a `CLAUDE.md` for working conventions, and product or design documents for direction. keel uses `PRODUCT.md` and `DESIGN.md`, and [preserves decisions without making them immutable](/library#preserve-decisions-without-making-them-immutable). Then brief against them instead of restating them:
 
 ```text
 Before
@@ -195,7 +195,7 @@ The opposite failure is real too. A reviewer, especially an agent asked to "find
 
 ## Evidence and uncertainty
 
-Ask agents to state what they verified and what they assumed, and do the same in your own reviews. "The migration runs on a fresh database; I did not test it against a copy of production data" is a complete, honest status. "Everything works" is not. This is [evidence over assumptions](/principles#evidence-over-assumptions) applied to a single change.
+Ask agents to state what they verified and what they assumed, and do the same in your own reviews. "The migration runs on a fresh database; I did not test it against a copy of production data" is a complete, honest status. "Everything works" is not. This is [evidence over assumptions](/library#evidence-over-assumptions) applied to a single change.
 
 When uncertainty matters, turn it into a check rather than a debate. If you are unsure whether a change slows down a page, measure it. If you are unsure whether users will find a setting, that is a product question, and no amount of code review will settle it.
 
@@ -217,7 +217,7 @@ Two kinds of question arrive in every review, and they need different people, or
 
 **Implementation questions** have answers you can check: does it work, is it correct, does it follow the project's conventions, is it fast enough. Agents handle these well, and a separately briefed agent can check them.
 
-**Product questions** are judgments: should this exist, who is it for, is this the right tradeoff, what does it mean for what we said we would not do. An agent can lay out options and consequences, and that is useful. The decision belongs to whoever is accountable for the product: [humans direct; agents execute](/principles#humans-direct-agents-execute), and [ownership does not delegate](/essays/the-art-of-building-with-agents#ownership-does-not-delegate).
+**Product questions** are judgments: should this exist, who is it for, is this the right tradeoff, what does it mean for what we said we would not do. An agent can lay out options and consequences, and that is useful. The decision belongs to whoever is accountable for the product: [humans direct; agents execute](/library#humans-direct-agents-execute), and [ownership does not delegate](/essays/the-art-of-building-with-agents#ownership-does-not-delegate).
 
 Keeping the two apart makes both reviews better. Do not let a well-built implementation carry a product decision through review on the strength of its code quality. And do not reopen settled product decisions in a code review unless there is new evidence; that is how projects drift without anyone choosing to.
 
@@ -225,7 +225,7 @@ Keeping the two apart makes both reviews better. Do not let a well-built impleme
 
 - [Claude Code: best practices](https://code.claude.com/docs/en/best-practices): Anthropic's guidance, organized around telling Claude what it cannot see from the code and giving it a check to run.
 - [Claude Code: common workflows](https://code.claude.com/docs/en/common-workflows): recipes for plan mode, subagents and pull requests.
-- [keel principles](/principles): the ideas these practices rest on, including evidence over assumptions and preserving decisions.
+- [keel library](/library): the ideas these practices rest on, including evidence over assumptions and preserving decisions.
 - [The Art of Building with Agents](/essays/the-art-of-building-with-agents): why directing and reviewing become the main work when implementation gets cheap.
 - [keel /peer](/skills/peer): an independent second-opinion skill for briefing and reviewing a separate implementing agent.
 - [Developing with Parallel Agent Sessions](/guides/parallel-agent-sessions): how to split work across sessions and integrate it again.

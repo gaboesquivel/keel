@@ -8,7 +8,7 @@ const images = [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${SIT
 
 /** Page metadata for one piece of writing. Essays and guides are articles with a publish date; the OG image comes from app/opengraph-image. */
 export const writingMetadata = (entry: Writing): Metadata => {
-  const isArticle = entry.kind !== "principles";
+  const isArticle = entry.kind !== "library";
   return {
     title: entry.title,
     description: entry.description,

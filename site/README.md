@@ -1,6 +1,6 @@
 # keel website
 
-The public site for keel: the homepage, the skill catalog, one page per skill, the principles, essays and guides, and About. Next.js (App Router), React, TypeScript, Tailwind and pnpm, statically generated. It started as a simplified copy of the Flow Skills website.
+The public site for keel: the homepage, the skill catalog, one page per skill, the Library, essays and guides, and About. Next.js (App Router), React, TypeScript, Tailwind and pnpm, statically generated. It started as a simplified copy of the Flow Skills website.
 
 ## Develop
 
@@ -21,7 +21,7 @@ Rendering escapes raw HTML, drops unsafe link schemes, links `skills/<name>/SKIL
 
 ### Writing
 
-Principles, essays and guides are Markdown in [`content/writing/`](content/writing): `principles.md` → `/principles`, `essays/<slug>.md` → `/essays/<slug>`, `guides/<slug>.md` → `/guides/<slug>` (the file name is the slug). The same build renders them into the `writing` collection of the generated content, with headings for the contents list, a word count and reading time.
+The Library, essays and guides are Markdown in [`content/writing/`](content/writing): `library.md` → `/library` (`/principles` redirects there permanently), `essays/<slug>.md` → `/essays/<slug>`, `guides/<slug>.md` → `/guides/<slug>` (the file name is the slug). The same build renders them into the `writing` collection of the generated content, with headings for the contents list, a word count and reading time.
 
 ```
 ---
@@ -33,7 +33,7 @@ order: 1   # optional, orders the guides index
 ---
 ```
 
-Frontmatter is flat `key: value` lines. The body starts at `##` (the page renders the title as the only h1); no raw HTML, images or footnotes. Root-relative links (`/principles`, `/skills/shape`) stay site routes; external links get `rel="noopener"`. The build fails, naming the file, on a missing title, description or date, a multi-line or over-long description, a date that isn't a real YYYY-MM-DD, a non-numeric `order`, a non-kebab-case file name or an h1. A missing file or directory is not an error: that section, its navigation link and its sitemap entries are simply absent. Essays are published only when `KEEL_ESSAYS=on` at build time; without it the essays section is left out like a missing one, and links to `/essays` in other writing keep their text but lose the link. Production (main) leaves it unset; the Vercel Preview environment for the `essays` branch sets it. To try layouts without touching `content/writing/`, point the build at another directory with `KEEL_WRITING_DIR=/path/to/writing pnpm build`. New kinds (such as field notes) are added to `WRITING_KINDS` in `scripts/content-lib.mjs` together with their routes.
+Frontmatter is flat `key: value` lines. The body starts at `##` (the page renders the title as the only h1); no raw HTML, images or footnotes. Root-relative links (`/library`, `/skills/shape`) stay site routes; external links get `rel="noopener"`. The build fails, naming the file, on a missing title, description or date, a multi-line or over-long description, a date that isn't a real YYYY-MM-DD, a non-numeric `order`, a non-kebab-case file name or an h1. A missing file or directory is not an error: that section, its navigation link and its sitemap entries are simply absent. Essays are published only when `KEEL_ESSAYS=on` at build time; without it the essays section is left out like a missing one, and links to `/essays` in other writing keep their text but lose the link. Production (main) leaves it unset; the Vercel Preview environment for the `essays` branch sets it. To try layouts without touching `content/writing/`, point the build at another directory with `KEEL_WRITING_DIR=/path/to/writing pnpm build`. New kinds (such as field notes) are added to `WRITING_KINDS` in `scripts/content-lib.mjs` together with their routes.
 
 | Script | Purpose |
 | --- | --- |
@@ -47,8 +47,8 @@ Frontmatter is flat `key: value` lines. The body starts at `##` (the page render
 | --- | --- |
 | `scripts/content-lib.mjs` | Markdown rendering and the skill and writing source contracts; pure, tested by `lib/skill-source.test.ts` and `lib/writing-source.test.ts` |
 | `scripts/build-content.mjs` | Reads `../skills` and `content/writing/` and writes the generated content |
-| `content/writing/` | Principles, essays and guides (Markdown) |
-| `app/principles`, `app/essays`, `app/guides` | Reading pages and section indexes; 404 when their source is absent |
+| `content/writing/` | Library, essays and guides (Markdown) |
+| `app/library`, `app/essays`, `app/guides` | Reading pages and section indexes; 404 when their source is absent |
 | `components/writing/article.tsx`, `lib/writing-metadata.ts` | Article layout, contents list, index lists, and article metadata |
 | `content/skills.mjs` | Presentation copy and display order |
 | `components/home/sections.tsx` | Homepage sections |

@@ -61,7 +61,7 @@ export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRout
   const rewriteHref = (href, sourcePath) => {
     if (!href || /^(?:[a-z][a-z0-9+.-]*:|\/\/)/iu.test(href)) return href
     if (href.startsWith('#')) return href
-    // Authored writing links to site routes such as `/principles`; keep those as they are.
+    // Authored writing links to site routes such as `/library`; keep those as they are.
     if (rootLinksAreRoutes && href.startsWith('/') && !/^\/[/\\]/u.test(href)) return href
     const [pathPart = '', hash] = href.split('#')
     const resolved = posix.normalize(posix.join(posix.dirname(sourcePath), pathPart))
@@ -130,7 +130,7 @@ export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRout
  * file, routed by its file name. Adding a kind (for example field notes) means adding an entry here and its routes.
  */
 export const WRITING_KINDS = [
-  { kind: 'principles', file: 'principles.md', route: '/principles' },
+  { kind: 'library', file: 'library.md', route: '/library' },
   { kind: 'essay', dir: 'essays', route: '/essays' },
   { kind: 'guide', dir: 'guides', route: '/guides' },
 ]
@@ -212,7 +212,7 @@ export const parseWriting = ({ kind, slug, route, source, text }) => {
   }
 }
 
-/** Display order: principles, then essays newest first, then guides by `order` (unordered last) and title. */
+/** Display order: the library, then essays newest first, then guides by `order` (unordered last) and title. */
 export const sortWriting = (entries) => {
   const rank = Object.fromEntries(WRITING_KINDS.map((k, i) => [k.kind, i]))
   return entries.slice().sort((a, b) => {

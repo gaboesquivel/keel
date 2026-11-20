@@ -31,7 +31,7 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 
 ## Scope
 
-A small set of independent skills, each with a clear, distinct responsibility. Today: `shape` (what to build, scope, preserved intent), `slice` (the next smallest useful end-to-end increment, reassessed against what is already delivered and learned), `peer` (an independent second opinion for directing and evaluating coding agents), `retro` (looking back at whether what was delivered was worth building that way), `perf` (measured diagnosis of where time and resources go in web apps, mobile apps, backends and APIs, and MCP servers, and whether a change helped), `ux` (user journeys, interaction flows, usability, friction, feedback, accessibility and task completion) and `design` (visual language, typography, layout, hierarchy, consistency and aesthetics).
+A small set of independent skills, each with a clear, distinct responsibility. Today: `shape` (what to build, scope, preserved intent), `slice` (the next smallest useful end-to-end increment, reassessed against what is already delivered and learned), `peer` (an independent second opinion for directing and evaluating coding agents), `retro` (looking back at whether what was delivered was worth building that way), `align` (whether accepted intent, documents and implementation still agree, telling intentional evolution from drift), `perf` (measured diagnosis of where time and resources go in web apps, mobile apps, backends and APIs, and MCP servers, and whether a change helped), `ux` (user journeys, interaction flows, usability, friction, feedback, accessibility and task completion) and `design` (visual language, typography, layout, hierarchy, consistency and aesthetics).
 
 A skill belongs only if it:
 

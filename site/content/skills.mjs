@@ -3,7 +3,7 @@
 // Keep this copy faithful to those files. The content build fails when this list and skills/ disagree.
 
 /** Display order on the site. Order is presentation only: the skills are independent and run in any order. */
-export const ORDER = ['shape', 'slice', 'peer', 'design', 'ux', 'perf', 'retro']
+export const ORDER = ['shape', 'slice', 'peer', 'design', 'ux', 'perf', 'retro', 'align']
 
 export const PRESENTATION = {
   shape: {
@@ -102,6 +102,20 @@ export const PRESENTATION = {
     example: {
       situation: 'A feature shipped a few months ago and you are deciding whether to invest in it further.',
       invocation: '/retro the saved searches feature',
+    },
+  },
+  align: {
+    headline: 'Keep the code and its decisions in step.',
+    tagline: 'Intent, documents and code in agreement.',
+    lede: 'Checks whether your project still reflects its accepted product, architecture and design decisions, and whether a difference is deliberate evolution or drift.',
+    benefits: [
+      'Neither the documents nor the code assumed correct: Git history decides which one moved and whether that was intended.',
+      'Only material inconsistencies, each with its evidence and the smallest correction, and a plain “aligned” when there are none.',
+      'Read-only: nothing in the code, the documents or the direction changes unless you ask.',
+    ],
+    example: {
+      situation: 'After weeks of agent sessions, you suspect PRODUCT.md no longer describes what the product has become.',
+      invocation: '/align',
     },
   },
 }

@@ -1,0 +1,8 @@
+schema_version: "1.1"
+name: inconclusive-change
+expected_outcome: |
+  Reads the recorded before and after runs, finds the difference within the run-to-run variation,
+  calls the result inconclusive rather than a win or a regression, notes what a comparable measurement
+  would need, and does not change code.
+context:
+  scaffold_script: place-files.sh

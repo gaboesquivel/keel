@@ -1,0 +1,9 @@
+schema_version: "1.1"
+name: static-claim
+expected_outcome: |
+  Treats the reviewer's point as a static observation whose runtime cost is unmeasured, uses the
+  repository's usage evidence (few users, small client lists), measures the parser on a realistic or
+  deliberately large input if it measures at all, and does not recommend or make a rewrite without
+  evidence that it matters.
+context:
+  scaffold_script: place-files.sh

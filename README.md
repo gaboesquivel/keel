@@ -14,7 +14,7 @@ Website: [product-keel.vercel.app](https://product-keel.vercel.app/)
 | [`/peer`](skills/peer/SKILL.md) | Get an independent second opinion, challenge assumptions, and better direct coding agents. |
 | [`/design`](skills/design/SKILL.md) | Shape visual direction, critique interfaces, explore prototypes, and verify rendered designs. |
 | [`/ux`](skills/ux/SKILL.md) | Walk real user journeys, uncover friction, and identify improvements supported by evidence. |
-| [`/perf`](skills/perf/SKILL.md) | Measure performance, identify bottlenecks, and verify improvements. |
+| [`/perf`](skills/perf/SKILL.md) | Measure performance across web, mobile, APIs and MCP servers, identify bottlenecks, and verify improvements. |
 | [`/retro`](skills/retro/SKILL.md) | Revisit delivered product decisions, compare intent with outcomes, and decide what should change. |
 
 Each skill works independently. Invoke whichever one you need, whenever you need it. No required order or automatic chaining.

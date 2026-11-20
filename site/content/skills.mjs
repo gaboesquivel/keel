@@ -109,7 +109,7 @@ export const PRESENTATION = {
     tagline: 'Intent, documents and code in agreement.',
     lede: 'Checks whether your project still reflects its accepted product, architecture and design decisions, and whether a difference is deliberate evolution or drift.',
     benefits: [
-      'Neither the documents nor the code assumed correct: Git history decides which one moved and whether that was intended.',
+      'Neither the documents nor the code assumed correct: Git history shows what changed, and unclear intent or approval is flagged, not guessed.',
       'Only material inconsistencies, each with its evidence and the smallest correction, and a plain “aligned” when there are none.',
       'Read-only: nothing in the code, the documents or the direction changes unless you ask.',
     ],

@@ -53,8 +53,11 @@ export const createSiteRoutes = (skillNames) => (repoPath) => {
  * Markdown renderer bound to the repository. Relative links resolve against the source file and become a site route
  * when one exists, otherwise the file on GitHub. With `rootLinksAreRoutes`, root-relative links (`/skills/shape`) are
  * kept as site routes instead of being resolved against the source file. Raw HTML is shown as text and unsafe link schemes lose their link.
+ * Links into `hiddenRoutes` (sections not published in this build, such as `/essays`) keep their text but lose their link.
+ * @param {{ repoUrl: string, branch: string, siteRouteFor: (repoPath: string) => string | null, rootLinksAreRoutes?: boolean, hiddenRoutes?: string[] }} options
  */
-export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRoutes = false }) => {
+export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRoutes = false, hiddenRoutes = [] }) => {
+  const isHidden = (href) => hiddenRoutes.some((r) => href === r || href.startsWith(`${r}/`) || href.startsWith(`${r}#`))
   const rewriteHref = (href, sourcePath) => {
     if (!href || /^(?:[a-z][a-z0-9+.-]*:|\/\/)/iu.test(href)) return href
     if (href.startsWith('#')) return href
@@ -104,6 +107,7 @@ export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRout
           const inner = this.parser.parseInline(tokens)
           // A leading "//" or "/\\" leaves the site, so it is not treated as an internal link.
           if (!/^(?:https?:|mailto:|\/(?![/\\])|#)/iu.test(href)) return inner
+          if (isHidden(href)) return inner
           const t = title ? ` title="${escapeHtml(title)}"` : ''
           const rel = /^https?:/u.test(href) ? ' rel="noopener"' : ''
           return `<a href="${escapeHtml(href)}"${t}${rel}>${inner}</a>`

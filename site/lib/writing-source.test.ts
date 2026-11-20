@@ -99,6 +99,15 @@ describe("rendering writing", () => {
     expect(html).not.toContain("evil.example");
   });
 
+  it("keeps the text but drops the link for routes not published in this build", () => {
+    const { render } = createRenderer({ ...options, rootLinksAreRoutes: true, hiddenRoutes: ["/essays"] });
+    const { html } = render("[e](/essays) [a](/essays/the-art#x) [b](/essays#y) [g](/guides) [n](/essaysx)", source);
+    expect(html).not.toMatch(/href="\/essays["/#]/u);
+    expect(html).toContain("<p>e a b ");
+    expect(html).toContain('href="/guides"');
+    expect(html).toContain('href="/essaysx"');
+  });
+
   it("leaves skill rendering unchanged: root-relative links still resolve against the source file", () => {
     const { rewriteHref } = createRenderer(options);
     expect(rewriteHref("/principles", "skills/shape/SKILL.md")).toBe("https://github.com/gaboesquivel/keel/tree/main/skills/shape/principles");

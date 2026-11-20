@@ -15,13 +15,17 @@ const repoRoot = resolve(siteRoot, '..')
 const skillsRoot = join(repoRoot, 'skills')
 const outDir = join(siteRoot, 'content/generated')
 const writingRoot = process.env.KEEL_WRITING_DIR ? resolve(process.env.KEEL_WRITING_DIR) : join(siteRoot, 'content/writing')
+// Essays are published only when KEEL_ESSAYS is on (set per branch in Vercel). Off by default, so main hides them.
+const essaysOn = /^(?:1|true|on)$/iu.test(process.env.KEEL_ESSAYS ?? '')
+const publishedKinds = WRITING_KINDS.filter((k) => k.kind !== 'essay' || essaysOn)
+const hiddenRoutes = WRITING_KINDS.filter((k) => !publishedKinds.includes(k)).map((k) => k.route)
 const writingSource = (rel) => (process.env.KEEL_WRITING_DIR ? `${writingRoot}/${rel}` : `site/content/writing/${rel}`)
 
 /** Every piece of writing that exists. A missing file or directory is not an error: that section is simply not published. */
 const readWriting = () => {
   const problems = []
   const entries = []
-  for (const { kind, file, dir, route } of WRITING_KINDS) {
+  for (const { kind, file, dir, route } of publishedKinds) {
     const files = file
       ? [{ rel: file, slug: null }]
       : existsSync(join(writingRoot, dir))
@@ -76,7 +80,7 @@ const build = () => {
   if (problems.length) return problems
 
   const { render } = createRenderer({ repoUrl, branch: REPO.branch, siteRouteFor: createSiteRoutes(names) })
-  const { render: renderWriting } = createRenderer({ repoUrl, branch: REPO.branch, siteRouteFor: createSiteRoutes(names), rootLinksAreRoutes: true })
+  const { render: renderWriting } = createRenderer({ repoUrl, branch: REPO.branch, siteRouteFor: createSiteRoutes(names), rootLinksAreRoutes: true, hiddenRoutes })
   const writing = written.entries.map(({ body, ...entry }) => ({ ...entry, ...renderWriting(body, entry.source) }))
 
   const skills = ORDER.map((name) => {
@@ -112,6 +116,7 @@ const build = () => {
   const content = { generatedAt: new Date().toISOString(), commit, repo: { ...REPO, url: repoUrl }, skills, writing }
   writeFileSync(join(outDir, 'content.json'), `${JSON.stringify(content)}\n`)
   console.log(`content: ${skills.length} skills from skills/*/SKILL.md (${skills.map((s) => s.name).join(', ')})`)
+  if (hiddenRoutes.length) console.log(`content: not published in this build: ${hiddenRoutes.join(', ')} (set KEEL_ESSAYS=on to publish essays)`)
   console.log(`content: ${writing.length} pieces of writing${writing.length ? ` (${writing.map((w) => w.route).join(', ')})` : ''}`)
   return []
 }

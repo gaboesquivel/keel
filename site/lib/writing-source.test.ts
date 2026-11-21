@@ -69,20 +69,19 @@ describe("readingStats", () => {
 
 describe("sortWriting", () => {
   const e = (kind: string, title: string, extra: Record<string, unknown> = {}) => ({ kind, title, date: "2026-01-01", order: null, ...extra });
-  it("puts the library first, essays newest first, and guides by order then title", () => {
+  it("puts essays newest first, then guides by order then title", () => {
     const sorted = sortWriting([
       e("guide", "B"),
       e("guide", "Z", { order: 2 }),
       e("essay", "Old", { date: "2025-01-01" }),
       e("guide", "A", { order: 1 }),
-      e("library", "Library"),
       e("essay", "New", { date: "2026-06-01" }),
     ]);
-    expect(sorted.map((w: { title: string }) => w.title)).toEqual(["Library", "New", "Old", "A", "Z", "B"]);
+    expect(sorted.map((w: { title: string }) => w.title)).toEqual(["New", "Old", "A", "Z", "B"]);
   });
 
   it("knows the published kinds and their routes", () => {
-    expect(WRITING_KINDS.map((k: { route: string }) => k.route)).toEqual(["/library", "/essays", "/guides"]);
+    expect(WRITING_KINDS.map((k: { route: string }) => k.route)).toEqual(["/essays", "/guides"]);
   });
 });
 

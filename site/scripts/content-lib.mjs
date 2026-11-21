@@ -130,7 +130,6 @@ export const createRenderer = ({ repoUrl, branch, siteRouteFor, rootLinksAreRout
  * file, routed by its file name. Adding a kind (for example field notes) means adding an entry here and its routes.
  */
 export const WRITING_KINDS = [
-  { kind: 'library', file: 'library.md', route: '/library' },
   { kind: 'essay', dir: 'essays', route: '/essays' },
   { kind: 'guide', dir: 'guides', route: '/guides' },
 ]
@@ -212,7 +211,7 @@ export const parseWriting = ({ kind, slug, route, source, text }) => {
   }
 }
 
-/** Display order: the library, then essays newest first, then guides by `order` (unordered last) and title. */
+/** Display order: essays newest first, then guides by `order` (unordered last) and title. */
 export const sortWriting = (entries) => {
   const rank = Object.fromEntries(WRITING_KINDS.map((k, i) => [k.kind, i]))
   return entries.slice().sort((a, b) => {

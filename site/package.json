@@ -16,10 +16,12 @@
     "qa": "pnpm lint && pnpm check-types && pnpm test"
   },
   "dependencies": {
+    "ai": "7.0.150",
     "lucide-react": "^1.61.0",
     "next": "16.4.6",
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -30,7 +32,8 @@
     "oxlint": "^1.89.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.11",
+    "yaml": "^2.9.1"
   },
   "engines": {
     "node": "24.x"

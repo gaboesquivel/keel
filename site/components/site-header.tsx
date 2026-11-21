@@ -6,7 +6,7 @@ import { ArrowUpRight, Container } from "@/components/ui";
 import { learnNav, repo } from "@/lib/content";
 import { NAV } from "@/lib/site";
 
-/** Reading (guides, library, essays) sits apart from the tools (skills) and About, so the two purposes stay distinct. */
+/** Reading (guides, the Library, essays) sits apart from the tools (skills) and About, so the two purposes stay distinct. */
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/85 backdrop-blur-md">

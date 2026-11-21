@@ -23,7 +23,7 @@ export type Skill = {
 };
 
 /** Kinds of authored writing under content/writing/. The list can grow (for example field notes) with its routes. */
-export type WritingKind = "library" | "essay" | "guide";
+export type WritingKind = "essay" | "guide";
 
 /** One piece of authored writing from content/writing/, rendered at build time. */
 export type Writing = {
@@ -43,12 +43,48 @@ export type Writing = {
   headings: Heading[];
 };
 
+export type LibrarySource = {
+  title: string;
+  author: string | null;
+  work: string | null;
+  publisher: string | null;
+  year: number | null;
+  kind: string;
+  url: string;
+  /** YYYY-MM-DD, when the link and archive were last verified */
+  checked: string;
+  status: "live" | "archived-only";
+  archive: string | null;
+  note: string | null;
+};
+
+export type ConceptLink = { slug: string; note: string | null };
+
+export type Concept = {
+  slug: string;
+  source: string;
+  title: string;
+  summary: string;
+  topic: string;
+  byline: string;
+  origin: "source" | "keel";
+  keywords: string[];
+  sources: LibrarySource[];
+  sections: { id: string; title: string; html: string; text: string }[];
+  connections: { buildsOn: ConceptLink[]; builtOnBy: ConceptLink[]; tension: ConceptLink[]; related: ConceptLink[] };
+  words: number;
+};
+
+export type Topic = { slug: string; title: string; short: string; description: string };
+export type Question = { slug: string; title: string; framing: string; concepts: { slug: string; why: string }[] };
+
 type Content = {
   generatedAt: string;
   commit: string | null;
   repo: { owner: string; name: string; branch: string; url: string };
   skills: Skill[];
   writing: Writing[];
+  library: { topics: Topic[]; questions: Question[]; concepts: Concept[] };
 };
 
 export const content = raw as unknown as Content;
@@ -59,15 +95,17 @@ export const getSkill = (name: string) => skills.find((s) => s.name === name);
 
 /** Authored writing in display order. A section with no files is absent, so nothing links to an empty page. */
 export const writing = content.writing;
-export const library = writing.find((w) => w.kind === "library");
 export const essays = writing.filter((w) => w.kind === "essay");
 export const guides = writing.filter((w) => w.kind === "guide");
 export const getWriting = (kind: WritingKind, slug: string) => writing.find((w) => w.kind === kind && w.slug === slug);
 
+/** The Library: concepts ordered by topic, then title. Empty when content/library has no concepts. */
+export const library = content.library;
+
 /** Learning pages for navigation; only sections that have content. */
 export const learnNav = [
   ...(guides.length ? [{ href: "/guides", label: "Guides" }] : []),
-  ...(library ? [{ href: "/library", label: "Library" }] : []),
+  ...(library.concepts.length ? [{ href: "/library", label: "Library" }] : []),
   ...(essays.length ? [{ href: "/essays", label: "Essays" }] : []),
 ];
 

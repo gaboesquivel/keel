@@ -8,15 +8,12 @@ const images = [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${SIT
 
 /** Page metadata for one piece of writing. Essays and guides are articles with a publish date; the OG image comes from app/opengraph-image. */
 export const writingMetadata = (entry: Writing): Metadata => {
-  const isArticle = entry.kind !== "library";
   return {
     title: entry.title,
     description: entry.description,
     authors: [{ name: CREATOR.name, url: CREATOR.url }],
     alternates: { canonical: entry.route },
-    openGraph: isArticle
-      ? { type: "article", siteName: SITE_NAME, title: entry.title, description: entry.description, url: entry.route, publishedTime: entry.date, authors: [CREATOR.url], images }
-      : { type: "website", siteName: SITE_NAME, title: entry.title, description: entry.description, url: entry.route, images },
+    openGraph: { type: "article", siteName: SITE_NAME, title: entry.title, description: entry.description, url: entry.route, publishedTime: entry.date, authors: [CREATOR.url], images },
     twitter: { card: "summary_large_image", title: entry.title, description: entry.description, images },
   };
 };

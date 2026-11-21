@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { content, essays, guides, skills, writing } from "@/lib/content";
+import { content, essays, guides, library, skills, writing } from "@/lib/content";
 import { siteOrigin } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -14,6 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...(essays.length ? ["/essays"] : []),
     ...(guides.length ? ["/guides"] : []),
     ...writing.map((w) => w.route),
+    ...(library.concepts.length
+      ? [
+          "/library",
+          ...library.concepts.map((c) => `/library/${c.slug}`),
+          ...library.topics.map((t) => `/library/topics/${t.slug}`),
+          ...library.questions.map((q) => `/library/questions/${q.slug}`),
+        ]
+      : []),
   ];
   return paths.map((path) => ({
     changeFrequency: "weekly",

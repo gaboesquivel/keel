@@ -5,6 +5,8 @@ description: The ideas behind keel. Humans set direction and stay accountable, s
 date: 2026-11-19
 ---
 
+<!-- Set aside on 2026-11-20: keel's earlier published principles, kept so the writing isn't lost. Not published on the website; /principles redirects to the Library. keel's governing principles live in PRODUCT.md. -->
+
 ## Why principles, and why now
 
 Coding agents changed the price of implementation. A settings page, a CSV export, a second authentication provider, a caching layer: each can now arrive within a session, often with tests and docs. What did not get cheaper is everything around the code. Someone still has to decide whether the settings page should exist, maintain it once it does, explain it to users, and live with the paths it closes off.

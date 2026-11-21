@@ -1,0 +1,155 @@
+# The Library's curated index: topics in display order, and the questions that start exploration.
+# Concepts live one per file in concepts/<slug>.md and name their topic. Every slug here must exist; the build checks it.
+
+topics:
+  - slug: lean-startup
+    title: Lean Startup
+    description: Treat a new product as a set of guesses and learn which ones are true before the money and time run out.
+  - slug: discovery
+    title: Product Discovery
+    description: Find the problems worth solving by understanding customers' lives, not by asking them to approve your ideas.
+  - slug: strategy
+    title: Strategy & Metrics
+    short: Strategy & Metrics
+    description: Choose the outcome that matters, measure it honestly, and judge work by what changed rather than what shipped.
+  - slug: startups
+    title: Startups & Business Models
+    short: Entrepreneurship
+    description: Search for a business that works, earn your first users by hand, and know what you are actually competing with.
+  - slug: simplicity
+    title: Simplicity & Scope
+    description: Decide what not to build, give work a fixed budget, and make the core of the product excellent before the edges.
+  - slug: software-design
+    title: Software Design
+    description: Keep software cheap to change by hiding complexity, earning abstractions and growing the design in small, safe steps.
+  - slug: agents
+    title: Building with Agents
+    description: Direct capable coding agents without losing the product's intent, its decisions or the judgment that keeps it on course.
+
+questions:
+  - slug: what-to-validate-first
+    title: What should I validate first?
+    framing: >-
+      Most new products fail on an assumption nobody tested, not on the code. Before building, find the belief that would
+      sink the idea if it were wrong, and test that one cheaply. Talking to people about their past behavior usually
+      beats building anything at all.
+    concepts:
+      - concept: riskiest-assumption-first
+        why: Rank your assumptions by how lethal and how uncertain they are, and test the top one.
+      - concept: problem-interviews
+        why: Learn whether the problem is real from what people have done, not from what they say they would do.
+      - concept: lean-canvas
+        why: Lay the whole business out on one page so the weakest box is visible.
+      - concept: minimum-viable-product
+        why: When you do build, build the smallest thing that answers the question.
+      - concept: jobs-to-be-done
+        why: Check that you understand the progress people are trying to make, not just the feature they ask for.
+
+  - slug: too-many-features
+    title: Am I building too many features?
+    framing: >-
+      When building gets cheap, nothing slows the pile-up. Every feature brings design, support and maintenance with it,
+      and a product that does many things adequately is rarely chosen over one that does the important thing well.
+      These ideas help you say no, decide the size of the work up front, and find the part that matters.
+    concepts:
+      - concept: start-with-no
+        why: Make "no" the default answer and let a feature earn its way in.
+      - concept: find-the-epicenter
+        why: Identify the core the product can't live without and build that first.
+      - concept: appetite
+        why: Decide how much a problem is worth before designing the solution, then fit the solution to that budget.
+      - concept: build-less
+        why: Treat fewer features as a deliberate competitive choice, not a gap.
+      - concept: forget-feature-requests
+        why: Stop tracking every request; the important ones keep coming back.
+      - concept: product-drift
+        why: Notice when many reasonable additions have moved the product away from its purpose.
+
+  - slug: right-metric
+    title: How do I find the right metric?
+    framing: >-
+      A good metric changes what you do next. Most dashboards are full of numbers that only ever go up and never force a
+      decision. Pick the measure that reflects value for customers at your current stage, and be ready to change it when
+      the stage changes.
+    concepts:
+      - concept: one-metric-that-matters
+        why: Focus on a single number for now, chosen for the stage you are in.
+      - concept: vanity-metrics
+        why: Tell numbers that inform decisions apart from numbers that only feel good.
+      - concept: north-star-metric
+        why: Find a durable measure of the value customers get, with inputs the team can move.
+      - concept: pirate-metrics
+        why: Break the customer journey into stages and see where people drop out.
+      - concept: outcomes-over-output
+        why: Measure the change in behavior you wanted, not the number of things you shipped.
+
+  - slug: when-to-abstract
+    title: When should I introduce an abstraction?
+    framing: >-
+      Abstractions are cheap to write and expensive to own, especially when an agent can generate a tidy-looking layer in
+      seconds. These ideas disagree in useful ways: some argue for waiting until duplication proves the shape, others for
+      investing in deep, well-hidden interfaces early. Reading them together is the point.
+    concepts:
+      - concept: earn-your-abstractions
+        why: Wait for real repetition before generalizing; the wrong abstraction costs more than duplication.
+      - concept: simple-design
+        why: Do the simplest thing that passes the tests and expresses the intent, and no more.
+      - concept: deep-modules
+        why: When you do abstract, hide a lot behind a small interface.
+      - concept: strategic-programming
+        why: "The counterweight: invest a little in design continually, or complexity accumulates."
+      - concept: refactoring
+        why: Change structure in small, safe steps once the need is clear.
+      - concept: information-hiding
+        why: Draw module boundaries around decisions likely to change.
+
+  - slug: is-it-viable
+    title: How do I know if an idea is viable?
+    framing: >-
+      Viability is more than "people like it". A business needs customers with a real problem, a way to reach them, and a
+      model that pays for itself. Early on, the honest answer is often "not yet known"; these ideas help you find out
+      quickly and know what you are looking at when you do.
+    concepts:
+      - concept: business-model-search
+        why: Treat the early company as a search for a repeatable, scalable business model.
+      - concept: customer-development
+        why: Get out of the building and test the business's assumptions with customers.
+      - concept: product-market-fit
+        why: Recognize the difference between pushing a product and having the market pull it.
+      - concept: positioning
+        why: Know what customers would use instead, and why you are better for some of them.
+      - concept: pivot-or-persevere
+        why: Decide, on evidence, whether to keep going or change course.
+
+  - slug: directing-agents
+    title: How do I keep agents building the right thing?
+    framing: >-
+      Capable coding agents build what they are pointed at, competently and quickly. What they don't supply is the
+      judgment about whether it should exist. These ideas keep direction, decisions and review with the people who own
+      the outcome.
+    concepts:
+      - concept: humans-direct-agents-execute
+        why: Keep the "whether" and "why"; delegate the "how".
+      - concept: intent-over-implementation
+        why: Brief agents with outcomes and constraints, not step-by-step instructions.
+      - concept: review-the-decision
+        why: Review whether a change should exist, not only whether its code is correct.
+      - concept: decision-records
+        why: Write down consequential decisions where the next session will find them.
+      - concept: small-vertical-slices
+        why: Keep each change small enough to review and learn from.
+
+  - slug: pivot-or-keep-going
+    title: Should I keep going or change course?
+    framing: >-
+      Persevering by default is the most common way to waste a year. So is changing direction on a hunch. A useful
+      decision needs a baseline, a test of whether things are improving, and an honest look at what was learned.
+    concepts:
+      - concept: pivot-or-persevere
+        why: Make the decision explicit and regular instead of drifting.
+      - concept: innovation-accounting
+        why: Measure whether the experiments are actually moving the business.
+      - concept: validated-learning
+        why: Count progress as what you have learned to be true, not what you have built.
+      - concept: build-measure-learn
+        why: Shorten the loop so each decision arrives sooner.

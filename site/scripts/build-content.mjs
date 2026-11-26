@@ -16,10 +16,13 @@ const repoRoot = resolve(siteRoot, '..')
 const skillsRoot = join(repoRoot, 'skills')
 const outDir = join(siteRoot, 'content/generated')
 const writingRoot = process.env.KEEL_WRITING_DIR ? resolve(process.env.KEEL_WRITING_DIR) : join(siteRoot, 'content/writing')
-// Essays are published only when KEEL_ESSAYS is on (set per branch in Vercel). Off by default, so main hides them.
-const essaysOn = /^(?:1|true|on)$/iu.test(process.env.KEEL_ESSAYS ?? '')
-const publishedKinds = WRITING_KINDS.filter((k) => k.kind !== 'essay' || essaysOn)
-const hiddenRoutes = WRITING_KINDS.filter((k) => !publishedKinds.includes(k)).map((k) => k.route)
+// Essays, guides and the Library are published only when their flag is on (set per environment or branch in Vercel).
+// Off by default, so main hides them. The Library is still validated when hidden, so broken entries fail every build.
+const flagOn = (name) => /^(?:1|true|on)$/iu.test(process.env[name] ?? '')
+const KIND_FLAGS = { essay: 'KEEL_ESSAYS', guide: 'KEEL_GUIDES' }
+const publishedKinds = WRITING_KINDS.filter((k) => !KIND_FLAGS[k.kind] || flagOn(KIND_FLAGS[k.kind]))
+const libraryOn = flagOn('KEEL_LIBRARY')
+const hiddenRoutes = [...WRITING_KINDS.filter((k) => !publishedKinds.includes(k)).map((k) => k.route), ...(libraryOn ? [] : ['/library'])]
 const libraryRoot = process.env.KEEL_LIBRARY_DIR ? resolve(process.env.KEEL_LIBRARY_DIR) : join(siteRoot, 'content/library')
 const librarySource = (rel) => (process.env.KEEL_LIBRARY_DIR ? `${libraryRoot}/${rel}` : `site/content/library/${rel}`)
 const writingSource = (rel) => (process.env.KEEL_WRITING_DIR ? `${writingRoot}/${rel}` : `site/content/writing/${rel}`)
@@ -119,7 +122,7 @@ const build = () => {
       sections: sections.map((s) => ({ id: s.id, title: s.title, html: renderWriting(s.markdown, c.source).html, text: plain(s.markdown) })),
       connections: connectionsFor(c.slug, lib.concepts),
     }))
-  const library = { topics: lib.index?.topics ?? [], questions: lib.index?.questions ?? [], concepts }
+  const library = libraryOn ? { topics: lib.index?.topics ?? [], questions: lib.index?.questions ?? [], concepts } : { topics: [], questions: [], concepts: [] }
 
   const skills = ORDER.map((name) => {
     const skill = parsed.find((s) => s.name === name)
@@ -154,8 +157,8 @@ const build = () => {
   const content = { generatedAt: new Date().toISOString(), commit, repo: { ...REPO, url: repoUrl }, skills, writing, library }
   writeFileSync(join(outDir, 'content.json'), `${JSON.stringify(content)}\n`)
   console.log(`content: ${skills.length} skills from skills/*/SKILL.md (${skills.map((s) => s.name).join(', ')})`)
-  if (hiddenRoutes.length) console.log(`content: not published in this build: ${hiddenRoutes.join(', ')} (set KEEL_ESSAYS=on to publish essays)`)
-  console.log(`content: ${concepts.length} Library concepts in ${library.topics.length} topics, ${library.questions.length} questions`)
+  if (hiddenRoutes.length) console.log(`content: not published in this build: ${hiddenRoutes.join(', ')} (set KEEL_ESSAYS, KEEL_GUIDES or KEEL_LIBRARY to on to publish them)`)
+  console.log(`content: ${concepts.length} Library concepts${libraryOn ? '' : ' validated, not published'}, ${library.topics.length} topics, ${library.questions.length} questions`)
   console.log(`content: ${writing.length} pieces of writing${writing.length ? ` (${writing.map((w) => w.route).join(', ')})` : ''}`)
   return []
 }

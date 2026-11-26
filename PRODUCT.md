@@ -43,7 +43,7 @@ A skill belongs only if it:
 
 Skills may be changed, merged or removed.
 
-The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill.
+The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill. Until the author judges each ready, the essays, guides and Library are built but not published on the production site.
 
 ### Library
 

@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "oxlint .",
     "check-types": "pnpm content && tsc --noEmit",
-    "test": "vitest run",
+    "test": "KEEL_ESSAYS=on KEEL_GUIDES=on KEEL_LIBRARY=on node scripts/build-content.mjs && vitest run",
     "qa": "pnpm lint && pnpm check-types && pnpm test"
   },
   "dependencies": {

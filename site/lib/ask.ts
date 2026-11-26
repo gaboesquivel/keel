@@ -26,7 +26,7 @@ export const COOKIE = "keel_ask";
 const COOKIE_PURPOSE = "keel-ask-owner-v1";
 
 /** Ask exists only where both the Gateway key and the owner secret are configured. */
-export const askConfigured = () => Boolean(process.env.AI_GATEWAY_API_KEY && process.env.KEEL_ASK_SECRET && process.env.KEEL_ASK_SECRET.length >= 24);
+export const askConfigured = () => concepts.length > 0 && Boolean(process.env.AI_GATEWAY_API_KEY && process.env.KEEL_ASK_SECRET && process.env.KEEL_ASK_SECRET.length >= 24);
 
 const safeEqual = (a: string, b: string) => {
   const x = Buffer.from(a);

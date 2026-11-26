@@ -43,15 +43,17 @@ A skill belongs only if it:
 
 Skills may be changed, merged or removed.
 
-The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill.
+The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill. Until the author judges each ready, the essays, guides and Library are built but not published on the production site.
 
 ### Library
 
-An explorable, public collection of product, startup and software engineering ideas for people building with AI agents, browsed by concept, category, relationship and search. The author is its first user: it should help them learn, revisit important ideas and make better decisions, before it reaches anyone else.
+A public, explorable collection of ideas about Lean Startup and validation, product discovery, strategy and metrics, product simplicity and scope, software design, and building with AI agents. It draws on books, articles, frameworks and practitioners and makes their ideas easy to explore and apply to real decisions. The author is its first user: it should help them learn, rediscover ideas, connect perspectives and think through products they are building, before it reaches anyone else.
 
-- It replaces the published principles: one collection, at `/library`, with `/principles` permanently redirected. The principles published so far and the curated concepts become its entries, with genuine duplicates consolidated rather than kept as separate entries. Essays and guides keep their routes and are discoverable alongside it.
-- Each entry is keel's own synthesis of an idea: it attributes the authors and links the original sources (with verified Wayback Machine copies where needed). It never reproduces copyrighted work.
-- **Ask**: describe a real problem or question and get a grounded perspective drawn only from the Library, with references to its entries. It faithfully represents the relevant concepts, keeps keel's interpretation apart from what the sources say, and says when the Library lacks the evidence to answer. It is a single question and answer, not a conversation.
+- It is a purpose-built experience at `/library`, organised by idea, never by date. Three ways in serve different needs: questions for someone with a problem but not the vocabulary, topics for study, and instant search for someone who knows what they want. Each concept has its own page.
+- Each entry is keel's own synthesis. It keeps what the source says apart from keel's perspective, attributes the authors, links the original sources (with a verified Wayback Machine copy where the original has gone or may go), keeps that source metadata beside the entry, and never reproduces copyrighted work. A candidate without a trustworthy source or an independent insight is left out rather than filled in. A view on building with agents appears where it genuinely applies, not in every entry.
+- Relationships between entries are curated and labelled (builds on, in tension with, related), and tensions are included only where the disagreement is real.
+- It is the only public knowledge collection on the site. keel's governing principles stay in this document; the earlier principles page is kept in the repository but not published, and `/principles` redirects to `/library`. Publishing keel's own philosophy separately may be reconsidered later.
+- **Ask**: describe a real problem or question and get a grounded perspective drawn only from the Library, with references to its entries and their sources. It faithfully represents the relevant concepts, keeps keel's interpretation apart from what the sources say, and says when the Library lacks the evidence to answer. It is a single question and answer, not a conversation.
 - Ask is available only to the author until real usage and answer quality justify opening it. The Library is public, and fully useful without Ask.
 
 ## Primary metric
@@ -77,5 +79,6 @@ Supporting measure for the Library: how often consulting it, by browsing or thro
 - Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design`, `slice` and `align` not yet measured.
 - Is there evidence of these problems beyond the author's own experience?
 - How much does it overlap with existing tools (for example the AgentOps `product` skill)? Not checked.
-- Library: the curated collection and its categories are not yet in the repository; categories are set once it is.
+- Library: the earlier list of about 38 curated concepts was not recovered. The first collection was assembled from the confirmed references and new research; the author reviews it and any uncertain attributions.
+- Library: does it strengthen keel or pull the website away from the skills? Unknown; watch whether it informs real decisions and whether upkeep of the entries competes with the skills.
 - Ask: are its answers faithful enough, and used often enough, to open it publicly? Unknown until the author has used it on real questions.

@@ -330,3 +330,17 @@
     color: var(--color-fg-subtle);
   }
 }
+
+@layer components {
+  /* The first section of a Library concept reads as a lead paragraph. */
+  .prose-lead {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--color-fg);
+  }
+  @media (min-width: 640px) {
+    .prose-lead {
+      font-size: 1.3125rem;
+    }
+  }
+}

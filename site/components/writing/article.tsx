@@ -4,7 +4,7 @@ import { Prose } from "@/components/prose";
 import { Breadcrumbs, Container, Eyebrow, TextLink } from "@/components/ui";
 import { formatDate, type Heading, type Writing, writing } from "@/lib/content";
 
-const KIND_LABEL = { library: "Library", essay: "Essay", guide: "Guide" } as const;
+const KIND_LABEL = { essay: "Essay", guide: "Guide" } as const;
 const SECTION = { essay: { href: "/essays", label: "Essays" }, guide: { href: "/guides", label: "Guides" } } as const;
 
 /** Minimum number of sections before a page gets a table of contents. */
@@ -35,25 +35,21 @@ const nextReads = (entry: Writing) => {
 export function Article({ entry }: { entry: Writing }) {
   const sections = entry.headings.filter((h) => h.depth === 2);
   const showToc = sections.length >= TOC_MIN;
-  const section = entry.kind === "library" ? null : SECTION[entry.kind];
+  const section = SECTION[entry.kind];
   const more = nextReads(entry);
 
   return (
     <Container className="pb-24 pt-10 sm:pb-32">
-      {section ? <Breadcrumbs items={[section, { label: entry.title }]} /> : null}
+      <Breadcrumbs items={[section, { label: entry.title }]} />
 
-      <article className={section ? "mt-14 sm:mt-20" : "mt-6 sm:mt-14"}>
+      <article className="mt-14 sm:mt-20">
         <header className="max-w-[46rem]">
           <Eyebrow>{KIND_LABEL[entry.kind]}</Eyebrow>
           <h1 className="headline mt-6 text-[clamp(2.4rem,5.4vw,4rem)] text-fg">{entry.title}</h1>
           {entry.subtitle ? <p className="mt-6 max-w-[38rem] text-xl font-medium leading-snug tracking-[-0.015em] text-fg-muted sm:text-2xl">{entry.subtitle}</p> : null}
           <p className="label-mono mt-8 flex flex-wrap gap-x-3 gap-y-1">
-            {entry.kind !== "library" ? (
-              <>
-                <time dateTime={entry.date}>{formatDate(entry.date)}</time>
-                <span aria-hidden="true">·</span>
-              </>
-            ) : null}
+            <time dateTime={entry.date}>{formatDate(entry.date)}</time>
+            <span aria-hidden="true">·</span>
             <span>{entry.readingMinutes} min read</span>
           </p>
         </header>

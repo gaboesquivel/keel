@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { LogoMark } from "@/components/logo";
 import { ButtonLink, Container, Eyebrow, Headline, Lede } from "@/components/ui";
-import { essays, repo } from "@/lib/content";
+import { essays, guides, repo } from "@/lib/content";
 import { CREATOR } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -98,12 +98,14 @@ export default function AboutPage() {
             keel is created by <a href={CREATOR.url} rel="noopener">{CREATOR.name}</a> and open source under the MIT license. The skills, their history and this site live in one <a href={repo.url} rel="noopener">GitHub repository</a>.
           </p>
           <p>
-            keel’s {essays.length ? (
+            {essays.length || guides.length ? (
               <>
-                <Link href="/essays">essays</Link> and{" "}
+                keel’s {essays.length ? <Link href="/essays">essays</Link> : null}
+                {essays.length && guides.length ? " and " : null}
+                {guides.length ? <Link href="/guides">guides</Link> : null} cover product engineering with agents.{" "}
               </>
             ) : null}
-            <Link href="/guides">guides</Link> cover product engineering with agents. More writing by {CREATOR.name} is at <a href={`${CREATOR.url}/blog`} rel="noopener">gaboesquivel.com/blog</a>.
+            More writing by {CREATOR.name} is at <a href={`${CREATOR.url}/blog`} rel="noopener">gaboesquivel.com/blog</a>.
           </p>
         </Block>
       </div>

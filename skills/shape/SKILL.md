@@ -19,13 +19,13 @@ Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist,
 
 When invoked without arguments, read the relevant project context silently, then ask: "What would you like to shape?" Do not summarize the documents, list possible topics, or explain the skill unless needed.
 
-- No `PRODUCT.md` and nothing built yet: this is a new idea, so start the conversation.
+- No `PRODUCT.md` and nothing built yet: this is a new idea and nothing is decided, so expect a long conversation. Cover every topic in the list below with the user before you recommend a direction; a new product usually takes ten or more questions across several turns.
 - No `PRODUCT.md` in an existing project: read enough of the code, documentation and workflows to say what the product is today, without reading everything. Tell the user what you found before asking anything, keeping apart what the code does, what you infer it is for, and what you cannot tell, and let them correct it. What is built shows the decisions made so far, not what the user wants next, so ask whether they want to continue in this direction or change it, and treat a pivot as an ordinary outcome.
-- `PRODUCT.md` exists: use it as the current product context. Work out whether the user is exploring a feature, reconsidering the product's direction, or investigating an alternative. Compare the proposal with the documented user, problem, metric, scope and non-goals, and use the primary metric to judge it. If the metric's current level would change your assessment, ask the user where it stands; you cannot see their analytics, and "unknown" is an acceptable answer. Name meaningful conflicts with the documented direction, and do not treat that direction as fixed: the user may be changing it on purpose.
+- `PRODUCT.md` exists: use it as the current product context. Work out whether the user is exploring a feature, reconsidering the product's direction, or investigating an alternative. Compare the proposal with the documented user, problem, metric, scope and non-goals, and use the primary metric to judge it. If the metric's current level would change your assessment, ask the user where it stands; you cannot see their analytics, and "unknown" is an acceptable answer. Name meaningful conflicts with the documented direction, and do not treat that direction as fixed: the user may be changing it on purpose. Skip the product-level questions the documents already answer, but still ask about the feature itself: which user and moment it serves, what they do today without it, what it must do and what it must not, how it touches existing features, the edge cases that would change the design, and how you will know it worked.
 
 ## The conversation
 
-Ask one or two questions at a time and follow what the answers open up. Cover what is relevant, in any order:
+Ask one or two questions per turn and follow what the answers open up. That limit is the pace, not the total: keep asking across turns until the topics that matter are covered, and when an answer is vague or rests on an assumption, ask about it again before moving on. Cover what is relevant, in any order:
 
 - **Problem and user.** Who exactly, what they do today instead, and what is evidence versus assumption.
 - **Alternatives.** Search for real competitors, open-source projects, hosted services and APIs before assuming a custom build. Link what you found, say what you could not check, and keep facts apart from your interpretation.
@@ -36,6 +36,10 @@ Ask one or two questions at a time and follow what the answers open up. Cover wh
 - **Risks.** The assumptions that matter most, and what evidence would change the decision.
 
 When you have a view, recommend one of build, reuse, defer or stop, with the reason, and offer the smallest version worth doing.
+
+The user decides when exploration ends, not you. Before you recommend, summarize or finalize, say which topics are still thin and ask whether they want to go deeper on any of them or explore something else. A recommendation does not end the conversation, and neither does the user agreeing with it.
+
+This skill never implements. Do not write or edit code, scaffold a project, install anything, or draft an implementation plan, even when the next step seems obvious or the user's answer sounds like a go-ahead; the only files you touch are the documents below. If the user asks to build, finish or pause the shaping first, then tell them building starts in a normal request outside this skill.
 
 The user can stop at any point. When they do, or when they ask to finalize, say what is settled, what is open, and which open points affect the next step.
 

@@ -62,3 +62,5 @@ Only once evidence supports a bottleneck:
 - What changed, if anything, and the tradeoffs.
 - What remains unverified. Lab evidence alone does not demonstrate a production improvement.
 - A practical way to notice a regression, using what the project already has where possible.
+
+When the user asks to keep the report, save it under `docs/research/` unless they name another place, with the date, the method and the conditions it was observed under.

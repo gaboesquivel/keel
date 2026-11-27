@@ -21,7 +21,7 @@ Today this is ad hoc: chat, READMEs, agents inferring intent from code, or heavy
 ## Principles
 
 - Intent over implementation: set what matters, let agents handle how.
-- Judgment over ceremony: improve decisions without adding steps or documents.
+- Judgment over ceremony: improve decisions without adding steps or required documents.
 - Evidence over assumptions: challenge claims, inspect existing work, learn from alternatives, reuse before building.
 - Focus over accumulation: resist scope creep and drift. Change direction only deliberately.
 - Humans direct, agents execute.
@@ -42,6 +42,10 @@ A skill belongs only if it:
 - justifies its maintenance cost.
 
 Skills may be changed, merged or removed.
+
+### Project documents
+
+The skills keep a project's direction in a few files that say what is true now: `PRODUCT.md`, `ARCHITECTURE.md` and `DESIGN.md` when needed, and a section in `CLAUDE.md` or `AGENTS.md`. A project may also keep `docs/decisions/` (why, and what was turned down), `docs/research/` (dated evidence) and `docs/experiments/` (an assumption, what would count, and the result). These are optional. Every skill works without them, none creates them empty or unasked, and a skill that finds them reads them and writes to them only when a direction is adopted or the user asks.
 
 The website supports the skills: it presents them and publishes the Library, essays and guides that share the thinking behind them and serve as a reference for product and engineering judgment. The writing is not a methodology the skills depend on, and it need not list every skill. Until the author judges each ready, the essays, guides and Library are built but not published on the production site.
 
@@ -73,11 +77,13 @@ Supporting measure for the Library: how often consulting it, by browsing or thro
 - Ask is not a general chatbot: no multi-turn conversation and no answers from outside the Library, because grounding is its value.
 - No user accounts for the Library or Ask: one private user doesn't justify the infrastructure.
 - Skills don't depend on the Library: they must work when installed alone.
+- No required document set beyond `PRODUCT.md`: decision records, research and experiment files are a convention a project may adopt, not a stage or a deliverable.
 
 ## Open questions
 
 - Does this add value over plain Claude Code? One single-run comparison so far ([evals/README.md](evals/README.md)): clearest for `perf` and `ux`, narrow or tied for the rest, `design`, `slice` and `align` not yet measured.
 - Is there evidence of these problems beyond the author's own experience?
+- Optional decision, research and experiment documents (adopted 2026-11-27, after the first real project asked for decision records within hours of shaping): do they preserve intent, or become the ceremony keel exists to avoid? Watch whether later sessions read them and whether they go stale.
 - How much does it overlap with existing tools (for example the AgentOps `product` skill)? Not checked.
 - Library: the earlier list of about 38 curated concepts was not recovered. The first collection was assembled from the confirmed references and new research; the author reviews it and any uncertain attributions.
 - Library: does it strengthen keel or pull the website away from the skills? Unknown; watch whether it informs real decisions and whether upkeep of the entries competes with the skills.

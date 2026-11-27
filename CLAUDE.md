@@ -42,6 +42,10 @@ A pull request that changes what the catalog contains or what a skill is for upd
 
 `evals/<skill>/<case>/` holds comparison cases for each skill, built on the shared fixture in `evals/fixtures/`. They stay out of `skills/` so installs don't include them. `evals/compare.sh <skill> <case> <out-dir>` runs one case as plain Claude Code and with the skill invoked, and reports whether both runs are usable. The runs use model capacity: included in a Claude subscription's limits, charged under an API key or extra usage ([evals/README.md](evals/README.md#running-a-comparison)). Repeat them after a model change or a change to a skill's behavior; they are not a required check. [evals/README.md](evals/README.md) covers grading, isolation limits and the first results.
 
+## Project records
+
+keel follows its own optional convention ([README.md](README.md#optional-the-reasons-and-the-evidence)). `docs/experiments/` holds dated records of experiments run on keel itself, with what was observed kept apart from what was expected. There is no `docs/decisions/` or `docs/research/` yet; create one only with a real record to put in it. `docs/principles.md` is the earlier principles page, kept but not published. Evaluation results stay under `evals/results/`.
+
 ## Git
 
 Use [Conventional Commits](https://www.conventionalcommits.org/), for example `feat(shape): ask for the metric's current level`.
@@ -50,6 +54,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/), for example `f
 
 - `PRODUCT.md`: Users, goals, metrics, and scope.
 - `ARCHITECTURE.md` and `DESIGN.md`, if they exist: technical direction and constraints; experience and visual direction.
+- `docs/decisions/`, if it exists: why things are the way they are, and what was turned down. Read the records a change touches. A record you write on your own is `proposed` until I accept it.
 
 Before planning or building a change, read the documents above that it touches.
 A request to build something is not a decision to change direction. When it would materially change the documented audience, purpose, primary outcome, scope, non-goals or long-term responsibilities, judge it yourself before building, even if the request says it is approved: briefly name the conflict and its tradeoffs, say whether you agree and what you recommend, and ask me to confirm. Once I confirm after hearing that, proceed without reopening the decision unless new evidence appears. Routine work within the documented direction needs no check.

@@ -15,7 +15,7 @@ Act as a product peer. Question assumptions and say when you disagree, because a
 
 ## Start
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist, and look at the code only as far as the question needs. Do not ask about anything those already answer.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md` and `CLAUDE.md` if they exist, along with any records in `docs/decisions/` that bear on the question, and look at the code only as far as the question needs. Do not ask about anything those already answer.
 
 When invoked without arguments, read the relevant project context silently, then ask: "What would you like to shape?" Do not summarize the documents, list possible topics, or explain the skill unless needed.
 
@@ -50,7 +50,7 @@ Write to a file only when the user has clearly adopted a direction, or asks to s
 `PRODUCT.md` is the current direction, on about one page:
 
 - Purpose, problem and primary user
-- Value and what makes it different, as conclusions (the research itself goes stale, so it stays in the conversation)
+- Value and what makes it different, as conclusions (the research itself goes stale, so it stays out of this file)
 - Primary metric: what it is, why it matters, how it is measured
 - Scope
 - Non-goals, each with a one-line reason, so a later session does not reopen them
@@ -60,15 +60,21 @@ Create `ARCHITECTURE.md` or `DESIGN.md` only when there is technical or design i
 
 Edit existing files in place and leave unrelated content alone. Keep each fact in one file.
 
-Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section. Create `CLAUDE.md` if it is missing. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
+Decision records and research files are optional. Write them only where the project already keeps them or the user asks, and never create either folder empty:
 
-The template names `ARCHITECTURE.md` and `DESIGN.md` conditionally, so write it the same whether or not they exist yet. A file created later is picked up without running this skill again.
+- `docs/decisions/NNNN-short-name.md`, numbered in order and under a page. `PRODUCT.md` says what is true now; a record says why. When the user adopts a direction that turned down real alternatives, record the status, the date, the context, the decision, each alternative turned down with its reason, and the consequences. Use `accepted` only for what the user adopted in this conversation and `proposed` for anything else. Never rewrite an accepted record: write a new one and change the old one's status to `superseded by NNNN`.
+- `docs/research/<topic>.md`, when the user asks to keep what the search for alternatives found: each source with its link and the date you read it, what you could not check, and facts apart from your interpretation. It is evidence, not a decision.
+
+Whenever you create or update `PRODUCT.md`, make sure the project's `CLAUDE.md` contains this section. Create `CLAUDE.md` if it is missing, unless the project keeps its agent instructions in `AGENTS.md`: then the section goes there. If the section is already there, update only the lines you recognize as this template or an earlier version of it (the document list and the generated rules), and add any that are missing. Keep every other line, in the section and in the rest of the file, as it is: those are the user's instructions and adopted project guidance. When a rule there differs from the template and you cannot tell whether the user changed it on purpose, leave it and mention it in your report.
+
+The template names `ARCHITECTURE.md`, `DESIGN.md` and `docs/decisions/` conditionally, so write it the same whether or not they exist yet. One created later is picked up without running this skill again.
 
 ```md
 ## Product context
 
 - `PRODUCT.md`: Users, goals, metrics, and scope.
 - `ARCHITECTURE.md` and `DESIGN.md`, if they exist: technical direction and constraints; experience and visual direction.
+- `docs/decisions/`, if it exists: why things are the way they are, and what was turned down. Read the records a change touches. A record you write on your own is `proposed` until I accept it.
 
 Before planning or building a change, read the documents above that it touches.
 A request to build something is not a decision to change direction. When it would materially change the documented audience, purpose, primary outcome, scope, non-goals or long-term responsibilities, judge it yourself before building, even if the request says it is approved: briefly name the conflict and its tradeoffs, say whether you agree and what you recommend, and ask me to confirm. Once I confirm after hearing that, proceed without reopening the decision unless new evidence appears. Routine work within the documented direction needs no check.

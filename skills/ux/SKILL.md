@@ -69,4 +69,4 @@ Leave out praise padding and findings you cannot support. Stay on the chosen jou
 
 ## Boundaries
 
-Investigate and recommend. Change the product only when the user asks for fixes, and then verify each fix by walking the same steps again.
+Investigate and recommend. Change the product only when the user asks for fixes, and then verify each fix by walking the same steps again. When the user asks to keep the report, save it under `docs/research/` unless they name another place, with the date, the method and the conditions it was observed under.

@@ -15,7 +15,7 @@ If nothing is named, propose the most recent substantial feature or release from
 
 ## Recover the intent
 
-Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md`, `CLAUDE.md`, and the relevant history (pull requests, commit messages, issues, decision notes) as far as the question needs. Reconstruct who it was for, the problem, the expected outcome, the constraints, and the decisions made, including alternatives that were rejected. Where intent was never written down, say what you infer and from what. Ask the user only for what would change the conclusion.
+Read `PRODUCT.md`, `ARCHITECTURE.md`, `DESIGN.md`, `CLAUDE.md`, and the relevant history (pull requests, commit messages, issues, decision records, experiment results) as far as the question needs. Reconstruct who it was for, the problem, the expected outcome, the constraints, and the decisions made, including alternatives that were rejected. Where intent was never written down, say what you infer and from what. Ask the user only for what would change the conclusion.
 
 ## Recover what happened
 
@@ -53,4 +53,4 @@ Fewer than three priorities is fine, and none is a valid result. Do not pad.
 
 ## Boundaries
 
-Recommend; do not act. Do not implement changes, create tickets, or edit project documents unless the user asks. If the user adopts a new direction and asks to record it, edit the relevant document in place.
+Recommend; do not act. Do not implement changes, create tickets, or edit project documents unless the user asks. If the user adopts a new direction and asks to record it, edit the relevant document in place. Where the project keeps records in `docs/decisions/`, do not rewrite an accepted one: add a record that supersedes it and change the old one's status to `superseded by NNNN`.

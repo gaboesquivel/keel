@@ -30,9 +30,26 @@ Keel uses a few small project documents to maintain that context:
 - **`PRODUCT.md`** — Purpose, users, goals, success metrics, scope, and non-goals. Created and maintained by `/shape` when you adopt a direction.
 - **`ARCHITECTURE.md`** — Lasting technical direction, boundaries, and constraints that aren't obvious from the code. Created only when needed.
 - **`DESIGN.md`** — Accepted experience and visual direction. Created when needed and kept current by `/design` or ordinary development work.
-- **`CLAUDE.md`** — Directs Claude Code to the project context and helps prevent unintended changes in direction. `/shape` establishes or updates this guidance when recording product intent.
+- **`CLAUDE.md`** — Directs Claude Code to the project context and helps prevent unintended changes in direction. `/shape` establishes or updates this guidance when recording product intent, in `AGENTS.md` when the project keeps its agent instructions there.
 
 These aren't mandatory documents to generate upfront. Decisions are recorded when adopted, not merely proposed. The code remains the source of truth for routine implementation details.
+
+### Optional: the reasons and the evidence
+
+The documents above say what is true now. Some projects also want to remember why, and what the evidence was. Keel has one convention for that, and no skill requires it:
+
+```text
+docs/
+  decisions/NNNN-short-name.md     Why, and what was turned down. proposed, accepted or superseded.
+  research/<topic>.md              Dated evidence with sources. Goes stale. Never a decision.
+  experiments/YYYY-MM-DD-name.md   An assumption and what would count, written before; the result, after.
+  ROADMAP.md                       Ordered intentions, not commitments.
+```
+
+- A file exists because it has something in it. Nothing is scaffolded, and no folder is created empty.
+- A decision record is `accepted` only when you said so. One an agent writes on its own stays `proposed` until you accept it. A replaced record stays in place, marked `superseded`.
+- Research and experiments keep what was observed apart from what was inferred.
+- Skills read these when they exist. `/shape` writes a decision record when you adopt a direction in a project that keeps them, `/retro` supersedes a record instead of rewriting it, `/align` checks accepted records against the code and flags stale ones, and `/slice`, `/perf` and `/ux` save there when you ask them to keep a result.
 
 Other skills complement this foundation. `/retro`, for example, looks back at what shipped and whether it achieved its intended outcomes. It may recommend changing direction, but doesn't rewrite accepted decisions without your approval. `/align` checks whether these documents and the code still agree, and recommends the smallest correction where they don't.
 
